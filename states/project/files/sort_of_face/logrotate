@@ -1,0 +1,8 @@
+/var/log/project/sort_of_face/*.log {
+    weekly
+    rotate 52
+    copytruncate
+    compress
+    notifempty
+    missingok
+}

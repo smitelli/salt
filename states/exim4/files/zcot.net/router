@@ -1,0 +1,5 @@
+zcot_net:
+    driver = redirect
+    domains = zcot.net
+    local_parts = !/etc/exim4/zcot.net.blacklist
+    data = scott@smitelli.com

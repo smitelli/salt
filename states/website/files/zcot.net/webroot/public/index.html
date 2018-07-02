@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>zcot</title>
+  </head>
+
+  <!-- Set phasers to "DON'T!" -->
+
+  <body>
+    <article>
+      <h1>Hello, suspicious person!</h1>
+      <p>
+        If you're reading this, you most likely encountered an email address of
+        the form <strong>some.service@zcot.net</strong> and wondered if the
+        website exists and if such an address could be legitimate. I assure you,
+        the address you were given is indeed correct, legitimate, and all
+        messages sent to it will be delivered to the intended person.
+      </p>
+
+      <section>
+        <h2>What is zcot?</h2>
+        <p>
+          zcot is an email forwarder owned by me, a single individual. It
+          accepts messages for virtually any value in the local-part of an
+          email address (the text to the left of the <code>@</code>-sign) and
+          each received message is forwarded to my real, unshared address.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why was zcot created?</h2>
+        <p>
+          There are quite a few reasons for this, but most of them boil down to
+          a combination of bad experiences with service providers and my own
+          dumb intransigence. Some more specific reasons are as follows:
+        </p>
+        <ul>
+          <li>
+            Just as there is benefit in never reusing a password across more
+            than one service, there is also benefit in never reusing a user
+            name&mdash;which in many cases is an email address&mdash;across more
+            than one service as well. A zcot address for one service is globally
+            unique and not reused on any other service or site.
+          </li>
+          <li>
+            Phishing messages become more obvious, as there is a high likelihood
+            that the fake message would not have been sent to the correct zcot
+            address for the service that purportedly sent it.
+          </li>
+          <li>
+            Should a zcot address ever show up in a data breach, it will be
+            obvious which service was the source of the data.
+          </li>
+          <li>
+            Should my real address start receiving spam or unwanted marketing
+            materials, the zcot address that forwarded the message will reveal
+            which service sent the material (or which service shared the address
+            with a third party).
+          </li>
+          <li>
+            Using unique and rather meaningless zcot addresses on services
+            thwarts unwanted "find me by email" functionality. It also helps
+            prevent construction of a social graph from other users who may
+            share their contacts list&mdash;in almost all cases the shared
+            contacts would not contain any zcot addresses the service has on
+            file for me.
+          </li>
+          <li>
+            As companies merge and acquire one another, often user accounts are
+            unexpectedly linked in ways that are not predictable, reversible, or
+            agreeable. With different zcot addresses at each service, the merged
+            entity cannot reliably link the accounts or correlate my identity.
+          </li>
+          <li>
+            Sometimes it's desirable to create more than one account on a
+            service that requires unique email addresses across all
+            registrations.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Who is behind zcot?</h2>
+        <p>
+          Do you think the person who refused to give you their real email
+          address in the first place would volunteer such information so easily?
+        </p>
+        <p>
+          All I'll say is, it ain't exactly a secret. If you take a minute or
+          two to do the research, you'll figure it out.
+        </p>
+      </section>
+
+      <section>
+        <h2>Can't the same thing be accomplished with <code>+</code>?</h2>
+        <p>
+          Sure it can. But having tried that approach for several years, I found
+          it insufficient.
+        </p>
+        <p>
+          For the unaware, many email providers (notably Gmail) allow their
+          users to insert a single plus sign (<code>+</code>) in their
+          local-part and anything after it will be ignored when delivering the
+          messages. So <code>joe+something@example.com</code>,
+          <code>joe+anything@example.com</code>, and
+          <code>joe+writhing@example.com</code> are three seemingly different
+          addresses, but mail sent to each of them will all ultimately go to the
+          same mailbox: <code>joe@example.com</code>.
+        </p>
+        <p>
+          In theory, this should work great for my use case. In practice, it's
+          disheartening to discover how many services have boneheaded email
+          validation routines that don't consider the plus sign to be a legal
+          character. Without exaggeration, I would say one in five services have
+          some kind of limitation pertaining to the scheme, in some cases
+          resulting in being unable to even log in without contacting customer
+          service to restore access. (Have you ever tried talking a CS
+          representative through the fact that your email address contains a
+          plus sign?) This sort of thing happens with <em>infuriating</em>
+          frequency.
+        </p>
+        <p>
+          From the standpoint of creating a bulletproof mechanism for ensuring
+          email uniqueness and traceability, the plus sign scheme isn't
+          perfect either. The trick is known well enough among developers and
+          product designers that the plus-sign portion is often stripped off,
+          leaving only the underlying email address. The anonymity, uniqueness,
+          and traceability aspects are all lost when this happens.
+        </p>
+        <p>
+          If you are a developer, or a person with influence over the design and
+          logic rules of a web application, please listen to me:
+          <strong>in an email address, every non-empty string is legal to the
+          left-hand side of the <code>@</code>-sign.</strong> I don't care what
+          regular expression you found on a message board post, or what rules
+          are imposed by other competitors' websites, or what your gut thinks is
+          correct. Every value&mdash;very short values, very long values,
+          quoted spaces, accented characters, &#9748;, complicated sequences of
+          combining characters&mdash;every value is legal on the left-hand side
+          of the <code>@</code>-sign. The world is a big place, with lots of
+          different writing systems and mail server software. To think that your
+          service is the end-all arbiter of what is legal and illegal in such a
+          vast and complicated world is naive and obstinate.
+        </p>
+        <p>
+          Don't get me started on your atrocious password restrictions.
+        </p>
+      </section>
+
+      <section>
+        <h2>How do you pronounce zcot?</h2>
+        <p>
+          Who cares. For what it's worth, I say ZEE-cot.
+        </p>
+      </section>
+    </article>
+  </body>
+</html>

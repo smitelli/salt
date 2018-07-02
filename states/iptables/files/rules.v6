@@ -1,0 +1,28 @@
+*filter
+
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -m conntrack --ctstate INVALID -j DROP
+
+# Necessary for proper IPv6 operation
+-A INPUT -p icmpv6 -j ACCEPT
+
+{% if allow_ssh -%}
+-A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+{%- endif %}
+{% if allow_smtp -%}
+-A INPUT -p tcp --dport 25 -m conntrack --ctstate NEW -j ACCEPT
+{%- endif %}
+{% if allow_http -%}
+-A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
+{%- endif %}
+{% if allow_https -%}
+-A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW -j ACCEPT
+{%- endif %}
+
+-A INPUT -m limit --limit 2/min -j LOG --log-prefix "ip6tables dropped: " --log-level 7
+-A INPUT -j DROP
+-A FORWARD -j DROP
+-A OUTPUT -j ACCEPT
+
+COMMIT

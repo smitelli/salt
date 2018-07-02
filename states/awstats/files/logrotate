@@ -1,0 +1,7 @@
+/var/log/awstats/*.log {
+    weekly
+    rotate 52
+    compress
+    notifempty
+    missingok
+}

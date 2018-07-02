@@ -1,0 +1,21 @@
+# System-wide overrides follow...
+LogFormat=1
+DirData="/var/lib/awstats/__AWSTATS_CURRENT_CONFIG__"
+DirIcons="icon"
+AllowFullYearView=3
+EnableLockForUpdate=1
+CreateDirDataIfNotExists=1
+KeepBackupOfHistoricFiles=1
+NotPageList="css js class gif jpg jpeg png bmp ico rss xml swf eot woff woff2 zip arj rar gz z bz2 wav mp3 wma mpg avi flv mp4 svg ttf"
+URLReferrerWithQuery=1
+LevelForBrowsersDetection=allphones
+LevelForWormsDetection=2
+UseFramesWhenCGI=0
+ShowDomainsStats=UVPHB
+ShowWormsStats=HBL
+
+LoadPlugin="tooltips"
+LoadPlugin="decodeutfkeys"
+LoadPlugin="ipv6"
+LoadPlugin="hostinfo"
+LoadPlugin="graphgooglechartapi"

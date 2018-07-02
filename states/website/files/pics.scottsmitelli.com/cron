@@ -1,0 +1,12 @@
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+PYTHONUNBUFFERED=1
+PYTHONIOENCODING=utf_8
+
+FETCH_SCRIPT_FILE=/opt/website/pics.scottsmitelli.com/cron.sh
+FETCH_LOG_FILE=/var/log/website/pics.scottsmitelli.com/cron.log
+BARK_SCRIPT_FILE=/opt/project/pics.scottsmitelli.com-barker/cron.sh
+BARK_LOG_FILE=/var/log/project/pics.scottsmitelli.com-barker/cron.log
+
+* * * * * windowbox $FETCH_SCRIPT_FILE >> $FETCH_LOG_FILE 2>&1; $BARK_SCRIPT_FILE >> $BARK_LOG_FILE 2>&1
