@@ -11,6 +11,7 @@ base:
     - logwatch
     - ntp
     - rsync
+    - salt.deploy-script
     - salt.minion
     - salt.minion-conf
     - sshd
