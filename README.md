@@ -16,7 +16,7 @@ Ye Olde Quicke Starte
     sha256sum bootstrap-salt.sh
     # verify 6d414a39439a7335af1b78203f9d37e11c972b3c49c519742c6405e2944c6c4b
     chmod +x bootstrap-salt.sh
-    ./bootstrap-salt.sh
+    ./bootstrap-salt.sh -X -F -c /tmp
 
     mkdir -p /etc/salt/gpgkeys /srv/salt
     # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
