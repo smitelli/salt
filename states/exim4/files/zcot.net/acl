@@ -1,0 +1,3 @@
+zcot_net_acl:
+    deny senders = /etc/exim4/zcot.net.deny-senders
+    accept

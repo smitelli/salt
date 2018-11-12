@@ -1,4 +1,4 @@
-zcot_net:
+zcot_net_router:
     driver = redirect
     domains = zcot.net
     local_parts = !/etc/exim4/zcot.net.blacklist
