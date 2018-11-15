@@ -82,5 +82,4 @@ some OSes may not like.
 * Check that each project/website works in isolation
 * Check each website in HTTP-only config
 * homedir dotfiles
-* Windowbox geolocation is busted: https://maps.googleapis.com/maps/api/geocode/json?latlng=36.0515501,-78.9437953&sensor=true
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
