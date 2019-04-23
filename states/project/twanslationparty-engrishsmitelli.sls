@@ -9,7 +9,6 @@ include:
   - php7-0.curl
   - php7-0.mbstring
   - php7-0.mysql
-  - php7-0.xml
   - user.twitstash
 
 twanslationparty-engrishsmitelli-repo:
