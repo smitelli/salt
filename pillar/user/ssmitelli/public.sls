@@ -19,17 +19,17 @@ user:
           comment: ssmitelli@tarvos
 
         #
-        # Titan
+        # Triton
         #
         - enc: ssh-ed25519
-          key: AAAAC3NzaC1lZDI1NTE5AAAAIKyEg030J5EnkpbJE9iUHA1ot7VMF2YRJllQ3YFV8jvB
-          comment: ssmitelli@titan
+          key: AAAAC3NzaC1lZDI1NTE5AAAAIMiRCYjLT+1VVQ95x0wl+e9b1kCoMOHyLxCTv5SdGT/4
+          comment: ssmitelli@triton
         - enc: ssh-rsa
-          key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDF7olK//RHr4SiGfrqIY1CNIcd71lrQ/MTEw+iuaMwTdWwD878LqCYwQNBzgKeOZl6lIdn7prwJeB8/ypgl3EjAd1DZTBxpNWgrcTHDUUnvFev0j07OA1/WtmVa9iiyaFQRZk26wNltZUMYD5CA/JFFJ4WsyverGYWWzTVCaomoSBWs6N782UdsTIMhsu1xNXJE2TlZHw2bVsD9QNIZm1seXFn6gSt0enijvNQTfGS7HYwJ2caInksJnVz3JxYRUg1hgzjn/wwiTBRA1/iRXkhsCBHnoRtdfBUBM8GiXHOX0ojXRQvvWH0geNYlTTQvgY7avJ23Mw/XAn+VzWY9d1F
-          comment: ssmitelli@titan
+          key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDMrXxHp8cOeT4VwQZGkVxUuxu0K0gL0InLG8saHpDHNoCxVp8dVo/CeXo/8Wd6ddvnkzn0D9cfJFV/IA5/R17W/mxzcOFvjDDcLLy/nTTGFP7+Mj8tVTji0FoDwOdW7Us23ToEcc2yPnFzPiIJFXTIqB6ZM6AKHlYee4Uyz0/UMcrfjRLeXB3LeMEOYdpsE8/TJGiwZOMtARgqS76f/XahrUt0DdLIUKUMT0OzINP2GW5/nRELPk/o2jLJbY7qWgTnLFVSldUtgyb66BYH3nWe3iEVMIBg5V83XCaoKAn5Yn9T6WiWViSJx4x+BSKGJ13rvBO0N1/nhZ3EjXu3gFI5
+          comment: ssmitelli@triton
         - enc: ecdsa-sha2-nistp521
-          key:  AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAEXQP5Vsq58WVD9ZePyFbwV1ozN5fZo6FnUK3snKqMA/uPT9hQfJ13qp4Eh3Dbvoi8gojSX505qyjIa8/X5dePc4wFEiAkDP1t/A8W2Niz1xUg+fd14aDxcvmBoalCaPFTT5yQBYHNef1fNmCk++pVM6n9+1zfSaqvFxyyf9pLn/sZ/Zg==
-          comment: ssmitelli@titan
+          key:  AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAEQx3KqvdOnMQWjYbMhhEYxgXrmqPaP5CiOkWfjcwifJbvTUbKlAHsaSt9phk04EbVfILRv49QrSawFeOUGOYFeNAFIEh0CMaiNgt7eW5L2g9CrN/2AEgeQrWzCaYtNzk8QseoQrl0i4ABFPLX3vNR3JJr2FqCnNyN9Pcgt73hcoX8qUw==
+          comment: ssmitelli@triton
         - enc: ssh-dss
-          key: AAAAB3NzaC1kc3MAAACBAKV1suQXWUwbp5ecjJ3o/ZBO3oVIjWvWcz5awDmxWZAjSGYgj61KAvYryP3w3b0gipP3IMyqshL6hgjUDL7WunYjnqQDbFwTT3ehKLqBJMwlAXD1J1MiedO2Rv900mG73od1ivoII2eu29T2HM+ZWRhfPhu0kUt8vlrVaxa3PIjnAAAAFQCuIcDyRTavJ259jz+wz1CY4l25ZwAAAIAoHYkTBIdekthzn4MzK1JuWUPOEJt+8n2XUEOV78VjiJhPjnjdrHkzRbq74DngKMRJ4JEnGDvfYfkrLTTDxjX5o+bxyL5wnVH8XJLbnSyaDHZyJfYs1PEpFDPj6Wsb7cHvLDVByw5uCPpODlkh9amdX12VTTzmMI95XO1bVfPEGwAAAIB8qHPZND09a2U2E0ozCpdNmnZuZW19R4ZxWbsyh+lwhQLS3/DzW2xW5TMHe+HFEmfg9dJZUJ1p8stAILt88/WMDK7gbmWPGSrNw1/xJfBqyvx8/HLg696CWFLDiV540tyn4kmYsSXySZBoGU6TQWZ3N/FewBlbjA9QVjXCPBk5Ag==
-          comment: ssmitelli@titan
+          key: AAAAB3NzaC1kc3MAAACBAIlKW3KlQf6U0EJsDuASWemmyoPcy8FpAFARUj9Xq7QagKIOI5Lrxrvce+cle6sRPF9NdQNkMCjYS9AD9StFUy1C6vsl3DsB65xWP/bIZByEoYIUbPIWa5G/iubRbsoqDablj6EYqMKnMj3gxtsAhVSyi5DNojerRnysNhHcyRTdAAAAFQC4k5rmLwPSouG6IXa6FVV4EXm+SQAAAIAlhA13WIWEN7Ssy4mm8MTf4SEidzyeX/7327sCZMDGrLAdtWbRPP705coX0tuo47mUls2HtDd3i3+VquY/O/CVyLNACvVBSuR1mZ3hgzYnb2wRArzcTcNdTkoJL4ZoWrUadlekfB1gejwKafqR/ibPUNW4zogIokFfHnuha/lavAAAAIBQyb2HK1xhXlyvRetILjCLuqfKwbU8y+uukzkk2Gjm3J9rHPc20A2I+HqW/+mJl1R6cVXc5xJ3TrBK5/e0+ktVwj9jS9VgIn8x8jlWlX2SGmo/TkcGLx2xgPFaPXBTu8ESBwpZh4vZrKCUYijep8WTnEfHVmnbX0WuU8RV3Z56zA==
+          comment: ssmitelli@triton
