@@ -83,3 +83,4 @@ some OSes may not like.
 * Check each website in HTTP-only config
 * homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
+* ...or NetData: https://www.netdata.cloud/
