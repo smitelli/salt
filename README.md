@@ -8,13 +8,15 @@ by [Scott Smitelli](mailto:scott@smitelli.com)
 Ye Olde Quicke Starte
 =====================
 
+All the below commands assume the user is already root.
+
     hostnamectl set-hostname hostname.fqdn.com
     reboot
 
     cd $(mktemp -d)
-    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2018.08.15/bootstrap-salt.sh
+    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.05.20/bootstrap-salt.sh
     sha256sum bootstrap-salt.sh
-    # verify 6d414a39439a7335af1b78203f9d37e11c972b3c49c519742c6405e2944c6c4b
+    # verify 46fb5e4b7815efafd69fd703f033fe86e7b584b6770f7e0b936995bcae1cedd8
     chmod +x bootstrap-salt.sh
     ./bootstrap-salt.sh -X -F -c /tmp
 
@@ -22,7 +24,7 @@ Ye Olde Quicke Starte
     # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
     # install ./ into /srv/salt/
     cp /srv/salt/states/salt/files/minion.conf /etc/salt/minion.d/00-minion.conf
-    salt-call --log-level=debug --local state.apply
+    salt-call --log-level=info --local state.apply
 
 ### Using the Vagrant environment:
 
