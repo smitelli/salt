@@ -44,6 +44,9 @@ nginx:
     - user: root
     - group: root
     - mode: 644
+    - context:
+      expect_ct_max_age: {{ 7 * 24 * 60 * 60 }}
+      strict_transport_security_max_age: {{ 90 * 24 * 60 * 60 }}
     - require:
       - pkg: nginx
 
