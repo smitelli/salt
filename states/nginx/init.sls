@@ -37,6 +37,17 @@ nginx:
     - require:
       - pkg: nginx
 
+/etc/nginx/snippets/security-headers.conf:
+  file.managed:
+    - source: salt://nginx/files/security-headers.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: nginx
+    - require_in:
+      - file: /etc/nginx/sites-available/*
+
 {% if enable_ssl %}
 dhparam-pem:
   cmd.run:
