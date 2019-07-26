@@ -45,8 +45,6 @@ nginx:
     - mode: 644
     - require:
       - pkg: nginx
-    - require_in:
-      - file: /etc/nginx/sites-available/*
 
 {% if enable_ssl %}
 dhparam-pem:
