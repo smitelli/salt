@@ -22,9 +22,13 @@ nginx:
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://nginx/files/nginx.conf
+    - template: jinja
     - user: root
     - group: root
     - mode: 644
+    - context:
+      expect_ct_max_age: {{ 7 * 24 * 60 * 60 }}
+      strict_transport_security_max_age: {{ 90 * 24 * 60 * 60 }}
     - require:
       - pkg: nginx
 
@@ -40,13 +44,9 @@ nginx:
 /etc/nginx/snippets/security-headers.conf:
   file.managed:
     - source: salt://nginx/files/security-headers.conf
-    - template: jinja
     - user: root
     - group: root
     - mode: 644
-    - context:
-      expect_ct_max_age: {{ 7 * 24 * 60 * 60 }}
-      strict_transport_security_max_age: {{ 90 * 24 * 60 * 60 }}
     - require:
       - pkg: nginx
 
