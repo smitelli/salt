@@ -36,6 +36,7 @@ internetstapler-com-repo:
     - mode: 644
     - context:
       enable_ssl: {{ enable_ssl | yaml_encode }}
+      expect_ct_max_age: {{ 7 * 24 * 60 * 60 }}
     - require:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
