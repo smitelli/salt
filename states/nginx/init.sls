@@ -32,6 +32,15 @@ nginx:
     - require:
       - pkg: nginx
 
+/etc/nginx/conf.d/charset.conf:
+  file.managed:
+    - source: salt://nginx/files/charset.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: nginx
+
 /etc/nginx/conf.d/gzip.conf:
   file.managed:
     - source: salt://nginx/files/gzip.conf
