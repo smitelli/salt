@@ -84,3 +84,4 @@ some OSes may not like.
 * homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
+* Content-Security-Policy and Feature-Policy for each website
