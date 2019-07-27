@@ -85,3 +85,6 @@ some OSes may not like.
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
 * Content-Security-Policy and Feature-Policy for each website
+* When nginx 1.14 is available:
+    - Update TLS versions and ciphers
+    - Change all 301 redirects to 308
