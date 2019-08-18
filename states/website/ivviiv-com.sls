@@ -39,7 +39,7 @@ include:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - git: ivviiv-com-repo
+      - file: /opt/website/ivviiv.com
       - pkg: nginx
 
 /etc/nginx/sites-enabled/ivviiv.com:

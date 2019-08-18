@@ -39,7 +39,7 @@ include:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - git: thesweetnut-com-repo
+      - file: /opt/website/thesweetnut.com
       - pkg: nginx
 
 /etc/nginx/sites-enabled/thesweetnut.com:

@@ -39,7 +39,7 @@ include:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - git: alala-smitelli-com-repo
+      - file: /opt/website/alala.smitelli.com
       - pkg: nginx
 
 /etc/nginx/sites-enabled/alala.smitelli.com:

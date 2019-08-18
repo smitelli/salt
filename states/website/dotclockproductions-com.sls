@@ -39,7 +39,7 @@ include:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - git: dotclockproductions-com-repo
+      - file: /opt/website/dotclockproductions.com
       - pkg: nginx
 
 /etc/nginx/sites-enabled/dotclockproductions.com:
