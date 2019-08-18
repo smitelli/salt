@@ -6,13 +6,14 @@
 include:
   - website
 
-alala-smitelli-com-repo:
-  git.latest:
-    - name: https://github.com/smitelli/alala.smitelli.com.git
-    - branch: master
-    - rev: HEAD
-    - target: /opt/website/alala.smitelli.com
+/opt/website/alala.smitelli.com:
+  file.recurse:
+    - source: salt://website/files/alala.smitelli.com/webroot
+    - clean: True
     - user: deploy
+    - group: deploy
+    - dir_mode: 755
+    - file_mode: 644
     - require:
       - sls: website
 

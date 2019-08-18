@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>I V vi IV</title>
+    <style>
+      body { background:#000; }
+      #wrapper { position:absolute; top:0; right:0; bottom:0; left:0; height:38px; margin:auto; }
+      h1 { margin:0; color:#fff; text-align:center; }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <h1>I V vi IV</h1>
+    </div>
+
+    <script src="/SeamlessLoop.js"></script>
+    <script>
+      var loop = new SeamlessLoop();
+      loop.addUri('/ivviiv.mp3', 5935, 'main');
+      loop.callback(function() {
+        loop.start('main');
+      });
+    </script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43712888-1'], ['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

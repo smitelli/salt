@@ -6,13 +6,14 @@
 include:
   - website
 
-thesweetnut-com-repo:
-  git.latest:
-    - name: https://github.com/smitelli/thesweetnut.com.git
-    - branch: master
-    - rev: HEAD
-    - target: /opt/website/thesweetnut.com
+/opt/website/thesweetnut.com:
+  file.recurse:
+    - source: salt://website/files/thesweetnut.com/webroot
+    - clean: True
     - user: deploy
+    - group: deploy
+    - dir_mode: 755
+    - file_mode: 644
     - require:
       - sls: website
 

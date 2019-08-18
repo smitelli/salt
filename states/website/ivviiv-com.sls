@@ -6,13 +6,14 @@
 include:
   - website
 
-ivviiv-com-repo:
-  git.latest:
-    - name: https://github.com/smitelli/ivviiv.com.git
-    - branch: master
-    - rev: HEAD
-    - target: /opt/website/ivviiv.com
+/opt/website/ivviiv.com:
+  file.recurse:
+    - source: salt://website/files/ivviiv.com/webroot
+    - clean: True
     - user: deploy
+    - group: deploy
+    - dir_mode: 755
+    - file_mode: 644
     - require:
       - sls: website
 

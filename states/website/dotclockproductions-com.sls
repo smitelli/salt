@@ -6,13 +6,14 @@
 include:
   - website
 
-dotclockproductions-com-repo:
-  git.latest:
-    - name: https://github.com/smitelli/dotclockproductions.com.git
-    - branch: master
-    - rev: HEAD
-    - target: /opt/website/dotclockproductions.com
+/opt/website/dotclockproductions.com:
+  file.recurse:
+    - source: salt://website/files/dotclockproductions.com/webroot
+    - clean: True
     - user: deploy
+    - group: deploy
+    - dir_mode: 755
+    - file_mode: 644
     - require:
       - sls: website
 
