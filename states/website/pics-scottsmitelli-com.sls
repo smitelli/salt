@@ -183,9 +183,7 @@ pics-scottsmitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains pics.scottsmitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains pics.scottsmitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/pics.scottsmitelli.com/fullchain.pem
     - watch_in:

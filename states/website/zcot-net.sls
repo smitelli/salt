@@ -53,9 +53,7 @@ zcot-net-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains zcot.net,mx.zcot.net,www.zcot.net
+        /usr/local/bin/certbot certonly --standalone --domains zcot.net,mx.zcot.net,www.zcot.net
     - runas: root
     - creates: /etc/letsencrypt/live/zcot.net/fullchain.pem
     - watch_in:

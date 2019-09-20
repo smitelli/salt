@@ -53,9 +53,7 @@ alala-smitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains alala.smitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains alala.smitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/alala.smitelli.com/fullchain.pem
     - watch_in:

@@ -53,9 +53,7 @@ thesweetnut-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains thesweetnut.com,www.thesweetnut.com
+        /usr/local/bin/certbot certonly --standalone --domains thesweetnut.com,www.thesweetnut.com
     - runas: root
     - creates: /etc/letsencrypt/live/thesweetnut.com/fullchain.pem
     - watch_in:

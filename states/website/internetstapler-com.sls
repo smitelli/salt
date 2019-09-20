@@ -66,9 +66,7 @@ internetstapler-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains internetstapler.com,www.internetstapler.com
+        /usr/local/bin/certbot certonly --standalone --domains internetstapler.com,www.internetstapler.com
     - runas: root
     - creates: /etc/letsencrypt/live/internetstapler.com/fullchain.pem
     - watch_in:

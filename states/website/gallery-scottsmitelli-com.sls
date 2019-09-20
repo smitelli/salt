@@ -176,9 +176,7 @@ gallery-scottsmitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains gallery.scottsmitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains gallery.scottsmitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/gallery.scottsmitelli.com/fullchain.pem
     - watch_in:

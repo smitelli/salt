@@ -84,9 +84,7 @@ scottsmitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains scottsmitelli.com,www.scottsmitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains scottsmitelli.com,www.scottsmitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/scottsmitelli.com/fullchain.pem
     - watch_in:

@@ -53,9 +53,7 @@ ivviiv-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains ivviiv.com,www.ivviiv.com
+        /usr/local/bin/certbot certonly --standalone --domains ivviiv.com,www.ivviiv.com
     - runas: root
     - creates: /etc/letsencrypt/live/ivviiv.com/fullchain.pem
     - watch_in:

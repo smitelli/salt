@@ -110,9 +110,7 @@ webdav-smitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains webdav.smitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains webdav.smitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/webdav.smitelli.com/fullchain.pem
     - watch_in:

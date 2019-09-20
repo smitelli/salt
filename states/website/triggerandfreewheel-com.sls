@@ -179,9 +179,7 @@ triggerandfreewheel-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains triggerandfreewheel.com,www.triggerandfreewheel.com
+        /usr/local/bin/certbot certonly --standalone --domains triggerandfreewheel.com,www.triggerandfreewheel.com
     - runas: root
     - creates: /etc/letsencrypt/live/triggerandfreewheel.com/fullchain.pem
     - watch_in:

@@ -53,9 +53,7 @@ dotclockproductions-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains dotclockproductions.com,www.dotclockproductions.com
+        /usr/local/bin/certbot certonly --standalone --domains dotclockproductions.com,www.dotclockproductions.com
     - runas: root
     - creates: /etc/letsencrypt/live/dotclockproductions.com/fullchain.pem
     - watch_in:

@@ -32,9 +32,7 @@ kim559-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains kim559.com,www.kim559.com
+        /usr/local/bin/certbot certonly --standalone --domains kim559.com,www.kim559.com
     - runas: root
     - creates: /etc/letsencrypt/live/kim559.com/fullchain.pem
     - watch_in:
@@ -46,9 +44,7 @@ smitelli-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains smitelli.com,www.smitelli.com,comic.smitelli.com,moblog.smitelli.com,scott.smitelli.com
+        /usr/local/bin/certbot certonly --standalone --domains smitelli.com,www.smitelli.com,comic.smitelli.com,moblog.smitelli.com,scott.smitelli.com
     - runas: root
     - creates: /etc/letsencrypt/live/smitelli.com/fullchain.pem
     - watch_in:
@@ -60,9 +56,7 @@ listen-timsboneyard-com-letsencrypt:
   cmd.run:
     - name: >
         /usr/sbin/service nginx stop;
-        /usr/local/bin/certbot certonly --agree-tos --email scott+letsencrypt@smitelli.com
-        --non-interactive --standalone --must-staple
-        --domains listen.timsboneyard.com
+        /usr/local/bin/certbot certonly --standalone --domains listen.timsboneyard.com
     - runas: root
     - creates: /etc/letsencrypt/live/listen.timsboneyard.com/fullchain.pem
     - watch_in:

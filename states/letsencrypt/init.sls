@@ -3,6 +3,21 @@ include:
   - python.virtualenv
   - python3.pip
 
+/etc/letsencrypt:
+  file.directory:
+    - user: root
+    - group: root
+    - mode: 755
+
+/etc/letsencrypt/cli.ini:
+  file.managed:
+    - source: salt://letsencrypt/files/cli.ini
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - file: /etc/letsencrypt
+
 /opt/letsencrypt:
   virtualenv.managed:
     - python: /usr/bin/python3
@@ -13,6 +28,7 @@ include:
     - require:
       - pkg: python-virtualenv
       - pkg: python3-pip
+      - file: /etc/letsencrypt/cli.ini
 
 /usr/local/bin/certbot:
   file.symlink:
