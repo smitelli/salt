@@ -8,10 +8,10 @@ include:
   - cron
   - fail2ban
   - mariadb.server
-  - php7-0.cli
-  - php7-0.curl
-  - php7-0.fpm
-  - php7-0.mysql
+  - php7-3.cli
+  - php7-3.curl
+  - php7-3.fpm
+  - php7-3.mysql
   - user.triggerandfreewheel-com
   - user.triggerandfreewheel-com.mysql
 
@@ -145,14 +145,14 @@ triggerandfreewheel-com-repo:
     - require:
       - file: /etc/nginx/sites-available/triggerandfreewheel.com
 
-/etc/php/7.0/fpm/pool.d/triggerandfreewheel.com.conf:
+/etc/php/7.3/fpm/pool.d/triggerandfreewheel.com.conf:
   file.managed:
     - source: salt://website/files/triggerandfreewheel.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php7.3-fpm
       - git: triggerandfreewheel-com-repo
       - user: triggerandfreewheel-com
 

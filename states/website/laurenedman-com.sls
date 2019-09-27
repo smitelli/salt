@@ -8,10 +8,10 @@ include:
   - cron
   - fail2ban
   - mariadb.server
-  - php7-0.cli
-  - php7-0.fpm
-  - php7-0.gd
-  - php7-0.mysql
+  - php7-3.cli
+  - php7-3.fpm
+  - php7-3.gd
+  - php7-3.mysql
   - user.laurenedman-com
   - user.laurenedman-com.mysql
 
@@ -130,14 +130,14 @@ include:
     - require:
       - file: /etc/nginx/sites-available/laurenedman.com
 
-/etc/php/7.0/fpm/pool.d/laurenedman.com.conf:
+/etc/php/7.3/fpm/pool.d/laurenedman.com.conf:
   file.managed:
     - source: salt://website/files/laurenedman.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php7.3-fpm
       - file: /var/opt/website/laurenedman.com
       - user: laurenedman-com
 

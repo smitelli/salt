@@ -1,3 +1,3 @@
-php7.0-cli:
+php7.3-mysql:
   pkg.latest:
     - aggregate: True

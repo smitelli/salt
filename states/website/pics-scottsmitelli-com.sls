@@ -10,7 +10,7 @@ include:
   - jpeg.dev
   - mariadb.client-dev
   - mariadb.server
-  - node
+  - npm
   - perl.image-exiftool
   - python.dev
   - python.pip
@@ -37,6 +37,7 @@ pics-scottsmitelli-com-repo:
     - runas: deploy
     - require:
       - pkg: libjpeg-dev
+      - pkg: npm
       - pkg: zlib1g-dev
     - watch:
       - git: pics-scottsmitelli-com-repo

@@ -1,3 +1,3 @@
-php7.0-tidy:
+php7.3-mbstring:
   pkg.latest:
     - aggregate: True

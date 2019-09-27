@@ -1,3 +1,3 @@
-php7.0-mysql:
+php7.3-xml:
   pkg.latest:
     - aggregate: True

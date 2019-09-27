@@ -4,7 +4,7 @@ rsync:
 
 rrsync:
   cmd.run:
-    - name: /bin/zcat /usr/share/doc/rsync/scripts/rrsync.gz > /usr/local/bin/rrsync
+    - name: cp /usr/share/doc/rsync/scripts/rrsync /usr/local/bin/rrsync
     - unless: '[ -s /usr/local/bin/rrsync ]'
     - runas: root
     - require:

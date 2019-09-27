@@ -36,11 +36,6 @@ logwatch:
 nginx:
   enable_ssl: True
 
-node:
-  install_from_ppa: True
-  ppa:
-    repository_url: https://deb.nodesource.com/node_8.x
-
 sshd:
   password_authentication: 'yes'
   # Relaxed due to FreeNAS bug: https://redmine.ixsystems.com/issues/23872

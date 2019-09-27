@@ -13,11 +13,11 @@ include:
   - jpeg.turbo-progs
   - mariadb.server
   - netpbm
-  - php7-0.fpm
-  - php7-0.gd
-  - php7-0.mbstring
-  - php7-0.mysql
-  - php7-0.xml
+  - php7-3.fpm
+  - php7-3.gd
+  - php7-3.mbstring
+  - php7-3.mysql
+  - php7-3.xml
   - user.gallery-scottsmitelli-com
   - user.gallery-scottsmitelli-com.mysql
   - zip
@@ -142,14 +142,14 @@ gallery-scottsmitelli-com-repo:
     - require:
       - file: /etc/nginx/sites-available/gallery.scottsmitelli.com
 
-/etc/php/7.0/fpm/pool.d/gallery.scottsmitelli.com.conf:
+/etc/php/7.3/fpm/pool.d/gallery.scottsmitelli.com.conf:
   file.managed:
     - source: salt://website/files/gallery.scottsmitelli.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php7.3-fpm
       - git: gallery-scottsmitelli-com-repo
       - user: gallery-scottsmitelli-com
 

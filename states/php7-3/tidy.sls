@@ -1,3 +1,3 @@
-php7.0-xml:
+php7.3-tidy:
   pkg.latest:
     - aggregate: True

@@ -5,8 +5,8 @@
 
 include:
   - website
-  - node
-  - php7-0.fpm
+  - npm
+  - php7-3.fpm
   - user.isthatcompanyreal-com
 
 isthatcompanyreal-com-repo:
@@ -22,6 +22,8 @@ isthatcompanyreal-com-repo:
 /opt/website/isthatcompanyreal.com/build.sh:
   cmd.wait:
     - runas: deploy
+    - require:
+      - pkg: npm
     - watch:
       - git: isthatcompanyreal-com-repo
 
@@ -56,14 +58,14 @@ isthatcompanyreal-com-repo:
     - require:
       - file: /etc/nginx/sites-available/isthatcompanyreal.com
 
-/etc/php/7.0/fpm/pool.d/isthatcompanyreal.com.conf:
+/etc/php/7.3/fpm/pool.d/isthatcompanyreal.com.conf:
   file.managed:
     - source: salt://website/files/isthatcompanyreal.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php7.3-fpm
       - git: isthatcompanyreal-com-repo
       - user: isthatcompanyreal-com
 

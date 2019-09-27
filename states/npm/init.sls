@@ -1,3 +1,3 @@
-php7.0-curl:
+npm:
   pkg.latest:
     - aggregate: True

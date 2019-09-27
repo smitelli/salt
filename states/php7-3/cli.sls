@@ -1,3 +1,3 @@
-php7.0-mbstring:
+php7.3-cli:
   pkg.latest:
     - aggregate: True
