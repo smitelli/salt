@@ -1,3 +1,2 @@
 python-mysqldb:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

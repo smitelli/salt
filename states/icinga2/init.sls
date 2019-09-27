@@ -4,8 +4,8 @@ include:
   - icinga2.monitoring-plugins
 
 icinga2:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:

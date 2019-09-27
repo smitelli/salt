@@ -37,6 +37,7 @@ pics-scottsmitelli-com-repo:
     - runas: deploy
     - require:
       - pkg: libjpeg-dev
+      - pkg: libmariadbclient-dev
       - pkg: npm
       - pkg: zlib1g-dev
     - watch:

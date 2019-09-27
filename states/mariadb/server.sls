@@ -3,8 +3,8 @@ include:
   - python.mysqldb
 
 mariadb-server:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - name: mariadb
     - enable: True

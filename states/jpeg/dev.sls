@@ -1,3 +1,2 @@
 libjpeg-dev:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

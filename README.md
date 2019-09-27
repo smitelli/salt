@@ -8,6 +8,9 @@ by [Scott Smitelli](mailto:scott@smitelli.com)
 Ye Olde Quicke Starte
 =====================
 
+**NOTE:** Salt 2019.2.1 needs at least pip 18.1 (for python2) installed.
+See https://github.com/saltstack/salt/issues/54773
+
 All the below commands assume the user is already root.
 
     hostnamectl set-hostname hostname.fqdn.com
@@ -76,7 +79,6 @@ some OSes may not like.
     ssh-keygen -o -t ed25519 -f ...
     ssh-keygen -o -t rsa -b 2048 -f ...
     ssh-keygen -o -t ecdsa -b 521 -f ...
-    ssh-keygen -o -t dsa -b 1024 -f ...
 
 ### TODOs:
 

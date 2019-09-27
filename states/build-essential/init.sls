@@ -1,3 +1,2 @@
 build-essential:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

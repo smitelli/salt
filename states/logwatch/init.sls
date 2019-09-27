@@ -1,6 +1,5 @@
 logwatch:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 /etc/logwatch/conf/logwatch.conf:
   file.managed:

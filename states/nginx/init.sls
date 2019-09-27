@@ -1,8 +1,8 @@
 {% set enable_ssl = salt['pillar.get']('nginx:enable_ssl', False) %}
 
 nginx:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:

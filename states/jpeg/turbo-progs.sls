@@ -1,3 +1,2 @@
 libjpeg-turbo-progs:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

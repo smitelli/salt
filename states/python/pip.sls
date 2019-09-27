@@ -1,3 +1,2 @@
 python-pip:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

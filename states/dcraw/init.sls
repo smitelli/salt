@@ -1,3 +1,2 @@
 dcraw:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

@@ -2,8 +2,8 @@
 # a pool configuration into pool.d. As written, this SLS will fail to start.
 
 php7.3-fpm:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:

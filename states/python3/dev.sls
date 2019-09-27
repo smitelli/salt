@@ -1,2 +1,2 @@
-php7.3-gd:
+python3-dev:
   pkg.latest

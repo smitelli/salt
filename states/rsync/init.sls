@@ -1,6 +1,5 @@
 rsync:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 rrsync:
   cmd.run:

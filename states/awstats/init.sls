@@ -5,8 +5,7 @@ include:
   - perl.net-xwhois
 
 awstats:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 /var/log/awstats:
   file.directory:

@@ -1,3 +1,2 @@
 npm:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

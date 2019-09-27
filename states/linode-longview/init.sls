@@ -5,7 +5,6 @@ include:
 
 linode-longview:
   pkg.latest:
-    - aggregate: False
     - require:
       - pkgrepo: linode-longview-repo
   service.running:

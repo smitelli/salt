@@ -2,8 +2,8 @@
 {% set permit_root_login = salt['pillar.get']('sshd:permit_root_login', '') %}
 
 openssh-server:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - name: ssh
     - enable: True
@@ -35,7 +35,7 @@ sshd_config-PermitRootLogin:
       - pkg: openssh-server
 {% endif %}
 
-{% for ktype in ('dsa', 'ecdsa', 'ed25519', 'rsa'): %}
+{% for ktype in ('ecdsa', 'ed25519', 'rsa'): %}
 /etc/ssh/ssh_host_{{ ktype }}_key:
   file.managed:
     - contents_pillar: {{ ('sshd:' ~ grains['id'] ~ ':private:ssh_' ~ ktype ~ '_key') | yaml_encode }}

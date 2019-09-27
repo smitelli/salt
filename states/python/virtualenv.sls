@@ -1,3 +1,2 @@
 python-virtualenv:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

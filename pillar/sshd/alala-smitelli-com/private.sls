@@ -3,35 +3,6 @@
 sshd:
   alala.smitelli.com:
     private:
-      ssh_dsa_key: |
-        -----BEGIN PGP MESSAGE-----
-
-        hQIMA/EHVCikJY6NARAAsNUxDVcnlBrOwZCkWN5AtL8vEW4+Ta6sudFb0+AnSECM
-        UG65ktzmh+7YrvFB8yNcdSNj+DENUyJ+NUhSdKjXL6hCNKYdLs+4NLRurfnHwRfZ
-        dsUqpa3qvd/PayqeMPB43VTL0g2OnyVsLeS0iw0WdFruL0PEYixfZqboG9QEicVQ
-        S8qEFMOdhzQbXCaQUO9LyFL65W6IIBw9j24OIZlBLVIyH9P8n4L8cM1ccZj1VQtz
-        DOA0ClWdO1zYDRILw6zLQBhcvss4+jcIvMCqtQI3ecs/zfMc7vpLyXoRxeJD1XTm
-        i9xzF1fPxren0mQ7TgmOSaEqjX182GWueu4Wax57UI4EZv9uXVauwIx5FyCZilZk
-        +gGNsj9BNyli9wPdIEZzj7PccgBGdjP/4dgiWYQ+KQJ4ZY6ZdGYzTh+BR8oZPEiK
-        LskyebKZHbGz2veiozWQEE5cnQBJzCwuYCtuSbqHEVPc86zOrAtrUMT5B3ftwqd6
-        IYjwM6ZmW2+Cx6+Kbce29XtdD83Uln+FQZMkR27Nm0hP+coK4Bfkn/YJrawPLDtK
-        WTzUczcxHCOPMGaN4pRHnT38lLDB59mw5d9FJjPZJ56SwquyTNzJjP3IyLoR+ftY
-        BgkPt3LdyYnPTNUczSlr78+zHNsa+kb/DMzYfVGsl1dmB1mNlai5Q+ElavKxTPPS
-        6QHSsj6W11hKh0f+Gh5pn/x19qGJSDGFB1M9IHEyh1NY9vC+UM8biQJrXUB5dY2G
-        Z8LpKdSEyI1TdEbnFSi1tbzcpjzNsTeIHeaC8jsxNvE4oLt0DpBPxQeA6fna0GH/
-        qC7f7ksGUrA+vlPFGGII4HpyKOj/vsVM4SKmhdnWLAXQ4jcoXW856/DpqOjD8d+H
-        i3k+ufOIGJ4q+V105J8J4JwMdTxaewzPh5A5294mu1XrVi9Fi/a0CBhF8eGTN1lT
-        LGlwqTfiO0NgrmvS96Ix1GItj98wr+1F4m8MzkmsFVIyjttIOZXoVEHZ7N/7ZOIc
-        hdbeiDRiMmT1qqaw96pefaY61FJj0Bgq3jpGGK1b+YlLI/N776OZ7MbI0FenkSU9
-        Xdv0KTOWT0Rcc4UK9oIj0akDpap/PhLVANMPEATpIiV8Bo3ZiKtUCNvqubftSutM
-        YrpBGYZHQI5qHY04k1qGERFlsfj9gDkrP01AO0lOIz65doTzwXSlNHeDUdqBMBLk
-        pe/uNt/gq+dCiMY3A80y571CHlLawOAWyfzbF3XTgh7j+BcutuVCl11tfcoHdUX3
-        8MMTVOOVv/WEi48NWksnU+guw8Xeub+5c16u4O2afMQfDmFJMf9uYvYD17yzX48y
-        r8xGW3w2bcLO3qhpnnfKt78PZCgsyfE2Yhj+qYAtes/DVAZuU62RZFYAHpi4R/O3
-        n27OOT2cYUspOCjZ8HJcEa8AmfGN4qJPxSBU9fDnH+7gjHvTyo7RarEN00NmSmiZ
-        KYW/wPX8TEv6F9ArRbVsQB1PXj9F+w==
-        =/x/+
-        -----END PGP MESSAGE-----
       ssh_ecdsa_key: |
         -----BEGIN PGP MESSAGE-----
 

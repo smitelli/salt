@@ -1,3 +1,2 @@
 ruby-dev:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

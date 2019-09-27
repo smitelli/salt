@@ -1,14 +1,12 @@
 iptables:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 iptables-persistent:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 netfilter-persistent:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:

@@ -1,3 +1,2 @@
 git:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

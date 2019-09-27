@@ -2,8 +2,8 @@
 # fail badly (but recoverably). Always upgrade salt* packages separately,
 # independent of all runs.
 salt-minion:
-  pkg.installed:
-    - aggregate: True
+  pkg:
+    - installed
   service.dead:
     - enable: False
     - watch:

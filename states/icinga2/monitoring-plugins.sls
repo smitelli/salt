@@ -1,3 +1,2 @@
 monitoring-plugins:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

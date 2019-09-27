@@ -2,8 +2,7 @@
 {% set policy_height = salt['pillar.get']('imagemagick-6:policy_height', '') %}
 
 imagemagick-6.q16:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 {% if policy_width %}
 imagemagick-6-policy-width:

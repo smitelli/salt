@@ -5,6 +5,7 @@
 
 include:
   - iptables
+  - python3.dev
   - python3.pyinotify
   - python3.systemd
 
@@ -36,6 +37,7 @@ fail2ban-install:
     - watch:
       - archive: fail2ban-source
     - require:
+      - pkg: python3-dev
       - pkg: python3-pyinotify
       - pkg: python3-systemd
 
