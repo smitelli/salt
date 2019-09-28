@@ -1,2 +1,2 @@
-libjpeg-dev:
+php-bcmath:
   pkg.latest

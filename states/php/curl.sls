@@ -1,2 +1,2 @@
-python-dev:
+php-curl:
   pkg.latest

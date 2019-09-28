@@ -1,2 +1,2 @@
-php7.3-cli:
+php-tidy:
   pkg.latest

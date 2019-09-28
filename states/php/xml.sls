@@ -1,2 +1,2 @@
-php7.3-curl:
+php-xml:
   pkg.latest

@@ -7,26 +7,25 @@ include:
   - website
   - cron
   - gem.sass
-  - jpeg.dev
-  - mariadb.client-dev
+  - mariadb.dev-compat
   - mariadb.server
   - npm
   - perl.image-exiftool
-  - python.dev
-  - python.pip
-  - python.virtualenv
+  - python2.dev
+  - python2.pip
+  - python2.virtualenv
   - user.windowbox
   - user.windowbox.mysql
   - uwsgi
-  - uwsgi.plugin-python
+  - uwsgi.plugin-python2
   - zlib1g.dev
   - project.pics-scottsmitelli-com-barker
 
 pics-scottsmitelli-com-repo:
   git.latest:
     - name: https://github.com/smitelli/windowbox.git
-    - branch: master
-    - rev: HEAD
+    - branch: py3  # TODO
+    - rev: py3  # TODO
     - target: /opt/website/pics.scottsmitelli.com
     - user: deploy
     - require:
@@ -36,9 +35,9 @@ pics-scottsmitelli-com-repo:
   cmd.wait:
     - runas: deploy
     - require:
-      - pkg: libjpeg-dev
-      - pkg: libmariadbclient-dev
+      - pkg: libmariadb-dev-compat
       - pkg: npm
+      - pkg: python2-dev
       - pkg: zlib1g-dev
     - watch:
       - git: pics-scottsmitelli-com-repo
@@ -152,7 +151,7 @@ pics-scottsmitelli-com-repo:
     - mode: 644
     - require:
       - pkg: uwsgi
-      - pkg: uwsgi-plugin-python
+      - pkg: uwsgi-plugin-python  # python2 version
       - git: pics-scottsmitelli-com-repo
       - user: windowbox
 

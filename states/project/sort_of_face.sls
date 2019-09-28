@@ -1,9 +1,9 @@
 include:
   - project
   - cron
-  - php7-3.cli
-  - php7-3.curl
-  - php7-3.mbstring
+  - php.cli
+  - php.curl
+  - php.mbstring
   - user.sort_of_face
 
 sort_of_face-repo:

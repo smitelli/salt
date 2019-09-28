@@ -1,5 +1,6 @@
 {% set enable_ssl = salt['pillar.get']('nginx:enable_ssl', False) %}
 
+# This really installs the nginx-full package, which is generally what we want
 nginx:
   pkg:
     - latest

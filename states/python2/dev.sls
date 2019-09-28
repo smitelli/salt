@@ -1,2 +1,2 @@
-php7.3-tidy:
+python2-dev:
   pkg.latest

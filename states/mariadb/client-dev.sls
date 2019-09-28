@@ -1,2 +1,0 @@
-libmariadbclient-dev:
-  pkg.latest

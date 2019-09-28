@@ -5,8 +5,8 @@
 
 include:
   - project
-  - python.pip
-  - python.virtualenv
+  - python2.pip
+  - python2.virtualenv
   - user.windowbox
 
 pics-scottsmitelli-com-barker-repo:

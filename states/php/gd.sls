@@ -1,2 +1,2 @@
-php7.3-xml:
+php-gd:
   pkg.latest

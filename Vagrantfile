@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     cp /srv/salt/.gpgkeys/*.gpg /etc/salt/gpgkeys/
   EOF
 
-  # Salt 2019.2.1 needs at least pip 18.1 installed.
+  # Salt 2019.2.1 needs at least pip 18.1 (python2 version) installed.
   # See https://github.com/saltstack/salt/issues/54773
   config.vm.provision "shell", privileged: true, inline: <<~EOF
     apt-get -y update

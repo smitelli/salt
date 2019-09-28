@@ -1,6 +1,6 @@
 include:
   - cron
-  - python.virtualenv
+  - python2.virtualenv
   - python3.pip
 
 /etc/letsencrypt:
@@ -26,7 +26,7 @@ include:
       - pip
     - pip_upgrade: True
     - require:
-      - pkg: python-virtualenv
+      - pkg: python-virtualenv  # python2 version
       - pkg: python3-pip
       - file: /etc/letsencrypt/cli.ini
 

@@ -5,10 +5,10 @@
 
 include:
   - project
-  - php7-3.cli
-  - php7-3.curl
-  - php7-3.mbstring
-  - php7-3.mysql
+  - php.cli
+  - php.curl
+  - php.mbstring
+  - php.mysql
   - user.twitstash
 
 twanslationparty-engrishsmitelli-repo:

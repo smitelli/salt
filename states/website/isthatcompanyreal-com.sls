@@ -6,7 +6,7 @@
 include:
   - website
   - npm
-  - php7-3.fpm
+  - php.fpm
   - user.isthatcompanyreal-com
 
 isthatcompanyreal-com-repo:
@@ -58,16 +58,19 @@ isthatcompanyreal-com-repo:
     - require:
       - file: /etc/nginx/sites-available/isthatcompanyreal.com
 
-/etc/php/7.3/fpm/pool.d/isthatcompanyreal.com.conf:
+/etc/php/current/fpm/pool.d/isthatcompanyreal.com.conf:
   file.managed:
     - source: salt://website/files/isthatcompanyreal.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.3-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: isthatcompanyreal-com-repo
       - user: isthatcompanyreal-com
+    - require_in:
+      - service: php-fpm
 
 {% if enable_ssl %}
 isthatcompanyreal-com-letsencrypt:

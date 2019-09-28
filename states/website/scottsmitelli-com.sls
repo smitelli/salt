@@ -5,8 +5,8 @@
 
 include:
   - website
-  - php7-3.fpm
-  - php7-3.tidy
+  - php.fpm
+  - php.tidy
   - user.scottsmitelli-com
 
 scottsmitelli-com-repo:
@@ -68,16 +68,19 @@ scottsmitelli-com-repo:
     - require:
       - file: /etc/nginx/sites-available/scottsmitelli.com
 
-/etc/php/7.3/fpm/pool.d/scottsmitelli.com.conf:
+/etc/php/current/fpm/pool.d/scottsmitelli.com.conf:
   file.managed:
     - source: salt://website/files/scottsmitelli.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.3-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: scottsmitelli-com-repo
       - user: scottsmitelli-com
+    - require_in:
+      - service: php-fpm
 
 {% if enable_ssl %}
 scottsmitelli-com-letsencrypt:

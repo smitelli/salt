@@ -1,2 +1,2 @@
-php7.3-gd:
+php-cli:
   pkg.latest

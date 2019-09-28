@@ -2,10 +2,10 @@ include:
   - project
   - cron
   - mariadb.server
-  - php7-3.bcmath
-  - php7-3.cli
-  - php7-3.curl
-  - php7-3.mysql
+  - php.bcmath
+  - php.cli
+  - php.curl
+  - php.mysql
   - user.twitstash
   - user.twitstash.mysql
   - project.twanslationparty-engrishsmitelli
