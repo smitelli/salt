@@ -11,13 +11,13 @@ include:
   - mariadb.server
   - npm
   - perl.image-exiftool
-  - python2.dev
-  - python2.pip
-  - python2.virtualenv
+  - python3.dev
+  - python3.pip
+  - python3.virtualenv
   - user.windowbox
   - user.windowbox.mysql
   - uwsgi
-  - uwsgi.plugin-python2
+  - uwsgi.plugin-python3
   - zlib1g.dev
   - project.pics-scottsmitelli-com-barker
 
@@ -37,7 +37,7 @@ pics-scottsmitelli-com-repo:
     - require:
       - pkg: libmariadb-dev-compat
       - pkg: npm
-      - pkg: python2-dev
+      - pkg: python3-dev
       - pkg: zlib1g-dev
     - watch:
       - git: pics-scottsmitelli-com-repo
@@ -151,7 +151,7 @@ pics-scottsmitelli-com-repo:
     - mode: 644
     - require:
       - pkg: uwsgi
-      - pkg: uwsgi-plugin-python  # python2 version
+      - pkg: uwsgi-plugin-python3
       - git: pics-scottsmitelli-com-repo
       - user: windowbox
 
