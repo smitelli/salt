@@ -47,7 +47,7 @@ sysctl:
   vm.swappiness: 0
 
 timezone:
-  name: America/New_York
+  name: UTC
   utc: True
 
 user:
