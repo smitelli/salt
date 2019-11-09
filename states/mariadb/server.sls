@@ -1,6 +1,6 @@
 include:
   - myautodump2
-  - python2.mysqldb
+  - python3.mysqldb
 
 # Installs the maintainer-determined "best" version: 10.3 as of this writing
 mariadb-server:
@@ -10,9 +10,9 @@ mariadb-server:
     - name: mariadb
     - enable: True
     - require:
-      # The python-mysqldb package is required for Salt to manipulate database
+      # The python3-mysqldb package is required for Salt to manipulate database
       # resources. Require it here so other states don't need to worry about it.
-      - pkg: python-mysqldb  # python2 version
+      - pkg: python3-mysqldb
     - watch:
       - pkg: mariadb-server
 

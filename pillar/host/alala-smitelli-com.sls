@@ -47,7 +47,7 @@ sysctl:
   vm.swappiness: 0
 
 timezone:
-  name: UTC
+  name: Etc/UTC
   utc: True
 
 user:

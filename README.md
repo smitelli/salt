@@ -8,9 +8,6 @@ by [Scott Smitelli](mailto:scott@smitelli.com)
 Ye Olde Quicke Starte
 =====================
 
-**NOTE:** Salt 2019.2.1 needs at least pip 18.1 (python2 version) installed.
-See https://github.com/saltstack/salt/issues/54773
-
 All the below commands assume the user is already root.
 
     hostnamectl set-hostname hostname.fqdn.com

@@ -1,2 +1,0 @@
-python-mysqldb:
-  pkg.latest
