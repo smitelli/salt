@@ -1,5 +1,5 @@
 # NOTE: The php-fpm service will not start unless some other state writes
-# a pool configuration into pool.d. As written, this SLS will fail to start.
+# a pool configuration into pool.d. In isolation, this SLS will fail to start.
 
 {% set php_version = '7.3' %}
 
@@ -13,6 +13,7 @@ php-fpm:
       - pkg: php-fpm
       - file: /etc/php/{{ php_version }}/fpm/conf.d/*
       - file: /etc/php/{{ php_version }}/fpm/pool.d/*
+      - file: /etc/php/current/fpm/pool.d/*
 
 /etc/php/{{ php_version }}/fpm/conf.d/99-cgi-security.ini:
   file.managed:
