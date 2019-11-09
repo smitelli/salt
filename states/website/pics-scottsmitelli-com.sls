@@ -19,13 +19,12 @@ include:
   - uwsgi
   - uwsgi.plugin-python3
   - zlib1g.dev
-  - project.pics-scottsmitelli-com-barker
 
 pics-scottsmitelli-com-repo:
   git.latest:
     - name: https://github.com/smitelli/windowbox.git
-    - branch: py3  # TODO
-    - rev: py3  # TODO
+    - branch: python3  # TODO
+    - rev: python3  # TODO
     - target: /opt/website/pics.scottsmitelli.com
     - user: deploy
     - require:

@@ -25,7 +25,7 @@ base:
     #- website.isthatcompanyreal-com
     #- website.ivviiv-com
     #- website.laurenedman-com
-    - website.pics-scottsmitelli-com  # Installs project.pics-scottsmitelli-com-barker
+    #- website.pics-scottsmitelli-com
     #- website.scottsmitelli-com
     #- website.thesweetnut-com
     #- website.triggerandfreewheel-com
@@ -59,7 +59,7 @@ base:
     - website.isthatcompanyreal-com
     - website.ivviiv-com
     - website.laurenedman-com
-    - website.pics-scottsmitelli-com  # Installs project.pics-scottsmitelli-com-barker
+    - website.pics-scottsmitelli-com
     - website.scottsmitelli-com
     - website.thesweetnut-com
     - website.triggerandfreewheel-com
