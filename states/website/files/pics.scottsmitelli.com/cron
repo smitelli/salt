@@ -3,8 +3,8 @@ LC_ALL=en_US.UTF-8
 
 WINDOWBOX_CONFIG=/opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
 
-FETCH_SCRIPT=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-fetch
-BARK_SCRIPT=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-bark
+FETCH_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-fetch
+BARK_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-bark
 LOG_FILE=/var/log/website/pics.scottsmitelli.com/cron.log
 
-* * * * * windowbox $FETCH_SCRIPT >> $LOG_FILE 2>&1; $BARK_SCRIPT >> $LOG_FILE 2>&1
+* * * * * windowbox $FETCH_SCRIPT_FILE >> $LOG_FILE 2>&1; $BARK_SCRIPT_FILE >> $LOG_FILE 2>&1

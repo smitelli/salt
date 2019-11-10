@@ -16,6 +16,15 @@ mariadb-server:
     - watch:
       - pkg: mariadb-server
 
+mariadb-tzinfo:
+  cmd.wait:
+    - name: /usr/bin/mysql_tzinfo_to_sql /usr/share/zoneinfo | /usr/bin/mysql mysql
+    - runas: root
+    - onchanges:
+      - pkg: mariadb-server
+    - require:
+      - service: mariadb
+
 root-db-user:
   mysql_user.present:
     - name: root
