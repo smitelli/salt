@@ -1,7 +1,7 @@
 git:
   pkg.latest
 
-# HACK: Silence noisy runtime warnings from Salt 2019.02.1
+# HACK: Silence irritating runtime errors from Salt 2019.02.1
 /root/.gitconfig:
   file.managed:
     - contents:

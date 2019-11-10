@@ -108,6 +108,12 @@ pics-scottsmitelli-com-repo:
       - file: /var/opt/website/pics.scottsmitelli.com
       - user: windowbox
 
+/var/log/website/pics.scottsmitelli.com:
+  file.directory:
+    - user: windowbox
+    - group: windowbox
+    - mode: 755
+
 /etc/awstats/awstats.pics.scottsmitelli.com.conf:
   file.managed:
     - source: salt://website/files/pics.scottsmitelli.com/awstats.conf
