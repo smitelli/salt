@@ -7,6 +7,7 @@ include:
   - website
   - acl
   - cron
+  - mariadb.dev-compat
   - mariadb.server
   - perl.image-exiftool
   - python3.pip
@@ -68,9 +69,13 @@ pics-scottsmitelli-com-repo:
       - file: /var/opt/website/pics.scottsmitelli.com
   virtualenv.managed:
     - python: /usr/bin/python3
+    - pip_pkgs:
+      - mysqlclient
+    - pip_upgrade: True
     - user: deploy
     - require:
       - file: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+      - pkg: libmariadb-dev-compat
       - pkg: python3-pip
       - pkg: virtualenv  # python3 version
   pip.installed:
