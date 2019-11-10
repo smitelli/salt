@@ -87,6 +87,15 @@ fail2ban-install:
     - group: root
     - mode: 644
 
+/etc/fail2ban/jail.d/default.conf:
+  file.managed:
+    - source: salt://fail2ban/files/default.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - cmd: fail2ban-install
+
 /etc/fail2ban/jail.d/exim.conf:
 {% if enable_exim_jail %}
   file.managed:
