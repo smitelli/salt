@@ -81,6 +81,7 @@ some OSes may not like.
 
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
+* switch from cmd.wait/watch to cmd.run/onchanges
 * Check each website in HTTP-only config
 * homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
@@ -89,4 +90,4 @@ some OSes may not like.
 * When nginx 1.14 is available:
     - Update TLS versions and ciphers
     - Change all 301 redirects to 308
-* iptables -> nftables
+* TnF needs UTC conversion :(

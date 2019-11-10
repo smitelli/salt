@@ -4,7 +4,7 @@
 {% set enable_sshd_jail = salt['pillar.get']('fail2ban:enable_sshd_jail', False) %}
 
 include:
-  - iptables
+  - nftables
   - python3.dev
   - python3.pyinotify
   - python3.systemd
@@ -18,7 +18,7 @@ fail2ban:
       - file: /etc/fail2ban/jail.d/*
     - require:
       - file: /lib/systemd/system/fail2ban.service
-      - pkg: iptables
+      - pkg: nftables
 
 fail2ban-source:
   archive.extracted:

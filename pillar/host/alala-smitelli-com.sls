@@ -17,21 +17,15 @@ imagemagick-6:
   policy_width: 25KP
   policy_height: 25KP
 
-iptables:
-  v4:
-    allow_http: True
-    allow_https: True
-    allow_ping: True
-    allow_smtp: True
-    allow_ssh: True
-  v6:
-    allow_http: True
-    allow_https: True
-    allow_smtp: True
-    allow_ssh: True
-
 logwatch:
   mail_to: logwatch@zcot.net
+
+nftables:
+  allow_http: True
+  allow_https: True
+  allow_ping: True
+  allow_smtp: True
+  allow_ssh: True
 
 nginx:
   enable_ssl: True
