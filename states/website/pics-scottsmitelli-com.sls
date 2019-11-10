@@ -5,20 +5,16 @@
 
 include:
   - website
+  - acl
   - cron
-  - gem.sass
-  - mariadb.dev-compat
   - mariadb.server
-  - npm
   - perl.image-exiftool
-  - python3.dev
   - python3.pip
   - python3.virtualenv
   - user.windowbox
   - user.windowbox.mysql
   - uwsgi
   - uwsgi.plugin-python3
-  - zlib1g.dev
 
 pics-scottsmitelli-com-repo:
   git.latest:
@@ -30,32 +26,30 @@ pics-scottsmitelli-com-repo:
     - require:
       - sls: website
 
-/opt/website/pics.scottsmitelli.com/build.sh:
-  cmd.wait:
-    - runas: deploy
+# Ensure app has the ability to build its own static files
+/opt/website/pics.scottsmitelli.com/windowbox/static:
+  acl.present:
+    - acl_type: user
+    - acl_name: windowbox
+    - perms: rwx
     - require:
-      - pkg: libmariadb-dev-compat
-      - pkg: npm
-      - pkg: python3-dev
-      - pkg: zlib1g-dev
-    - watch:
+      - pkg: acl
       - git: pics-scottsmitelli-com-repo
-    - watch_in:
-      - service: uwsgi
+      - user: windowbox
 
-/opt/website/pics.scottsmitelli.com/src/windowbox/configs/production.cfg:
+/opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py:
   file.managed:
-    - source: salt://website/files/pics.scottsmitelli.com/production.cfg
+    - source: salt://website/files/pics.scottsmitelli.com/prod.py
     - template: jinja
     - user: windowbox
     - group: windowbox
     - mode: 400
     - show_changes: False
+    - context:
+      scheme: {{ 'https' if enable_ssl else 'http' }}
     - require:
       - git: pics-scottsmitelli-com-repo
       - user: windowbox
-    - watch_in:
-      - service: uwsgi
 
 /var/opt/website/pics.scottsmitelli.com:
   file.directory:
@@ -64,6 +58,32 @@ pics-scottsmitelli-com-repo:
     - mode: 755
     - require:
       - sls: website
+
+/var/opt/website/pics.scottsmitelli.com/.virtualenv:
+  file.directory:
+    - user: deploy
+    - group: deploy
+    - mode: 755
+    - require:
+      - file: /var/opt/website/pics.scottsmitelli.com
+  virtualenv.managed:
+    - python: /usr/bin/python3
+    - user: deploy
+    - require:
+      - file: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+      - pkg: python3-pip
+      - pkg: virtualenv  # python3 version
+  pip.installed:
+    - bin_env: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+    - editable: /opt/website/pics.scottsmitelli.com
+    - upgrade: True
+    - user: deploy
+    - require:
+      - virtualenv: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+    - onchanges:
+      - git: pics-scottsmitelli-com-repo
+    - watch_in:
+      - service: uwsgi
 
 /var/opt/website/pics.scottsmitelli.com/attachments:
   file.directory:
@@ -82,17 +102,6 @@ pics-scottsmitelli-com-repo:
     - require:
       - file: /var/opt/website/pics.scottsmitelli.com
       - user: windowbox
-
-/var/log/website/pics.scottsmitelli.com:
-  file.directory:
-    - user: windowbox
-    - group: windowbox
-    - mode: 755
-    - require:
-      - sls: website
-      - user: windowbox
-    - require_in:
-      - pkg: uwsgi
 
 /etc/awstats/awstats.pics.scottsmitelli.com.conf:
   file.managed:
@@ -149,9 +158,9 @@ pics-scottsmitelli-com-repo:
     - group: root
     - mode: 644
     - require:
+      - pip: /var/opt/website/pics.scottsmitelli.com/.virtualenv
       - pkg: uwsgi
       - pkg: uwsgi-plugin-python3
-      - git: pics-scottsmitelli-com-repo
       - user: windowbox
 
 /etc/uwsgi/apps-enabled/pics.scottsmitelli.com.ini:
@@ -162,7 +171,7 @@ pics-scottsmitelli-com-repo:
 
 pics-scottsmitelli-com-db:
   mysql_database.present:
-    - name: windowbox_scottsmitelli
+    - name: windowbox-scottsmitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -171,11 +180,11 @@ pics-scottsmitelli-com-db:
 pics-scottsmitelli-com-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: windowbox_scottsmitelli.*
+    - database: windowbox-scottsmitelli.*
     - user: windowbox
     - host: localhost
     - require:
-      - mysql_database: windowbox_scottsmitelli
+      - mysql_database: windowbox-scottsmitelli
       - mysql_user: windowbox
 
 {% if enable_ssl %}

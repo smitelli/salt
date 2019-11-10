@@ -26,8 +26,8 @@ include:
       - pip
     - pip_upgrade: True
     - require:
-      - pkg: virtualenv  # python3 version
       - pkg: python3-pip
+      - pkg: virtualenv  # python3 version
       - file: /etc/letsencrypt/cli.ini
 
 /usr/local/bin/certbot:
