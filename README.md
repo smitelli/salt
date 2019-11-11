@@ -79,10 +79,9 @@ some OSes may not like.
 
 ### TODOs:
 
+* homedir dotfiles
 * Content-Security-Policy and Feature-Policy for each website
-* Verify there are no orphan states
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
-* homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/

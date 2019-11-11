@@ -1,2 +1,0 @@
-ruby:
-  pkg.latest

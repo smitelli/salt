@@ -1,2 +1,0 @@
-build-essential:
-  pkg.latest
