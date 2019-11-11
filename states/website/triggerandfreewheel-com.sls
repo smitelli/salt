@@ -18,8 +18,8 @@ include:
 triggerandfreewheel-com-repo:
   git.latest:
     - name: https://github.com/smitelli/triggerandfreewheel.com.git
-    - branch: master
-    - rev: HEAD
+    - branch: utc  # TODO
+    - rev: utc  # TODO
     - target: /opt/website/triggerandfreewheel.com
     - user: deploy
     - require:
