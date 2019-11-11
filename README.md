@@ -79,7 +79,6 @@ some OSes may not like.
 
 ### TODOs:
 
-* Change all 301 redirects to 308
 * Switch from cmd.wait/watch to cmd.run/onchanges
 * TnF needs UTC conversion :(
 * Build windowbox assets during deploy
