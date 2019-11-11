@@ -20,11 +20,11 @@ isthatcompanyreal-com-repo:
       - sls: website
 
 /opt/website/isthatcompanyreal.com/build.sh:
-  cmd.wait:
+  cmd.run:
     - runas: deploy
     - require:
       - pkg: npm
-    - watch:
+    - onchanges:
       - git: isthatcompanyreal-com-repo
 
 /etc/awstats/awstats.isthatcompanyreal.com.conf:

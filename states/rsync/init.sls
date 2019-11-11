@@ -15,7 +15,7 @@ rrsync:
     - user: root
     - group: root
     - mode: 755
-    - watch:
+    - require:
       - cmd: rrsync
 
 /usr/bin/rrsync:

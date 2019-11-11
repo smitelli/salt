@@ -30,11 +30,11 @@ fail2ban-source:
     - group: root
 
 fail2ban-install:
-  cmd.wait:
+  cmd.run:
     - name: /usr/bin/python3 setup.py install --force
     - cwd: /usr/local/src/fail2ban-{{ version }}
     - runas: root
-    - watch:
+    - onchanges:
       - archive: fail2ban-source
     - require:
       - pkg: python3-dev
@@ -47,7 +47,7 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
+    - require:
       - cmd: fail2ban-install
 
 /usr/lib/tmpfiles.d/fail2ban.conf:
@@ -56,7 +56,7 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
+    - require:
       - cmd: fail2ban-install
 
 /lib/systemd/system/fail2ban.service:
@@ -65,7 +65,7 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
+    - require:
       - cmd: fail2ban-install
 
 # Ensure filter.d/* watcher works even if nothing puts files there
