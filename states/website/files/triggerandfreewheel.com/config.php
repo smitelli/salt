@@ -19,7 +19,7 @@
     // Local timezone
     // This is important because it influences the definition of "midnight" when
     // deciding when to show new comics.
-    public $timezone = 'America/New_York'
+    public $timezone = 'America/New_York';
 
     // Some strings that appear in a lot of places
     public $site_title       = 'Trigger and Freewheel';
