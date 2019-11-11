@@ -80,7 +80,6 @@ some OSes may not like.
 ### TODOs:
 
 * TnF needs UTC conversion :(
-* Build windowbox assets during deploy
 * Content-Security-Policy and Feature-Policy for each website
 * Verify there are no orphan states
 * Go through EVERY SINGLE include and requisite to make sure states are atomic

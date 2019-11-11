@@ -90,6 +90,21 @@ pics-scottsmitelli-com-repo:
     - watch_in:
       - service: uwsgi
 
+pics-scottsmitelli-com-assets:
+  cmd.run:
+    - name: >
+        /var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/flask assets clean;
+        /var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/flask assets build
+    - runas: windowbox
+    - env:
+      - WINDOWBOX_CONFIG: /opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
+    - require:
+      - acl: /opt/website/pics.scottsmitelli.com/windowbox/static
+      - file: /opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
+      - user: windowbox
+    - onchanges:
+      - pip: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+
 /var/opt/website/pics.scottsmitelli.com/attachments:
   file.directory:
     - user: windowbox
