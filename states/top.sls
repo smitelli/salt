@@ -2,9 +2,9 @@ base:
   dev-salt:
     #- exim4.zcot-net
     #- fail2ban
-    #- iptables
     #- linode-longview
     #- logwatch
+    #- nftables
     #- ntp
     #- rsync
     - salt.deploy-script
@@ -36,9 +36,9 @@ base:
   alala.smitelli.com:
     - exim4.zcot-net
     - fail2ban
-    - iptables
     - linode-longview
     - logwatch
+    - nftables
     - ntp
     - rsync
     - salt.deploy-script
