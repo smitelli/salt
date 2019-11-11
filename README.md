@@ -79,15 +79,13 @@ some OSes may not like.
 
 ### TODOs:
 
+* Change all 301 redirects to 308
+* Switch from cmd.wait/watch to cmd.run/onchanges
+* TnF needs UTC conversion :(
+* Build windowbox assets during deploy
+* Content-Security-Policy and Feature-Policy for each website
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
-* switch from cmd.wait/watch to cmd.run/onchanges
-* Check each website in HTTP-only config
 * homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
-* Content-Security-Policy and Feature-Policy for each website
-* When nginx 1.14 is available:
-    - Update TLS versions and ciphers
-    - Change all 301 redirects to 308
-* TnF needs UTC conversion :(
