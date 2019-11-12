@@ -14,11 +14,11 @@ All the below commands assume the user is already root.
     reboot
 
     cd $(mktemp -d)
-    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.05.20/bootstrap-salt.sh
+    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.11.04/bootstrap-salt.sh
     sha256sum bootstrap-salt.sh
-    # verify 46fb5e4b7815efafd69fd703f033fe86e7b584b6770f7e0b936995bcae1cedd8
+    # verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
     chmod +x bootstrap-salt.sh
-    ./bootstrap-salt.sh -X -F -c /tmp
+    ./bootstrap-salt.sh -X -x python3 -F -c /tmp
 
     mkdir -p /etc/salt/gpgkeys /srv/salt
     # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
@@ -79,7 +79,6 @@ some OSes may not like.
 
 ### TODOs:
 
-* update THIS doc
 * Content-Security-Policy and Feature-Policy for each website
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
