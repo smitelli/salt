@@ -79,7 +79,7 @@ some OSes may not like.
 
 ### TODOs:
 
-* homedir dotfiles
+* update THIS doc
 * Content-Security-Policy and Feature-Policy for each website
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
