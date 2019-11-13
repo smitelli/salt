@@ -5,6 +5,11 @@
 
 {% set tz = pillar.get('timezone', {}) %}
 
+include:
+  - tzdata
+
 {{ tz.get('name', 'UTC') | yaml_encode }}:
   timezone.system:
     - utc: {{ tz.get('utc', True) | yaml_encode }}
+    - require:
+      - pkg: tzdata

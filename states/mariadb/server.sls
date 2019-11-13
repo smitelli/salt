@@ -1,6 +1,7 @@
 include:
   - myautodump2
   - python3.mysqldb
+  - tzdata
 
 # Installs the maintainer-determined "best" version: 10.3 as of this writing
 mariadb-server:
@@ -22,6 +23,7 @@ mariadb-tzinfo:
     - runas: root
     - onchanges:
       - pkg: mariadb-server
+      - pkg: tzdata
     - require:
       - service: mariadb
 

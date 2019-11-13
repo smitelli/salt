@@ -69,7 +69,7 @@ some OSes may not like.
 ### Create an `/etc/shadow` password hash:
 
     openssl passwd -1  # MD5
-    mkpasswd --method=sha-512  # SHA-512
+    openssl passwd -6  # SHA-512
 
 ### Create SSH keypairs:
 

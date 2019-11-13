@@ -1,25 +1,20 @@
 rsync:
   pkg.latest
 
-rrsync:
-  cmd.run:
-    - name: cp /usr/share/doc/rsync/scripts/rrsync /usr/local/bin/rrsync
-    - unless: '[ -s /usr/local/bin/rrsync ]'
-    - runas: root
-    - require:
-      - pkg: rsync
-
-/usr/local/bin/rrsync:
+/bin/rrsync:
   file.managed:
-    - replace: False
+    - source: /usr/share/doc/rsync/scripts/rrsync
     - user: root
     - group: root
     - mode: 755
     - require:
-      - cmd: rrsync
+      - pkg: rsync
 
 /usr/bin/rrsync:
-  file.symlink:
-    - target: /usr/local/bin/rrsync
+  file.managed:
+    - source: /usr/share/doc/rsync/scripts/rrsync
+    - user: root
+    - group: root
+    - mode: 755
     - require:
-      - file: /usr/local/bin/rrsync
+      - pkg: rsync

@@ -2,6 +2,7 @@
 {% set stow_packages = salt['pillar.get']('user:ssmitelli:stow_packages', False) %}
 
 include:
+  - git
   - stow
 
 ssmitelli:
@@ -39,7 +40,6 @@ scottfiles-repo:
     - user: ssmitelli
     - require:
       - sls: git
-      - sls: ssh_known_hosts.github-com
       - user: ssmitelli
 
 {% if stow_packages %}

@@ -1,7 +1,6 @@
 include:
   - git
   - opt.project
-  - ssh_known_hosts.github-com
   - user.deploy
 
 # Necessary for "require: sls: project"
@@ -11,5 +10,4 @@ project-require-dummy:
     - require:
       - sls: git
       - sls: opt.project
-      - sls: ssh_known_hosts.github-com
       - sls: user.deploy

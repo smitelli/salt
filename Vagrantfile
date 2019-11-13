@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "dev-salt"
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.synced_folder ".", "/srv/salt", mount_options: ["dmode=555", "fmode=444"]
+  config.vm.synced_folder "./varopt", "/var/opt", mount_options: ["dmode=777", "fmode=666"]  # TODO
 
   config.vm.provision "shell", privileged: true, inline: <<~EOF
     mkdir -p /etc/salt/gpgkeys
