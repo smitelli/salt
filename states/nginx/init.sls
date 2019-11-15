@@ -14,12 +14,6 @@ nginx:
       - file: /etc/nginx/sites-enabled/*
       - file: /etc/nginx/snippets/*
 
-# Ensure snippets/* watcher works even if nothing puts files there
-/etc/nginx/snippets/.:
-  file.exists:
-    - require:
-      - pkg: nginx
-
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://nginx/files/nginx.conf
