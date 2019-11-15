@@ -87,6 +87,8 @@ include:
     - require:
       - pkg: cron
       - user: laurenedman-com
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/filter.d/laurenedman-com.conf:
   file.managed:

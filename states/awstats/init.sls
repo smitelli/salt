@@ -1,4 +1,5 @@
 include:
+  - cron
   - perl.encode
   - perl.net-dns
   - perl.net-ip
@@ -36,6 +37,8 @@ awstats:
       - file: /var/log/awstats
       - pkg: awstats
       - pkg: cron
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/awstats:
   file.managed:

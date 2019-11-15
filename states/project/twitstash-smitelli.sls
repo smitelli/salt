@@ -50,6 +50,8 @@ twitstash-smitelli-repo:
     - require:
       - pkg: cron
       - user: twitstash
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/twitstash-smitelli:
   file.managed:

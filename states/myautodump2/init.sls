@@ -24,3 +24,5 @@ include:
       - pkg: cron
       - file: /var/lib/myautodump2
       - file: /usr/local/bin/myautodump2
+    - watch_in:
+      - service: cron

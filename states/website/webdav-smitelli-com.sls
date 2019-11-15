@@ -60,6 +60,8 @@ include:
       - pkg: cron
       - file: /var/opt/website/webdav.smitelli.com/git-dir
       - file: /var/opt/website/webdav.smitelli.com/private
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/jail.d/webdav-smitelli-com.conf:
   file.managed:

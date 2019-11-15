@@ -48,3 +48,5 @@ include:
     - require:
       - pkg: cron
       - file: /usr/local/bin/certbot
+    - watch_in:
+      - service: cron

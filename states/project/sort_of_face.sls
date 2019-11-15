@@ -46,6 +46,8 @@ sort_of_face-repo:
     - require:
       - pkg: cron
       - user: sort_of_face
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/sort_of_face:
   file.managed:

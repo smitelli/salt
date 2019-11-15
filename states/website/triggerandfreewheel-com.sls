@@ -95,6 +95,8 @@ triggerandfreewheel-com-repo:
     - require:
       - pkg: cron
       - user: triggerandfreewheel-com
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/filter.d/triggerandfreewheel-com.conf:
   file.managed:

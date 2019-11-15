@@ -147,6 +147,8 @@ pics-scottsmitelli-com-assets:
     - require:
       - pkg: cron
       - user: windowbox
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/pics.scottsmitelli.com:
   file.managed:
