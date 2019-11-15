@@ -12,7 +12,6 @@ linode-longview:
     - enable: True
     - watch:
       - pkg: linode-longview
-      - file: /etc/linode/*
 
 /etc/linode/longview.key:
   file.managed:
@@ -23,6 +22,8 @@ linode-longview:
     - show_changes: False
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 
 {% if longview_config.get('enable_mysql', False) %}
 # This is okay for the Debian socket-based auth; not sure about other distros

@@ -9,7 +9,6 @@ openssh-server:
     - enable: True
     - watch:
       - pkg: openssh-server
-      - file: /etc/ssh/*
 
 {% if password_authentication %}
 sshd_config-PasswordAuthentication:
@@ -21,6 +20,8 @@ sshd_config-PasswordAuthentication:
     - backup: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endif %}
 
 {% if permit_root_login %}
@@ -33,6 +34,8 @@ sshd_config-PermitRootLogin:
     - backup: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endif %}
 
 {% for ktype in ('ecdsa', 'ed25519', 'rsa'): %}
@@ -45,6 +48,8 @@ sshd_config-PermitRootLogin:
     - show_changes: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 
 /etc/ssh/ssh_host_{{ ktype }}_key.pub:
   file.managed:
@@ -54,4 +59,6 @@ sshd_config-PermitRootLogin:
     - mode: 644
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endfor %}

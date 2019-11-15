@@ -5,6 +5,8 @@ domains.virtual-zcot.net:
   file.append:
     - name: /etc/exim4/domains.virtual
     - text: zcot.net
+    - watch_in:
+      - service: exim4
 
 /etc/exim4/local_sender_blacklist:
   file.managed:
@@ -14,6 +16,8 @@ domains.virtual-zcot.net:
     - mode: 644
     - require:
       - file: /etc/exim4
+    - watch_in:
+      - service: exim4
 
 /etc/exim4/zcot.net.deny-local-parts:
   file.managed:
@@ -23,6 +27,8 @@ domains.virtual-zcot.net:
     - mode: 644
     - require:
       - file: /etc/exim4
+    - watch_in:
+      - service: exim4
 
 /etc/exim4/conf.d/router/10_zcot_net:
   file.managed:
@@ -32,3 +38,5 @@ domains.virtual-zcot.net:
     - mode: 644
     - require:
       - file: /etc/exim4
+    - watch_in:
+      - service: exim4
