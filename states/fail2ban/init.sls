@@ -14,8 +14,6 @@ fail2ban:
     - enable: True
     - watch:
       - cmd: fail2ban-install
-      - file: /etc/fail2ban/filter.d/*
-      - file: /etc/fail2ban/jail.d/*
     - require:
       - file: /lib/systemd/system/fail2ban.service
       - pkg: nftables
@@ -68,18 +66,6 @@ fail2ban-install:
     - require:
       - cmd: fail2ban-install
 
-# Ensure filter.d/* watcher works even if nothing puts files there
-/etc/fail2ban/filter.d/.:
-  file.exists:
-    - require:
-      - cmd: fail2ban-install
-
-# Ensure jail.d/* watcher works even if nothing puts files there
-/etc/fail2ban/jail.d/.:
-  file.exists:
-    - require:
-      - cmd: fail2ban-install
-
 /etc/logrotate.d/fail2ban:
   file.managed:
     - source: salt://fail2ban/files/logrotate
@@ -95,6 +81,8 @@ fail2ban-install:
     - mode: 644
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/exim.conf:
 {% if enable_exim_jail %}
@@ -108,6 +96,8 @@ fail2ban-install:
 {% endif %}
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/sshd.conf:
 {% if enable_sshd_jail %}
@@ -121,3 +111,5 @@ fail2ban-install:
 {% endif %}
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban

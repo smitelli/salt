@@ -98,6 +98,8 @@ include:
     - mode: 644
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/laurenedman-com.conf:
   file.managed:
@@ -109,6 +111,8 @@ include:
       - service: nginx
       - file: /etc/fail2ban/filter.d/laurenedman-com.conf
       - file: /etc/nginx/sites-enabled/laurenedman.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/nginx/sites-available/laurenedman.com:
   file.managed:

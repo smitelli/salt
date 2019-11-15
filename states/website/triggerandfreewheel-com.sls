@@ -106,6 +106,8 @@ triggerandfreewheel-com-repo:
     - mode: 644
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/triggerandfreewheel-com.conf:
   file.managed:
@@ -117,6 +119,8 @@ triggerandfreewheel-com-repo:
       - service: nginx
       - file: /etc/fail2ban/filter.d/triggerandfreewheel-com.conf
       - file: /etc/nginx/sites-enabled/triggerandfreewheel.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/logrotate.d/triggerandfreewheel.com:
   file.managed:

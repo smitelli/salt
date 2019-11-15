@@ -73,6 +73,8 @@ include:
       - cmd: fail2ban-install
       - service: nginx
       - file: /etc/nginx/sites-enabled/webdav.smitelli.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/nginx/sites-available/webdav.smitelli.com:
   file.managed:
