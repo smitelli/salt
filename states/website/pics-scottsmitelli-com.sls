@@ -190,12 +190,16 @@ pics-scottsmitelli-com-assets:
       - pkg: uwsgi
       - pkg: uwsgi-plugin-python3
       - user: windowbox
+    - watch_in:
+      - service: uwsgi
 
 /etc/uwsgi/apps-enabled/pics.scottsmitelli.com.ini:
   file.symlink:
     - target: /etc/uwsgi/apps-available/pics.scottsmitelli.com.ini
     - require:
       - file: /etc/uwsgi/apps-available/pics.scottsmitelli.com.ini
+    - watch_in:
+      - service: uwsgi
 
 pics-scottsmitelli-com-db:
   mysql_database.present:
