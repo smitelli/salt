@@ -13,13 +13,6 @@ linode-longview:
     - watch:
       - pkg: linode-longview
       - file: /etc/linode/*
-      - file: /etc/linode/longview.d/*
-
-# Ensure longview.d/* watcher works even if nothing puts files there
-/etc/linode/longview.d/.:
-  file.exists:
-    - require:
-      - pkg: linode-longview
 
 /etc/linode/longview.key:
   file.managed:
@@ -43,6 +36,8 @@ linode-longview:
     - mode: 640
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 {% endif %}
 
 {% if longview_config.get('enable_nginx', False) %}
@@ -54,4 +49,6 @@ linode-longview:
     - mode: 640
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 {% endif %}
