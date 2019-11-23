@@ -46,7 +46,12 @@ include:
   file.directory:
     - user: www-data
     - group: www-data
-    - mode: 700
+    - dir_mode: 700
+    - file_mode: 600
+    - recurse:
+      - user
+      - group
+      - mode
     - require:
       - file: /var/opt/website/webdav.smitelli.com
 

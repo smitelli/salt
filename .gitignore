@@ -1,2 +1,5 @@
 .gpgkeys/
 .vagrant/
+
+# TODO
+varopt/
