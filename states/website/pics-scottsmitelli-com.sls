@@ -10,6 +10,7 @@ include:
   - mariadb.dev-compat
   - mariadb.server
   - perl.image-exiftool
+  - python3.dev
   - python3.pip
   - python3.virtualenv
   - user.windowbox
@@ -76,6 +77,7 @@ pics-scottsmitelli-com-repo:
     - require:
       - file: /var/opt/website/pics.scottsmitelli.com/.virtualenv
       - pkg: libmariadb-dev-compat
+      - pkg: python3-dev
       - pkg: python3-pip
       - pkg: virtualenv  # python3 version
   pip.installed:

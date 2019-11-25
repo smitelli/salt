@@ -43,6 +43,7 @@ some OSes may not like.
 
 ### Meaningful data may be stored in any of the following locations:
 
+* /etc/letsencrypt
 * /var/lib/awstats
 * /var/lib/myautodump2
 * /var/lib/mysql
