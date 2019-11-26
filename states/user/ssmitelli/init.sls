@@ -14,7 +14,7 @@ ssmitelli:
     - gid_from_name: True
     - groups:
         - sudo
-    - password: {{ salt['pillar.get']('user:ssmitelli:private:password') | yaml_encode }}
+    - password: {{ salt['pillar.get']('user:ssmitelli:private:password', '!') | yaml_encode }}
     - fullname: Scott Smitelli
     - home: /home/ssmitelli
     - shell: /bin/bash
