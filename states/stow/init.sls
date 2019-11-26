@@ -1,0 +1,2 @@
+stow:
+  pkg.latest

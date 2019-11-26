@@ -5,22 +5,18 @@
 
 include:
   - website
+  - acl
   - cron
-  - gem.sass
-  - jpeg.dev
-  - mariadb.client-dev
+  - mariadb.dev-compat
   - mariadb.server
-  - node
   - perl.image-exiftool
-  - python.dev
-  - python.pip
-  - python.virtualenv
+  - python3.dev
+  - python3.pip
+  - python3.virtualenv
   - user.windowbox
   - user.windowbox.mysql
   - uwsgi
-  - uwsgi.plugin-python
-  - zlib1g.dev
-  - project.pics-scottsmitelli-com-barker
+  - uwsgi.plugin-python3
 
 pics-scottsmitelli-com-repo:
   git.latest:
@@ -32,30 +28,30 @@ pics-scottsmitelli-com-repo:
     - require:
       - sls: website
 
-/opt/website/pics.scottsmitelli.com/build.sh:
-  cmd.wait:
-    - runas: deploy
+# Ensure app has the ability to build its own static files
+/opt/website/pics.scottsmitelli.com/windowbox/static:
+  acl.present:
+    - acl_type: user
+    - acl_name: windowbox
+    - perms: rwx
     - require:
-      - pkg: libjpeg-dev
-      - pkg: zlib1g-dev
-    - watch:
+      - pkg: acl
       - git: pics-scottsmitelli-com-repo
-    - watch_in:
-      - service: uwsgi
+      - user: windowbox
 
-/opt/website/pics.scottsmitelli.com/src/windowbox/configs/production.cfg:
+/opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py:
   file.managed:
-    - source: salt://website/files/pics.scottsmitelli.com/production.cfg
+    - source: salt://website/files/pics.scottsmitelli.com/prod.py
     - template: jinja
     - user: windowbox
     - group: windowbox
     - mode: 400
     - show_changes: False
+    - context:
+      scheme: {{ 'https' if enable_ssl else 'http' }}
     - require:
       - git: pics-scottsmitelli-com-repo
       - user: windowbox
-    - watch_in:
-      - service: uwsgi
 
 /var/opt/website/pics.scottsmitelli.com:
   file.directory:
@@ -64,6 +60,52 @@ pics-scottsmitelli-com-repo:
     - mode: 755
     - require:
       - sls: website
+
+/var/opt/website/pics.scottsmitelli.com/.virtualenv:
+  file.directory:
+    - user: deploy
+    - group: deploy
+    - mode: 755
+    - require:
+      - file: /var/opt/website/pics.scottsmitelli.com
+  virtualenv.managed:
+    - python: /usr/bin/python3
+    - pip_pkgs:
+      - mysqlclient
+    - pip_upgrade: True
+    - user: deploy
+    - require:
+      - file: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+      - pkg: libmariadb-dev-compat
+      - pkg: python3-dev
+      - pkg: python3-pip
+      - pkg: virtualenv  # python3 version
+  pip.installed:
+    - bin_env: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+    - editable: /opt/website/pics.scottsmitelli.com
+    - upgrade: True
+    - user: deploy
+    - require:
+      - virtualenv: /var/opt/website/pics.scottsmitelli.com/.virtualenv
+    - onchanges:
+      - git: pics-scottsmitelli-com-repo
+    - watch_in:
+      - service: uwsgi
+
+pics-scottsmitelli-com-assets:
+  cmd.run:
+    - name: >
+        /var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/flask assets clean;
+        /var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/flask assets build
+    - runas: windowbox
+    - env:
+      - WINDOWBOX_CONFIG: /opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
+    - require:
+      - acl: /opt/website/pics.scottsmitelli.com/windowbox/static
+      - file: /opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
+      - user: windowbox
+    - onchanges:
+      - pip: /var/opt/website/pics.scottsmitelli.com/.virtualenv
 
 /var/opt/website/pics.scottsmitelli.com/attachments:
   file.directory:
@@ -88,11 +130,6 @@ pics-scottsmitelli-com-repo:
     - user: windowbox
     - group: windowbox
     - mode: 755
-    - require:
-      - sls: website
-      - user: windowbox
-    - require_in:
-      - pkg: uwsgi
 
 /etc/awstats/awstats.pics.scottsmitelli.com.conf:
   file.managed:
@@ -112,6 +149,8 @@ pics-scottsmitelli-com-repo:
     - require:
       - pkg: cron
       - user: windowbox
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/pics.scottsmitelli.com:
   file.managed:
@@ -149,20 +188,24 @@ pics-scottsmitelli-com-repo:
     - group: root
     - mode: 644
     - require:
+      - pip: /var/opt/website/pics.scottsmitelli.com/.virtualenv
       - pkg: uwsgi
-      - pkg: uwsgi-plugin-python
-      - git: pics-scottsmitelli-com-repo
+      - pkg: uwsgi-plugin-python3
       - user: windowbox
+    - watch_in:
+      - service: uwsgi
 
 /etc/uwsgi/apps-enabled/pics.scottsmitelli.com.ini:
   file.symlink:
     - target: /etc/uwsgi/apps-available/pics.scottsmitelli.com.ini
     - require:
       - file: /etc/uwsgi/apps-available/pics.scottsmitelli.com.ini
+    - watch_in:
+      - service: uwsgi
 
 pics-scottsmitelli-com-db:
   mysql_database.present:
-    - name: windowbox_scottsmitelli
+    - name: windowbox-scottsmitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -171,11 +214,11 @@ pics-scottsmitelli-com-db:
 pics-scottsmitelli-com-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: windowbox_scottsmitelli.*
+    - database: windowbox-scottsmitelli.*
     - user: windowbox
     - host: localhost
     - require:
-      - mysql_database: windowbox_scottsmitelli
+      - mysql_database: windowbox-scottsmitelli
       - mysql_user: windowbox
 
 {% if enable_ssl %}

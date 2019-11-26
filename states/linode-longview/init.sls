@@ -5,21 +5,12 @@ include:
 
 linode-longview:
   pkg.latest:
-    - aggregate: False
     - require:
       - pkgrepo: linode-longview-repo
   service.running:
     - name: longview
     - enable: True
     - watch:
-      - pkg: linode-longview
-      - file: /etc/linode/*
-      - file: /etc/linode/longview.d/*
-
-# Ensure longview.d/* watcher works even if nothing puts files there
-/etc/linode/longview.d/.:
-  file.exists:
-    - require:
       - pkg: linode-longview
 
 /etc/linode/longview.key:
@@ -31,6 +22,8 @@ linode-longview:
     - show_changes: False
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 
 {% if longview_config.get('enable_mysql', False) %}
 # This is okay for the Debian socket-based auth; not sure about other distros
@@ -44,6 +37,8 @@ linode-longview:
     - mode: 640
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 {% endif %}
 
 {% if longview_config.get('enable_nginx', False) %}
@@ -55,4 +50,6 @@ linode-longview:
     - mode: 640
     - require:
       - pkg: linode-longview
+    - watch_in:
+      - service: linode-longview
 {% endif %}

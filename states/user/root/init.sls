@@ -26,7 +26,7 @@ ssh_auth-root@canyonero:
     - comment: root@canyonero
     - options:
       # Disabled due to FreeNAS bug: https://redmine.ixsystems.com/issues/23872
-      #- command="rrsync -ro /"
+      # - command="rrsync -ro /"
       - restrict
     - require:
       - user: root

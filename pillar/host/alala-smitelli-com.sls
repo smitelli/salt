@@ -17,29 +17,18 @@ imagemagick-6:
   policy_width: 25KP
   policy_height: 25KP
 
-iptables:
-  v4:
-    allow_http: True
-    allow_https: True
-    allow_ping: True
-    allow_smtp: True
-    allow_ssh: True
-  v6:
-    allow_http: True
-    allow_https: True
-    allow_smtp: True
-    allow_ssh: True
-
 logwatch:
   mail_to: logwatch@zcot.net
 
+nftables:
+  allow_http: True
+  allow_https: True
+  allow_ping: True
+  allow_smtp: True
+  allow_ssh: True
+
 nginx:
   enable_ssl: True
-
-node:
-  install_from_ppa: True
-  ppa:
-    repository_url: https://deb.nodesource.com/node_8.x
 
 sshd:
   password_authentication: 'yes'
@@ -52,9 +41,11 @@ sysctl:
   vm.swappiness: 0
 
 timezone:
-  name: America/New_York
+  name: Etc/UTC
   utc: True
 
 user:
   root:
     enable_ssh_auth_canyonero: True
+  ssmitelli:
+    stow_packages: aliases bash colors editor git prompt tmux

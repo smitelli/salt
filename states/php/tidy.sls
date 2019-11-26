@@ -1,0 +1,2 @@
+php-tidy:
+  pkg.latest

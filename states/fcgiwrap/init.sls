@@ -1,6 +1,6 @@
 fcgiwrap:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:

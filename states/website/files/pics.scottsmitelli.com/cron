@@ -1,12 +1,10 @@
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-PYTHONUNBUFFERED=1
-PYTHONIOENCODING=utf_8
+WINDOWBOX_CONFIG=/opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
 
-FETCH_SCRIPT_FILE=/opt/website/pics.scottsmitelli.com/cron.sh
-FETCH_LOG_FILE=/var/log/website/pics.scottsmitelli.com/cron.log
-BARK_SCRIPT_FILE=/opt/project/pics.scottsmitelli.com-barker/cron.sh
-BARK_LOG_FILE=/var/log/project/pics.scottsmitelli.com-barker/cron.log
+FETCH_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-fetch
+BARK_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-bark
+LOG_FILE=/var/log/website/pics.scottsmitelli.com/cron.log
 
-* * * * * windowbox $FETCH_SCRIPT_FILE >> $FETCH_LOG_FILE 2>&1; $BARK_SCRIPT_FILE >> $BARK_LOG_FILE 2>&1
+* * * * * windowbox $FETCH_SCRIPT_FILE >> $LOG_FILE 2>&1; $BARK_SCRIPT_FILE >> $LOG_FILE 2>&1

@@ -1,9 +1,9 @@
 include:
   - project
   - cron
-  - php7-0.cli
-  - php7-0.curl
-  - php7-0.mbstring
+  - php.cli
+  - php.curl
+  - php.mbstring
   - user.sort_of_face
 
 sort_of_face-repo:
@@ -46,6 +46,8 @@ sort_of_face-repo:
     - require:
       - pkg: cron
       - user: sort_of_face
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/sort_of_face:
   file.managed:

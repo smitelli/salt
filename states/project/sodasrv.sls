@@ -7,8 +7,8 @@
 include:
   - project
   - mariadb.server
-  - php7-0.fpm
-  - php7-0.mysql
+  - php.fpm
+  - php.mysql
   - user.sodasrv
   - user.sodasrv.mysql
 
@@ -51,16 +51,19 @@ sodasrv-repo:
     - require:
       - file: /var/opt/project/sodasrv
 
-/etc/php/7.0/fpm/pool.d/sodasrv.conf:
+/etc/php/current/fpm/pool.d/sodasrv.conf:
   file.managed:
     - source: salt://project/files/sodasrv/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: sodasrv-repo
       - user: sodasrv
+    - require_in:
+      - service: php-fpm
 
 sodasrv-db:
   mysql_database.present:

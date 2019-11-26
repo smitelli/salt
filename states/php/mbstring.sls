@@ -1,0 +1,2 @@
+php-mbstring:
+  pkg.latest

@@ -1,0 +1,2 @@
+php-bcmath:
+  pkg.latest

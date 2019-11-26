@@ -1,12 +1,12 @@
 include:
+  - cron
   - perl.encode
   - perl.net-dns
   - perl.net-ip
   - perl.net-xwhois
 
 awstats:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest
 
 /var/log/awstats:
   file.directory:
@@ -37,6 +37,8 @@ awstats:
       - file: /var/log/awstats
       - pkg: awstats
       - pkg: cron
+    - watch_in:
+      - service: cron
 
 /etc/logrotate.d/awstats:
   file.managed:

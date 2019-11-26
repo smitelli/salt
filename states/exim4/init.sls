@@ -9,7 +9,6 @@ exim4:
   service.running:
     - enable: True
     - watch:
-      - file: /etc/exim4/*
       - file: /etc/aliases
       - file: /etc/mailname
 
@@ -18,6 +17,8 @@ exim4:
     - user: root
     - group: root
     - mode: 755
+    - watch_in:
+      - service: exim4
 
 /etc/exim4/domains.virtual:
   file.managed:
@@ -27,11 +28,15 @@ exim4:
     - mode: 644
     - require:
       - file: /etc/exim4
+    - watch_in:
+      - service: exim4
 
 domains.virtual-base:
   file.append:
     - name: /etc/exim4/domains.virtual
     - text: {{ grains['fqdn'] | yaml_encode }}
+    - watch_in:
+      - service: exim4
 
 /etc/exim4/update-exim4.conf.conf:
   file.managed:
@@ -41,3 +46,5 @@ domains.virtual-base:
     - mode: 644
     - require:
       - file: /etc/exim4
+    - watch_in:
+      - service: exim4

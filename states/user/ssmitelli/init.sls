@@ -1,4 +1,9 @@
 {% set authorized_keys = salt['pillar.get']('user:ssmitelli:public:authorized_keys', []) %}
+{% set stow_packages = salt['pillar.get']('user:ssmitelli:stow_packages', False) %}
+
+include:
+  - git
+  - stow
 
 ssmitelli:
   group.present:
@@ -9,8 +14,9 @@ ssmitelli:
     - gid_from_name: True
     - groups:
         - sudo
-    - password: {{ salt['pillar.get']('user:ssmitelli:private:password') | yaml_encode }}
+    - password: {{ salt['pillar.get']('user:ssmitelli:private:password', '!') | yaml_encode }}
     - fullname: Scott Smitelli
+    - home: /home/ssmitelli
     - shell: /bin/bash
     - require:
       - group: ssmitelli
@@ -24,3 +30,28 @@ ssmitelli:
     - require:
       - user: ssmitelli
 {% endfor %}
+
+scottfiles-repo:
+  git.latest:
+    - name: https://github.com/smitelli/scottfiles.git
+    - branch: master
+    - rev: HEAD
+    - target: /home/ssmitelli/.scottfiles
+    - user: ssmitelli
+    - require:
+      - sls: git
+      - user: ssmitelli
+
+{% if stow_packages %}
+scottfiles-stow:
+  cmd.run:
+    - name: >
+        {% if 'bash' in stow_packages -%}
+        rm ../{.bash_logout,.bashrc};
+        {%- endif %}
+        stow -R {{ stow_packages }}
+    - cwd: /home/ssmitelli/.scottfiles
+    - runas: ssmitelli
+    - onchanges:
+      - git: scottfiles-repo
+{% endif %}

@@ -8,10 +8,10 @@ include:
   - cron
   - fail2ban
   - mariadb.server
-  - php7-0.cli
-  - php7-0.fpm
-  - php7-0.gd
-  - php7-0.mysql
+  - php.cli
+  - php.fpm
+  - php.gd
+  - php.mysql
   - user.laurenedman-com
   - user.laurenedman-com.mysql
 
@@ -87,6 +87,8 @@ include:
     - require:
       - pkg: cron
       - user: laurenedman-com
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/filter.d/laurenedman-com.conf:
   file.managed:
@@ -96,6 +98,8 @@ include:
     - mode: 644
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/laurenedman-com.conf:
   file.managed:
@@ -107,6 +111,8 @@ include:
       - service: nginx
       - file: /etc/fail2ban/filter.d/laurenedman-com.conf
       - file: /etc/nginx/sites-enabled/laurenedman.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/nginx/sites-available/laurenedman.com:
   file.managed:
@@ -130,16 +136,19 @@ include:
     - require:
       - file: /etc/nginx/sites-available/laurenedman.com
 
-/etc/php/7.0/fpm/pool.d/laurenedman.com.conf:
+/etc/php/current/fpm/pool.d/laurenedman.com.conf:
   file.managed:
     - source: salt://website/files/laurenedman.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - file: /var/opt/website/laurenedman.com
       - user: laurenedman-com
+    - require_in:
+      - service: php-fpm
 
 laurenedman-com-db:
   mysql_database.present:

@@ -1,3 +1,2 @@
 icingaweb2:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

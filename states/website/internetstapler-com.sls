@@ -5,7 +5,7 @@
 
 include:
   - website
-  - php7-0.fpm
+  - php.fpm
   - user.internetstapler-com
 
 internetstapler-com-repo:
@@ -50,16 +50,19 @@ internetstapler-com-repo:
     - require:
       - file: /etc/nginx/sites-available/internetstapler.com
 
-/etc/php/7.0/fpm/pool.d/internetstapler.com.conf:
+/etc/php/current/fpm/pool.d/internetstapler.com.conf:
   file.managed:
     - source: salt://website/files/internetstapler.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: internetstapler-com-repo
       - user: internetstapler-com
+    - require_in:
+      - service: php-fpm
 
 {% if enable_ssl %}
 internetstapler-com-letsencrypt:

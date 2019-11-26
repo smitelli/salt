@@ -13,11 +13,11 @@ include:
   - jpeg.turbo-progs
   - mariadb.server
   - netpbm
-  - php7-0.fpm
-  - php7-0.gd
-  - php7-0.mbstring
-  - php7-0.mysql
-  - php7-0.xml
+  - php.fpm
+  - php.gd
+  - php.mbstring
+  - php.mysql
+  - php.xml
   - user.gallery-scottsmitelli-com
   - user.gallery-scottsmitelli-com.mysql
   - zip
@@ -142,20 +142,23 @@ gallery-scottsmitelli-com-repo:
     - require:
       - file: /etc/nginx/sites-available/gallery.scottsmitelli.com
 
-/etc/php/7.0/fpm/pool.d/gallery.scottsmitelli.com.conf:
+/etc/php/current/fpm/pool.d/gallery.scottsmitelli.com.conf:
   file.managed:
     - source: salt://website/files/gallery.scottsmitelli.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: gallery-scottsmitelli-com-repo
       - user: gallery-scottsmitelli-com
+    - require_in:
+      - service: php-fpm
 
 gallery-scottsmitelli-com-db:
   mysql_database.present:
-    - name: gallery_scottsmitelli
+    - name: gallery-scottsmitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -164,11 +167,11 @@ gallery-scottsmitelli-com-db:
 gallery-scottsmitelli-com-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: gallery_scottsmitelli.*
+    - database: gallery-scottsmitelli.*
     - user: gallery-scottsmitelli-com
     - host: localhost
     - require:
-      - mysql_database: gallery_scottsmitelli
+      - mysql_database: gallery-scottsmitelli
       - mysql_user: gallery-scottsmitelli-com
 
 {% if enable_ssl %}

@@ -8,10 +8,10 @@ include:
   - cron
   - fail2ban
   - mariadb.server
-  - php7-0.cli
-  - php7-0.curl
-  - php7-0.fpm
-  - php7-0.mysql
+  - php.cli
+  - php.curl
+  - php.fpm
+  - php.mysql
   - user.triggerandfreewheel-com
   - user.triggerandfreewheel-com.mysql
 
@@ -95,6 +95,8 @@ triggerandfreewheel-com-repo:
     - require:
       - pkg: cron
       - user: triggerandfreewheel-com
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/filter.d/triggerandfreewheel-com.conf:
   file.managed:
@@ -104,6 +106,8 @@ triggerandfreewheel-com-repo:
     - mode: 644
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/triggerandfreewheel-com.conf:
   file.managed:
@@ -115,6 +119,8 @@ triggerandfreewheel-com-repo:
       - service: nginx
       - file: /etc/fail2ban/filter.d/triggerandfreewheel-com.conf
       - file: /etc/nginx/sites-enabled/triggerandfreewheel.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/logrotate.d/triggerandfreewheel.com:
   file.managed:
@@ -145,16 +151,19 @@ triggerandfreewheel-com-repo:
     - require:
       - file: /etc/nginx/sites-available/triggerandfreewheel.com
 
-/etc/php/7.0/fpm/pool.d/triggerandfreewheel.com.conf:
+/etc/php/current/fpm/pool.d/triggerandfreewheel.com.conf:
   file.managed:
     - source: salt://website/files/triggerandfreewheel.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: triggerandfreewheel-com-repo
       - user: triggerandfreewheel-com
+    - require_in:
+      - service: php-fpm
 
 triggerandfreewheel-com-db:
   mysql_database.present:

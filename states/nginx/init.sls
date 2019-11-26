@@ -1,8 +1,9 @@
 {% set enable_ssl = salt['pillar.get']('nginx:enable_ssl', False) %}
 
+# This really installs the nginx-full package, which is generally what we want
 nginx:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:
@@ -12,12 +13,6 @@ nginx:
       - file: /etc/nginx/sites-available/*
       - file: /etc/nginx/sites-enabled/*
       - file: /etc/nginx/snippets/*
-
-# Ensure snippets/* watcher works even if nothing puts files there
-/etc/nginx/snippets/.:
-  file.exists:
-    - require:
-      - pkg: nginx
 
 /etc/nginx/nginx.conf:
   file.managed:
@@ -62,7 +57,8 @@ nginx:
 {% if enable_ssl %}
 dhparam-pem:
   cmd.run:
-    - name: /usr/bin/openssl dhparam -out /etc/ssl/dhparam.pem 2048
+    # The longest this seems to take on a 4 GB Linode is about 15 minutes
+    - name: /usr/bin/openssl dhparam -out /etc/ssl/dhparam.pem 4096
     - creates: /etc/ssl/dhparam.pem
     - runas: root
 

@@ -1,0 +1,2 @@
+php-xml:
+  pkg.latest

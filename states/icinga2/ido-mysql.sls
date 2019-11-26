@@ -5,7 +5,6 @@ include:
 
 icinga2-ido-mysql:
   pkg.latest:
-    - aggregate: True
     - require:
       - pkg: icinga2
       - service: mariadb

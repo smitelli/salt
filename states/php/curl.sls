@@ -1,0 +1,2 @@
+php-curl:
+  pkg.latest

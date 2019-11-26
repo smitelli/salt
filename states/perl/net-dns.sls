@@ -1,3 +1,2 @@
 libnet-dns-perl:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

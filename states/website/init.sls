@@ -4,7 +4,6 @@ include:
   - letsencrypt
   - nginx
   - opt.website
-  - ssh_known_hosts.github-com
   - user.deploy
 
 # Necessary for "require: sls: website"
@@ -19,5 +18,4 @@ website-require-dummy:
       # watches on sites-available and sites-enabled) and it's not clear why.
       - pkg: nginx
       - sls: opt.website
-      - sls: ssh_known_hosts.github-com
       - sls: user.deploy

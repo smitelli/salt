@@ -8,21 +8,23 @@ by [Scott Smitelli](mailto:scott@smitelli.com)
 Ye Olde Quicke Starte
 =====================
 
+All the below commands assume the user is already root.
+
     hostnamectl set-hostname hostname.fqdn.com
     reboot
 
     cd $(mktemp -d)
-    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2018.08.15/bootstrap-salt.sh
+    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.11.04/bootstrap-salt.sh
     sha256sum bootstrap-salt.sh
-    # verify 6d414a39439a7335af1b78203f9d37e11c972b3c49c519742c6405e2944c6c4b
+    # verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
     chmod +x bootstrap-salt.sh
-    ./bootstrap-salt.sh -X -F -c /tmp
+    ./bootstrap-salt.sh -X -x python3 -F -c /tmp
 
     mkdir -p /etc/salt/gpgkeys /srv/salt
     # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
     # install ./ into /srv/salt/
     cp /srv/salt/states/salt/files/minion.conf /etc/salt/minion.d/00-minion.conf
-    salt-call --log-level=debug --local state.apply
+    salt-call --log-level=info --local state.apply
 
 ### Using the Vagrant environment:
 
@@ -41,6 +43,7 @@ some OSes may not like.
 
 ### Meaningful data may be stored in any of the following locations:
 
+* /etc/letsencrypt
 * /var/lib/awstats
 * /var/lib/myautodump2
 * /var/lib/mysql
@@ -67,24 +70,18 @@ some OSes may not like.
 ### Create an `/etc/shadow` password hash:
 
     openssl passwd -1  # MD5
-    mkpasswd --method=sha-512  # SHA-512
+    openssl passwd -6  # SHA-512
 
 ### Create SSH keypairs:
 
     ssh-keygen -o -t ed25519 -f ...
     ssh-keygen -o -t rsa -b 2048 -f ...
     ssh-keygen -o -t ecdsa -b 521 -f ...
-    ssh-keygen -o -t dsa -b 1024 -f ...
 
 ### TODOs:
 
+* Content-Security-Policy and Feature-Policy for each website
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
 * Check that each project/website works in isolation
-* Check each website in HTTP-only config
-* homedir dotfiles
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
-* Content-Security-Policy and Feature-Policy for each website
-* When nginx 1.14 is available:
-    - Update TLS versions and ciphers
-    - Change all 301 redirects to 308

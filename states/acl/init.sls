@@ -1,3 +1,2 @@
 acl:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

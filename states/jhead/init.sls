@@ -1,3 +1,2 @@
 jhead:
-  pkg.latest:
-    - aggregate: True
+  pkg.latest

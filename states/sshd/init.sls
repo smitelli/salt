@@ -2,14 +2,13 @@
 {% set permit_root_login = salt['pillar.get']('sshd:permit_root_login', '') %}
 
 openssh-server:
-  pkg.latest:
-    - aggregate: True
+  pkg:
+    - latest
   service.running:
     - name: ssh
     - enable: True
     - watch:
       - pkg: openssh-server
-      - file: /etc/ssh/*
 
 {% if password_authentication %}
 sshd_config-PasswordAuthentication:
@@ -21,6 +20,8 @@ sshd_config-PasswordAuthentication:
     - backup: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endif %}
 
 {% if permit_root_login %}
@@ -33,9 +34,11 @@ sshd_config-PermitRootLogin:
     - backup: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endif %}
 
-{% for ktype in ('dsa', 'ecdsa', 'ed25519', 'rsa'): %}
+{% for ktype in ('ecdsa', 'ed25519', 'rsa'): %}
 /etc/ssh/ssh_host_{{ ktype }}_key:
   file.managed:
     - contents_pillar: {{ ('sshd:' ~ grains['id'] ~ ':private:ssh_' ~ ktype ~ '_key') | yaml_encode }}
@@ -45,6 +48,8 @@ sshd_config-PermitRootLogin:
     - show_changes: False
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 
 /etc/ssh/ssh_host_{{ ktype }}_key.pub:
   file.managed:
@@ -54,4 +59,6 @@ sshd_config-PermitRootLogin:
     - mode: 644
     - require:
       - pkg: openssh-server
+    - watch_in:
+      - service: ssh
 {% endfor %}

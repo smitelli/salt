@@ -16,6 +16,11 @@
     public $database_pass = '';
     public $database_name = 'triggerandfreewheel';
 
+    // Local timezone
+    // This is important because it influences the definition of "midnight" when
+    // deciding when to show new comics.
+    public $timezone = 'America/New_York';
+
     // Some strings that appear in a lot of places
     public $site_title       = 'Trigger and Freewheel';
     public $site_subtitle    = "It's a webcomic.";
@@ -58,7 +63,7 @@
         $this->upload_dir   = $base_dir . '/' . $this->upload_dir;
       }
 
-      date_default_timezone_set('America/New_York');
+      date_default_timezone_set($this->timezone);
     }
   }
 

@@ -1,0 +1,2 @@
+php-cli:
+  pkg.latest

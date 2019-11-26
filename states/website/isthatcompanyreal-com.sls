@@ -5,8 +5,8 @@
 
 include:
   - website
-  - node
-  - php7-0.fpm
+  - npm
+  - php.fpm
   - user.isthatcompanyreal-com
 
 isthatcompanyreal-com-repo:
@@ -20,9 +20,11 @@ isthatcompanyreal-com-repo:
       - sls: website
 
 /opt/website/isthatcompanyreal.com/build.sh:
-  cmd.wait:
+  cmd.run:
     - runas: deploy
-    - watch:
+    - require:
+      - pkg: npm
+    - onchanges:
       - git: isthatcompanyreal-com-repo
 
 /etc/awstats/awstats.isthatcompanyreal.com.conf:
@@ -56,16 +58,19 @@ isthatcompanyreal-com-repo:
     - require:
       - file: /etc/nginx/sites-available/isthatcompanyreal.com
 
-/etc/php/7.0/fpm/pool.d/isthatcompanyreal.com.conf:
+/etc/php/current/fpm/pool.d/isthatcompanyreal.com.conf:
   file.managed:
     - source: salt://website/files/isthatcompanyreal.com/fpm.conf
     - user: root
     - group: root
     - mode: 644
     - require:
-      - pkg: php7.0-fpm
+      - pkg: php-fpm
+      - file: /etc/php/current
       - git: isthatcompanyreal-com-repo
       - user: isthatcompanyreal-com
+    - require_in:
+      - service: php-fpm
 
 {% if enable_ssl %}
 isthatcompanyreal-com-letsencrypt:

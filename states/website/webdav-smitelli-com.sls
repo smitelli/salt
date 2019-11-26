@@ -46,7 +46,12 @@ include:
   file.directory:
     - user: www-data
     - group: www-data
-    - mode: 700
+    - dir_mode: 700
+    - file_mode: 600
+    - recurse:
+      - user
+      - group
+      - mode
     - require:
       - file: /var/opt/website/webdav.smitelli.com
 
@@ -60,6 +65,8 @@ include:
       - pkg: cron
       - file: /var/opt/website/webdav.smitelli.com/git-dir
       - file: /var/opt/website/webdav.smitelli.com/private
+    - watch_in:
+      - service: cron
 
 /etc/fail2ban/jail.d/webdav-smitelli-com.conf:
   file.managed:
@@ -71,6 +78,8 @@ include:
       - cmd: fail2ban-install
       - service: nginx
       - file: /etc/nginx/sites-enabled/webdav.smitelli.com
+    - watch_in:
+      - service: fail2ban
 
 /etc/nginx/sites-available/webdav.smitelli.com:
   file.managed:

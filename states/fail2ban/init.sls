@@ -4,7 +4,8 @@
 {% set enable_sshd_jail = salt['pillar.get']('fail2ban:enable_sshd_jail', False) %}
 
 include:
-  - iptables
+  - nftables
+  - python3.dev
   - python3.pyinotify
   - python3.systemd
 
@@ -13,11 +14,9 @@ fail2ban:
     - enable: True
     - watch:
       - cmd: fail2ban-install
-      - file: /etc/fail2ban/filter.d/*
-      - file: /etc/fail2ban/jail.d/*
     - require:
       - file: /lib/systemd/system/fail2ban.service
-      - pkg: iptables
+      - pkg: nftables
 
 fail2ban-source:
   archive.extracted:
@@ -29,13 +28,14 @@ fail2ban-source:
     - group: root
 
 fail2ban-install:
-  cmd.wait:
+  cmd.run:
     - name: /usr/bin/python3 setup.py install --force
     - cwd: /usr/local/src/fail2ban-{{ version }}
     - runas: root
-    - watch:
+    - onchanges:
       - archive: fail2ban-source
     - require:
+      - pkg: python3-dev
       - pkg: python3-pyinotify
       - pkg: python3-systemd
 
@@ -45,7 +45,7 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
+    - require:
       - cmd: fail2ban-install
 
 /usr/lib/tmpfiles.d/fail2ban.conf:
@@ -54,7 +54,7 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
+    - require:
       - cmd: fail2ban-install
 
 /lib/systemd/system/fail2ban.service:
@@ -63,18 +63,6 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
-    - watch:
-      - cmd: fail2ban-install
-
-# Ensure filter.d/* watcher works even if nothing puts files there
-/etc/fail2ban/filter.d/.:
-  file.exists:
-    - require:
-      - cmd: fail2ban-install
-
-# Ensure jail.d/* watcher works even if nothing puts files there
-/etc/fail2ban/jail.d/.:
-  file.exists:
     - require:
       - cmd: fail2ban-install
 
@@ -84,6 +72,17 @@ fail2ban-install:
     - user: root
     - group: root
     - mode: 644
+
+/etc/fail2ban/jail.d/default.conf:
+  file.managed:
+    - source: salt://fail2ban/files/default.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/exim.conf:
 {% if enable_exim_jail %}
@@ -97,6 +96,8 @@ fail2ban-install:
 {% endif %}
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
 
 /etc/fail2ban/jail.d/sshd.conf:
 {% if enable_sshd_jail %}
@@ -110,3 +111,5 @@ fail2ban-install:
 {% endif %}
     - require:
       - cmd: fail2ban-install
+    - watch_in:
+      - service: fail2ban
