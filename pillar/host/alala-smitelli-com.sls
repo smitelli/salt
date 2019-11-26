@@ -28,7 +28,7 @@ nftables:
   allow_ssh: True
 
 nginx:
-  enable_ssl: False  # TODO
+  enable_ssl: True
 
 sshd:
   password_authentication: 'yes'
