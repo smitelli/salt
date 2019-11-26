@@ -21,8 +21,8 @@ include:
 pics-scottsmitelli-com-repo:
   git.latest:
     - name: https://github.com/smitelli/windowbox.git
-    - branch: python3  # TODO
-    - rev: python3  # TODO
+    - branch: master
+    - rev: HEAD
     - target: /opt/website/pics.scottsmitelli.com
     - user: deploy
     - require:
