@@ -54,6 +54,13 @@ nginx:
     - require:
       - pkg: nginx
 
+/etc/logrotate.d/nginx:
+  file.managed:
+    - source: salt://nginx/logrotate
+    - user: root
+    - group: root
+    - mode: 644
+
 {% if enable_ssl %}
 dhparam-pem:
   cmd.run:
