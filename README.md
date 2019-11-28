@@ -85,3 +85,5 @@ some OSes may not like.
 * Check that each project/website works in isolation
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
+* sort_of_face needs IPv4 clamp, PHP dep fixes
+* gallery throws deprecation warnings
