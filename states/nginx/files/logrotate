@@ -3,6 +3,7 @@
     missingok
     rotate 14
     compress
+    delaycompress
     notifempty
     create 0644 root root
     sharedscripts
