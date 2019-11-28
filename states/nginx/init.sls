@@ -56,7 +56,7 @@ nginx:
 
 /etc/logrotate.d/nginx:
   file.managed:
-    - source: salt://nginx/logrotate
+    - source: salt://nginx/files/logrotate
     - user: root
     - group: root
     - mode: 644
