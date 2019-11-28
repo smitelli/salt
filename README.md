@@ -87,3 +87,4 @@ some OSes may not like.
 * ...or NetData: https://www.netdata.cloud/
 * sort_of_face needs IPv4 clamp, PHP dep fixes
 * gallery throws deprecation warnings
+* turn off HTTPS redirect for alala; it breaks default_server
