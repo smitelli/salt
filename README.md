@@ -88,3 +88,5 @@ some OSes may not like.
 * sort_of_face needs IPv4 clamp, PHP dep fixes
 * gallery throws deprecation warnings
 * turn off HTTPS redirect for alala; it breaks default_server
+* why isn't f2b doing IPv6 on ssh/exim?
+* is TnF/webdav f2b working?
