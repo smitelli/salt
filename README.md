@@ -90,3 +90,4 @@ some OSes may not like.
 * turn off HTTPS redirect for alala; it breaks default_server
 * why isn't f2b doing IPv6 on ssh/exim?
 * is TnF/webdav f2b working?
+* nft rules don't load if ping is disabled
