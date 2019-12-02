@@ -86,7 +86,6 @@ some OSes may not like.
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
 * gallery throws deprecation warnings
-* turn off HTTPS redirect for alala; it breaks default_server
 * why isn't f2b doing IPv6 on ssh/exim?
 * is TnF/webdav f2b working?
 * wtf is going on with nginx log ownership?
