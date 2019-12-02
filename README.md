@@ -87,5 +87,4 @@ some OSes may not like.
 * ...or NetData: https://www.netdata.cloud/
 * gallery throws deprecation warnings
 * why isn't f2b doing IPv6 on ssh/exim?
-* is TnF/webdav f2b working?
 * wtf is going on with nginx log ownership?
