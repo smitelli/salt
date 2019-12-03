@@ -87,3 +87,4 @@ some OSes may not like.
 * ...or NetData: https://www.netdata.cloud/
 * gallery throws deprecation warnings
 * wtf is going on with nginx log ownership?
+* TnF smarty version has a deprecation warning
