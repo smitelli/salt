@@ -85,6 +85,5 @@ some OSes may not like.
 * Check that each project/website works in isolation
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
-* gallery throws deprecation warnings
-* wtf is going on with nginx log ownership?
+* gallery throws deprecation warnings on install
 * TnF smarty version has a deprecation warning
