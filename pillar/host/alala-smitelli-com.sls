@@ -38,7 +38,7 @@ sshd:
 
 sysctl:
   net.ipv4.conf.all.rp_filter: 1
-  vm.swappiness: 1
+  vm.swappiness: 0
 
 timezone:
   name: Etc/UTC

@@ -15,6 +15,7 @@ mariadb-server:
       # resources. Require it here so other states don't need to worry about it.
       - pkg: python3-mysqldb
     - watch:
+      - file: /etc/mysql/conf.d/*
       - pkg: mariadb-server
 
 mariadb-tzinfo:
@@ -35,3 +36,13 @@ root-db-user:
     - unix_socket: True
     - require:
       - service: mariadb
+
+/etc/mysql/conf.d/local.cnf:
+  file.managed:
+    - source: salt://mariadb/files/local.cnf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: mariadb-server

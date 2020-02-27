@@ -1,0 +1,10 @@
+[mysqld]
+
+innodb_buffer_pool_size = {{ (grains['mem_total'] * 0.375) | round | int }}M
+innodb_log_file_size = {{ (16 / grains['mem_total']) | round | int }}M
+max_connections = {{ (102.4 / grains['mem_total']) | round | int }}
+
+performance_schema = ON
+
+query_cache_type = OFF
+query_cache_size = 0
