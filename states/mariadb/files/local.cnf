@@ -9,7 +9,7 @@
 max_connections = {{ (grains['mem_total'] / 100) | round | int }}
 innodb_buffer_pool_instances = {{ buffer_pool_gb | round(0, 'ceil') | int }}
 innodb_buffer_pool_size = {{ buffer_pool_mb | round | int }}M
-innodb_log_file_size = {{ buffer_pool_mb / 6 | round | int }}M
+innodb_log_file_size = {{ (buffer_pool_mb / 6) | round | int }}M
 
 #
 # General tuning
