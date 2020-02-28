@@ -6,5 +6,5 @@ max_connections = {{ (grains['mem_total'] / 102.4) | round | int }}
 
 performance_schema = ON
 
-query_cache_type = 0
 query_cache_size = 0
+query_cache_type = 0
