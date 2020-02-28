@@ -4,7 +4,6 @@ innodb_buffer_pool_size = {{ (grains['mem_total'] * 0.375) | round | int }}M
 innodb_log_file_size = {{ (grains['mem_total'] / 16) | round | int }}M
 max_connections = {{ (grains['mem_total'] / 102.4) | round | int }}
 
-performance_schema = ON
-
+performance_schema = 1
 query_cache_size = 0
 query_cache_type = 0
