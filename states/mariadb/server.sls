@@ -15,7 +15,7 @@ mariadb-server:
       # resources. Require it here so other states don't need to worry about it.
       - pkg: python3-mysqldb
     - watch:
-      - file: /etc/mysql/conf.d/*
+      - file: /etc/mysql/mariadb.conf.d/*
       - pkg: mariadb-server
 
 mariadb-tzinfo:
