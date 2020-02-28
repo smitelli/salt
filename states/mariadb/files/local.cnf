@@ -1,11 +1,15 @@
+{%- set buffer_pool_mb = grains['mem_total'] * 0.375 -%}
+{%- set buffer_pool_gb = buffer_pool_mb / 1024 -%}
+
 [mysqld]
 
 #
 # Machine-specific tuning
 #
-innodb_buffer_pool_size = {{ (grains['mem_total'] * 0.375) | round | int }}M
-innodb_log_file_size = {{ (grains['mem_total'] / 16) | round | int }}M
-max_connections = {{ (grains['mem_total'] / 102.4) | round | int }}
+max_connections = {{ (grains['mem_total'] / 100) | round | int }}
+innodb_buffer_pool_instances = {{ buffer_pool_gb | round(0, 'ceil') | int }}
+innodb_buffer_pool_size = {{ buffer_pool_mb | round | int }}M
+innodb_log_file_size = {{ buffer_pool_mb / 6 | round | int }}M
 
 #
 # General tuning
