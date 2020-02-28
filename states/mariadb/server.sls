@@ -37,7 +37,7 @@ root-db-user:
     - require:
       - service: mariadb
 
-/etc/mysql/conf.d/local.cnf:
+/etc/mysql/conf.d/99-local.cnf:
   file.managed:
     - source: salt://mariadb/files/local.cnf
     - template: jinja
