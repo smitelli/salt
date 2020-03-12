@@ -76,7 +76,7 @@ fail2ban-install:
     - makedirs: True
     - dir_mode: 755
     - require:
-      - cmd: fail2ban-install
+      - file: /usr/lib/systemd/system/fail2ban.service
 
 /etc/logrotate.d/fail2ban:
   file.managed:
