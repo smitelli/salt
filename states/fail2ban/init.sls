@@ -66,6 +66,17 @@ fail2ban-install:
     - require:
       - cmd: fail2ban-install
 
+/lib/systemd/system/fail2ban.service.d/stacksize.conf:
+  file.managed:
+    - source: salt://fail2ban/files/stacksize.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - makedirs: True
+    - dir_mode: 755
+    - require:
+      - cmd: fail2ban-install
+
 /etc/logrotate.d/fail2ban:
   file.managed:
     - source: salt://fail2ban/files/logrotate
