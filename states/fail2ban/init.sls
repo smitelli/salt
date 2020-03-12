@@ -14,8 +14,9 @@ fail2ban:
     - enable: True
     - watch:
       - cmd: fail2ban-install
+      - file: /usr/lib/systemd/system/fail2ban.service
+      - file: /usr/lib/systemd/system/fail2ban.service.d/*
     - require:
-      - file: /lib/systemd/system/fail2ban.service
       - pkg: nftables
 
 fail2ban-source:
@@ -57,7 +58,7 @@ fail2ban-install:
     - require:
       - cmd: fail2ban-install
 
-/lib/systemd/system/fail2ban.service:
+/usr/lib/systemd/system/fail2ban.service:
   file.managed:
     - source: /usr/local/src/fail2ban-{{ version }}/build/fail2ban.service
     - user: root
@@ -66,7 +67,7 @@ fail2ban-install:
     - require:
       - cmd: fail2ban-install
 
-/lib/systemd/system/fail2ban.service.d/stacksize.conf:
+/usr/lib/systemd/system/fail2ban.service.d/stacksize.conf:
   file.managed:
     - source: salt://fail2ban/files/stacksize.conf
     - user: root
