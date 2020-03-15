@@ -15,15 +15,17 @@ for db in $(mysql --batch --skip-column-names --execute='SHOW DATABASES'); do
     sql_file="$1/$db.sql.gz"
     tmp_file="$1/$db.tmp.gz"
 
-    if [[ "$db" == 'performance_schema' ]]; then
+    if [[ "$db" == 'mysql' ]]; then
+        extra_args='--flush-privileges'
+    elif [[ "$db" == 'performance_schema' ]]; then
         extra_args='--skip-events'
     else
         extra_args=''
     fi
 
-    mysqldump --opt --single-transaction --hex-blob --events --routines \
-        --triggers --log-error="$error_log_file" $extra_args "$db" |
-        gzip --best > "$tmp_file"
+    mysqldump --opt --quick --single-transaction --skip-lock-tables --hex-blob \
+        --events --routines --triggers --log-error="$error_log_file" \
+        --skip-comments $extra_args "$db" | gzip --best > "$tmp_file"
 
     chown root: "$error_log_file" "$tmp_file"
     chmod 0600 "$error_log_file" "$tmp_file"
