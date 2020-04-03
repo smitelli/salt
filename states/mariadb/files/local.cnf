@@ -17,6 +17,7 @@ innodb_log_file_size = {{ bpool_logsize | round | int }}M
 #
 # General tuning
 #
+innodb_file_per_table = ON
 performance_schema = ON
 join_buffer_size = 1M
 query_cache_type = OFF
