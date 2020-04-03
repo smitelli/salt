@@ -1,6 +1,6 @@
 PREFERRED_URL_SCHEME = '{{ scheme }}'
 
-SQLALCHEMY_DATABASE_URI = 'mysql:///windowbox_scottsmitelli?unix_socket=/run/mysqld/mysqld.sock&charset=utf8mb4'
+SQLALCHEMY_DATABASE_URI = 'mysql:///windowbox-scottsmitelli?unix_socket=/run/mysqld/mysqld.sock&charset=utf8mb4'
 
 ATTACHMENTS_PATH = '/var/opt/website/pics.scottsmitelli.com/attachments'
 DERIVATIVES_PATH = '/var/opt/website/pics.scottsmitelli.com/derivatives'
