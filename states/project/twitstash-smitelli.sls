@@ -62,7 +62,7 @@ twitstash-smitelli-repo:
 
 twitstash-smitelli-db:
   mysql_database.present:
-    - name: twitstash-smitelli
+    - name: twitstash_smitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -71,9 +71,9 @@ twitstash-smitelli-db:
 twitstash-smitelli-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: twitstash-smitelli.*
+    - database: twitstash_smitelli.*
     - user: twitstash
     - host: localhost
     - require:
-      - mysql_database: twitstash-smitelli
+      - mysql_database: twitstash_smitelli
       - mysql_user: twitstash

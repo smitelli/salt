@@ -100,7 +100,7 @@ $gallery->setConfig('data.gallery.base', '/var/opt/website/gallery.scottsmitelli
  */
 $storeConfig['type'] = 'mysqli';
 $storeConfig['hostname'] = 'localhost';
-$storeConfig['database'] = 'gallery-scottsmitelli';
+$storeConfig['database'] = 'gallery_scottsmitelli';
 $storeConfig['username'] = 'gallery-scottsmitelli-com';
 $storeConfig['password'] = '';
 $storeConfig['schema'] = '';

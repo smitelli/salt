@@ -205,7 +205,7 @@ pics-scottsmitelli-com-assets:
 
 pics-scottsmitelli-com-db:
   mysql_database.present:
-    - name: windowbox-scottsmitelli
+    - name: windowbox_scottsmitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -214,11 +214,11 @@ pics-scottsmitelli-com-db:
 pics-scottsmitelli-com-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: windowbox-scottsmitelli.*
+    - database: windowbox_scottsmitelli.*
     - user: windowbox
     - host: localhost
     - require:
-      - mysql_database: windowbox-scottsmitelli
+      - mysql_database: windowbox_scottsmitelli
       - mysql_user: windowbox
 
 {% if enable_ssl %}

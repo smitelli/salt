@@ -158,7 +158,7 @@ gallery-scottsmitelli-com-repo:
 
 gallery-scottsmitelli-com-db:
   mysql_database.present:
-    - name: gallery-scottsmitelli
+    - name: gallery_scottsmitelli
     - character_set: utf8mb4
     - collate: utf8mb4_unicode_ci
     - require:
@@ -167,11 +167,11 @@ gallery-scottsmitelli-com-db:
 gallery-scottsmitelli-com-db-grant:
   mysql_grants.present:
     - grant: ALL PRIVILEGES
-    - database: gallery-scottsmitelli.*
+    - database: gallery_scottsmitelli.*
     - user: gallery-scottsmitelli-com
     - host: localhost
     - require:
-      - mysql_database: gallery-scottsmitelli
+      - mysql_database: gallery_scottsmitelli
       - mysql_user: gallery-scottsmitelli-com
 
 {% if enable_ssl %}
