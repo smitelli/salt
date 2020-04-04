@@ -1,5 +1,5 @@
 {%- set maxconn = (grains['mem_total'] / 100) | round -%}
-{%- set bpool_mb = grains['mem_total'] / 10 -%}
+{%- set bpool_mb = [grains['mem_total'] / 10, 512] | max -%}
 {%- set bpool_gb = bpool_mb / 1024 -%}
 {%- set bpool_instances = bpool_gb | round(0, 'ceil') -%}
 {%- set logfile_mb = bpool_mb / 8 -%}
