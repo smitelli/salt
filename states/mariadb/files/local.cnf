@@ -1,24 +1,24 @@
 {%- set maxconn = (grains['mem_total'] / 100) | round -%}
-{%- set bpool_mb = grains['mem_total'] * 0.1 -%}
+{%- set bpool_mb = grains['mem_total'] / 10 -%}
 {%- set bpool_gb = bpool_mb / 1024 -%}
 {%- set bpool_instances = bpool_gb | round(0, 'ceil') -%}
-{%- set bpool_logsize = bpool_mb * (0.25 / bpool_instances) -%}
+{%- set logfile_mb = bpool_mb / 8 -%}
 
 [mysqld]
 
 #
 # Machine-specific tuning
 #
-max_connections = {{ maxconn | int }}
 innodb_buffer_pool_instances = {{ bpool_instances | int }}
 innodb_buffer_pool_size = {{ bpool_mb | round | int }}M
-innodb_log_file_size = {{ bpool_logsize | round | int }}M
+innodb_log_file_size = {{ logfile_mb | round | int }}M
+max_connections = {{ maxconn | int }}
 
 #
 # General tuning
 #
 innodb_file_per_table = ON
-performance_schema = ON
 join_buffer_size = 1M
-query_cache_type = OFF
+performance_schema = ON
 query_cache_size = 0
+query_cache_type = OFF
