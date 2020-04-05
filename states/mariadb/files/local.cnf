@@ -13,7 +13,7 @@
 innodb_buffer_pool_instances = {{ bpool_instances | int }}
 innodb_buffer_pool_size = {{ bpool_mb | round | int }}M
 innodb_log_file_size = {{ logfile_mb | round | int }}M
-key_buffer_size = {{ keybuf_mb | round | int }}
+key_buffer_size = {{ keybuf_mb | round | int }}M
 max_connections = {{ maxconn | round | int }}
 
 
