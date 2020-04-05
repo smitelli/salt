@@ -1,8 +1,9 @@
-{%- set maxconn = (grains['mem_total'] / 100) | round -%}
 {%- set bpool_mb = [grains['mem_total'] / 10, 512] | max -%}
 {%- set bpool_gb = bpool_mb / 1024 -%}
 {%- set bpool_instances = bpool_gb | round(0, 'ceil') -%}
 {%- set logfile_mb = bpool_mb / 8 -%}
+{%- set keybuf_mb = [grains['mem_total'] / 150, 8] | max -%}
+{%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
 
 [mysqld]
 
@@ -12,7 +13,9 @@
 innodb_buffer_pool_instances = {{ bpool_instances | int }}
 innodb_buffer_pool_size = {{ bpool_mb | round | int }}M
 innodb_log_file_size = {{ logfile_mb | round | int }}M
-max_connections = {{ maxconn | int }}
+key_buffer_size = {{ keybuf_mb | round | int }}
+max_connections = {{ maxconn | round | int }}
+
 
 #
 # General tuning
