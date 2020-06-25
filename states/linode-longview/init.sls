@@ -1,55 +1,34 @@
-{% set longview_config = salt['pillar.get']('linode-longview:' ~ grains['id']) %}
+#!pyobjects
 
-include:
-  - linode-longview.repo
+from salt://linode-longview/repo.sls import LONGVIEW_PKGREPO
 
-linode-longview:
-  pkg.latest:
-    - require:
-      - pkgrepo: linode-longview-repo
-  service.running:
-    - name: longview
-    - enable: True
-    - watch:
-      - pkg: linode-longview
+include('linode-longview.repo')
 
-/etc/linode/longview.key:
-  file.managed:
-    - contents: {{ longview_config['api_key'] | yaml_encode }}
-    - user: root
-    - group: root
-    - mode: 600
-    - show_changes: False
-    - require:
-      - pkg: linode-longview
-    - watch_in:
-      - service: linode-longview
+LONGVIEW_PKG = 'linode-longview'
+LONGVIEW_SERVICE = 'longview'
 
-{% if longview_config.get('enable_mysql', False) %}
-# This is okay for the Debian socket-based auth; not sure about other distros
-/etc/linode/longview.d/MySQL.conf:
-  file.managed:
-    - contents:
-      - 'username root'
-      - 'password ""'
-    - user: root
-    - group: root
-    - mode: 640
-    - require:
-      - pkg: linode-longview
-    - watch_in:
-      - service: linode-longview
-{% endif %}
+with Pkgrepo(LONGVIEW_PKGREPO):
+    with Pkg.latest(LONGVIEW_PKG):
+        with Pkg(LONGVIEW_PKG, 'watch'):
+            Service.running(LONGVIEW_SERVICE, enable=True)
 
-{% if longview_config.get('enable_nginx', False) %}
-/etc/linode/longview.d/Nginx.conf:
-  file.managed:
-    - contents: location {{ longview_config['nginx_location'] }}
-    - user: root
-    - group: root
-    - mode: 640
-    - require:
-      - pkg: linode-longview
-    - watch_in:
-      - service: linode-longview
-{% endif %}
+        with Service(LONGVIEW_SERVICE, 'watch_in'):
+            config = pillar(f'linode-longview:{grains("id")}')
+
+            File.managed(
+                '/etc/linode/longview.key',
+                contents=config['api_key'], user='root', group='root', mode=600,
+                show_changes=False)
+
+            if config.get('enable_mysql', False):
+                # Works with Debian socket auth; not sure about other distros
+                File.managed(
+                    '/etc/linode/longview.d/MySQL.conf',
+                    contents='username root\npassword ""', user='root',
+                    group='root', mode=640)
+
+            if config.get('enable_nginx', False):
+                File.managed(
+                    '/etc/linode/longview.d/Nginx.conf',
+                    contents=f'location {config["nginx_location"]}',
+                    user='root', group='root', mode=640)

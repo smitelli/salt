@@ -1,20 +1,12 @@
-rsync:
-  pkg.latest
+#!pyobjects
 
-/bin/rrsync:
-  file.managed:
-    - source: /usr/share/doc/rsync/scripts/rrsync
-    - user: root
-    - group: root
-    - mode: 755
-    - require:
-      - pkg: rsync
+with Pkg.latest('rsync'):
+    File.managed(
+        '/bin/rrsync',
+        source='/usr/share/doc/rsync/scripts/rrsync', user='root', group='root',
+        mode=755)
 
-/usr/bin/rrsync:
-  file.managed:
-    - source: /usr/share/doc/rsync/scripts/rrsync
-    - user: root
-    - group: root
-    - mode: 755
-    - require:
-      - pkg: rsync
+    File.managed(
+        '/usr/bin/rrsync',
+        source='/usr/share/doc/rsync/scripts/rrsync', user='root', group='root',
+        mode=755)
