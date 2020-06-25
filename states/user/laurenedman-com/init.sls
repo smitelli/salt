@@ -4,7 +4,7 @@ laurenedman-com:
 
   user.present:
     - uid: 1109
-    - gid_from_name: True
+    - gid: laurenedman-com
     - fullname: laurenedman.com
     - home: /nonexistent
     - createhome: False

@@ -4,7 +4,7 @@ windowbox:
 
   user.present:
     - uid: 1105
-    - gid_from_name: True
+    - gid: windowbox
     - fullname: Windowbox
     - home: /nonexistent
     - createhome: False

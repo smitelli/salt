@@ -4,7 +4,7 @@ isthatcompanyreal-com:
 
   user.present:
     - uid: 1102
-    - gid_from_name: True
+    - gid: isthatcompanyreal-com
     - fullname: isthatcompanyreal.com
     - home: /nonexistent
     - createhome: False

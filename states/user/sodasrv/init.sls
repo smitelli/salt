@@ -4,7 +4,7 @@ sodasrv:
 
   user.present:
     - uid: 1108
-    - gid_from_name: True
+    - gid: sodasrv
     - fullname: Sodasrv
     - home: /nonexistent
     - createhome: False

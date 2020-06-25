@@ -4,7 +4,7 @@ triggerandfreewheel-com:
 
   user.present:
     - uid: 1104
-    - gid_from_name: True
+    - gid: triggerandfreewheel-com
     - fullname: triggerandfreewheel.com
     - home: /nonexistent
     - createhome: False

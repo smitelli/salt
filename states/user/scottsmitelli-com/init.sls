@@ -4,7 +4,7 @@ scottsmitelli-com:
 
   user.present:
     - uid: 1103
-    - gid_from_name: True
+    - gid: scottsmitelli-com
     - fullname: scottsmitelli.com
     - home: /nonexistent
     - createhome: False

@@ -4,7 +4,7 @@ internetstapler-com:
 
   user.present:
     - uid: 1101
-    - gid_from_name: True
+    - gid: internetstapler-com
     - fullname: internetstapler.com
     - home: /nonexistent
     - createhome: False

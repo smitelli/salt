@@ -4,7 +4,7 @@ sort_of_face:
 
   user.present:
     - uid: 1106
-    - gid_from_name: True
+    - gid: sort_of_face
     - fullname: The sort of face
     - home: /nonexistent
     - createhome: False

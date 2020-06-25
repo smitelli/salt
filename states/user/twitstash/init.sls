@@ -4,7 +4,7 @@ twitstash:
 
   user.present:
     - uid: 1107
-    - gid_from_name: True
+    - gid: twitstash
     - fullname: Twitstash
     - home: /nonexistent
     - createhome: False

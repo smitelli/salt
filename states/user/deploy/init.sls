@@ -4,7 +4,7 @@ deploy:
 
   user.present:
     - uid: 1100
-    - gid_from_name: True
+    - gid: deploy
     - fullname: Deploy User
     - shell: /bin/false
     - require:

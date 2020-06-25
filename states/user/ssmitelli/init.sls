@@ -11,7 +11,7 @@ ssmitelli:
 
   user.present:
     - uid: 1500
-    - gid_from_name: True
+    - gid: ssmitelli
     - groups:
         - sudo
     - password: {{ salt['pillar.get']('user:ssmitelli:private:password', '!') | yaml_encode }}

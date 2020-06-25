@@ -6,7 +6,7 @@ root:
 
   user.present:
     - uid: 0
-    - gid_from_name: True
+    - gid: root
     - home: /root
     - password: {{ salt['pillar.get']('user:root:password', '!') | yaml_encode }}
     - fullname: root

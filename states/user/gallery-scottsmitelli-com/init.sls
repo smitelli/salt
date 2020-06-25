@@ -4,7 +4,7 @@ gallery-scottsmitelli-com:
 
   user.present:
     - uid: 1110
-    - gid_from_name: True
+    - gid: gallery-scottsmitelli-com
     - fullname: gallery.scottsmitelli.com
     - home: /nonexistent
     - createhome: False
