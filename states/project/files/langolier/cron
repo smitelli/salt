@@ -1,0 +1,8 @@
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+
+SCRIPT_FILE=/var/opt/project/langolier/.virtualenv/bin/langolier
+CONFIG_BASE=/opt/project/langolier
+LOG_BASE=/var/log/project/langolier
+
+*/15 * * * * langolier $SCRIPT_FILE --config $CONFIG_BASE/smitelli.yml >> $LOG_BASE/smitelli.log 2>&1
