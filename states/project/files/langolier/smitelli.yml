@@ -1,0 +1,13 @@
+consumer_key:        {{ salt['pillar.get']('twitterapi:smitelli:consumer_key') }}
+consumer_secret:     {{ salt['pillar.get']('twitterapi:smitelli:consumer_secret') }}
+access_token:        {{ salt['pillar.get']('twitterapi:smitelli:access_token') }}
+access_token_secret: {{ salt['pillar.get']('twitterapi:smitelli:access_token_secret') }}
+
+screen_name: smitelli
+
+keep_days: 365
+keep_ids:
+  - '335455012'           # First tweet
+  - '219489297626177536'  # QR codes (most popular to date)
+  - '455864084143931392'  # Keybase verification
+  - '892203390578696192'  # @MST3k hug (fav)

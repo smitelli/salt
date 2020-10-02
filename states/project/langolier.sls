@@ -16,6 +16,18 @@ langolier-repo:
     - require:
       - sls: project
 
+/opt/project/langolier/smitelli.yml:
+  file.managed:
+    - source: salt://project/files/langolier/smitelli.yml
+    - template: jinja
+    - user: langolier
+    - group: langolier
+    - mode: 400
+    - show_changes: False
+    - require:
+      - git: langolier-repo
+      - user: langolier
+
 /var/opt/project/langolier:
   file.directory:
     - user: root
