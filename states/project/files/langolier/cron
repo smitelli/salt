@@ -6,3 +6,4 @@ CONFIG_BASE=/opt/project/langolier
 LOG_BASE=/var/log/project/langolier
 
 */15 * * * * langolier $SCRIPT_FILE --config $CONFIG_BASE/smitelli.yml >> $LOG_BASE/smitelli.log 2>&1
+*/15 * * * * langolier $SCRIPT_FILE --config $CONFIG_BASE/engrishsmitelli.yml >> $LOG_BASE/engrishsmitelli.log 2>&1

@@ -28,6 +28,18 @@ langolier-repo:
       - git: langolier-repo
       - user: langolier
 
+/opt/project/langolier/engrishsmitelli.yml:
+  file.managed:
+    - source: salt://project/files/langolier/engrishsmitelli.yml
+    - template: jinja
+    - user: langolier
+    - group: langolier
+    - mode: 400
+    - show_changes: False
+    - require:
+      - git: langolier-repo
+      - user: langolier
+
 /var/opt/project/langolier:
   file.directory:
     - user: root
