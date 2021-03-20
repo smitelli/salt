@@ -21,7 +21,6 @@ base:
     - user.root
     - user.ssmitelli
     - project.langolier
-    - project.sodasrv
     - project.sort_of_face
     - project.twitstash-smitelli  # Installs project.twanslationparty-engrishsmitelli
     - website.alala-smitelli-com

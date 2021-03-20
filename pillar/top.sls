@@ -6,7 +6,6 @@ base:
     - host.alala-smitelli-com
     - user.ssmitelli.private
     - user.ssmitelli.public
-    - project.sodasrv
     - project.sort_of_face
     - project.twanslationparty-engrishsmitelli
     - project.twitstash-smitelli
