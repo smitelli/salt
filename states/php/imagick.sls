@@ -1,0 +1,2 @@
+php-imagick:
+  pkg.latest

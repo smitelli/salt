@@ -9,9 +9,14 @@ include:
   - fail2ban
   - mariadb.server
   - php.cli
+  - php.curl
   - php.fpm
-  - php.gd
+  - php.imagick
+  - php.json
+  - php.mbstring
   - php.mysql
+  - php.xml
+  - php.zip
   - user.laurenedman-com
   - user.laurenedman-com.mysql
 
