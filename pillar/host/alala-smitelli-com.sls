@@ -21,6 +21,7 @@ logwatch:
   mail_to: logwatch@zcot.net
 
 nftables:
+  # NOTE: There is also a Linode firewall running here -- keep them in sync!
   allow_http: True
   allow_https: True
   allow_ping: True
