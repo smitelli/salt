@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/contrib-buster64"
+  config.vm.box = "debian/bullseye64"
   config.vm.post_up_message = nil
 
   config.vm.provider "virtualbox" do |vb|
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "salt" do |salt|
     salt.masterless = true
     salt.run_highstate = true
-    salt.bootstrap_options = "-X -x python3"
+    salt.bootstrap_options = "-X"
     salt.minion_config = "./states/salt/files/minion.conf"
 
     salt.colorize = true
