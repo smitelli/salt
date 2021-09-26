@@ -50,7 +50,7 @@ include:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - file: /opt/website/northernflickermusic.com
+      - file: /var/opt/website/northernflickermusic.com
       - pkg: nginx
 
 /etc/nginx/sites-enabled/northernflickermusic.com:
