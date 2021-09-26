@@ -18,6 +18,7 @@ base:
     - sshd
     - sysctl
     - timezone
+    - user.ledman
     - user.root
     - user.ssmitelli
     - project.langolier
