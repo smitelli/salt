@@ -1,3 +1,3 @@
 website:
   northernflickermusic-com:
-    enable_ssl: False
+    enable_ssl: True
