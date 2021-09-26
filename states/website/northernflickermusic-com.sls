@@ -16,8 +16,8 @@ include:
 
 /var/opt/website/northernflickermusic.com/public:
   file.directory:
-    - user: ssmitelli  # TODO
-    - group: ssmitelli  # TODO
+    - user: ledman
+    - group: ledman
     - dir_mode: 755
     - file_mode: 644
     - recurse:
@@ -26,7 +26,7 @@ include:
       - mode
     - require:
       - file: /var/opt/website/northernflickermusic.com
-      - user: ssmitelli  # TODO
+      - user: ledman
 
 /etc/awstats/awstats.northernflickermusic.com.conf:
   file.managed:

@@ -4,6 +4,7 @@ base:
 
   alala.smitelli.com:
     - host.alala-smitelli-com
+    - user.ledman.private
     - user.ssmitelli.private
     - user.ssmitelli.public
     - project.sort_of_face
