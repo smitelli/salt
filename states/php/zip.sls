@@ -1,2 +1,0 @@
-php-zip:
-  pkg.latest

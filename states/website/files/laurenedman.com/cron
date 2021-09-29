@@ -1,7 +1,0 @@
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
-SCRIPT_FILE=/var/opt/website/laurenedman.com/public/wp-cron.php
-LOG_FILE=/dev/null
-
-*/15 * * * * laurenedman-com php $SCRIPT_FILE >> $LOG_FILE 2>&1

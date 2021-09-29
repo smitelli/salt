@@ -1,2 +1,0 @@
-php-json:
-  pkg.latest
