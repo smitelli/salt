@@ -25,6 +25,7 @@ base:
     - project.sort_of_face
     - project.twitstash-smitelli  # Installs project.twanslationparty-engrishsmitelli
     - website.alala-smitelli-com
+    - website.cosmodoc-org
     - website.dotclockproductions-com
     - website.gallery-scottsmitelli-com
     - website.internetstapler-com

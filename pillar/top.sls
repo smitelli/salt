@@ -11,6 +11,7 @@ base:
     - project.twanslationparty-engrishsmitelli
     - project.twitstash-smitelli
     - website.alala-smitelli-com
+    - website.cosmodoc-org
     - website.dotclockproductions-com
     - website.gallery-scottsmitelli-com
     - website.internetstapler-com
