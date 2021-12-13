@@ -2,20 +2,40 @@
   salt['pillar.get']('nginx:enable_ssl', False) and
   salt['pillar.get']('website:cosmodoc-org:enable_ssl', False)
 ) %}
+{% set version = salt['pillar.get']('website:cosmodoc-org:hugo:version') %}
+{% set hash = salt['pillar.get']('website:cosmodoc-org:hugo:hash') %}
 
 include:
   - website
 
-/opt/website/cosmodoc.org:
-  file.recurse:
-    - source: salt://website/files/cosmodoc.org/webroot
+cosmodoc-repo:
+  git.latest:
+    - name: https://github.com/smitelli/cosmodoc.git
+    - branch: main
+    - rev: HEAD
+    - target: /opt/website/cosmodoc.org
+    - user: deploy
+    - require:
+      - sls: website
+
+cosmodoc-hugo:
+  archive.extracted:
+    - name: /opt/website/cosmodoc.org/bin
+    - source: https://github.com/gohugoio/hugo/releases/download/v{{ version }}/hugo_extended_{{ version }}_Linux-64bit.tar.gz
+    - source_hash: {{ hash | yaml_encode }}
     - clean: True
     - user: deploy
     - group: deploy
-    - dir_mode: 755
-    - file_mode: 644
     - require:
-      - sls: website
+      - git: cosmodoc-repo
+
+cosmodoc-build:
+  cmd.run:
+    - name: hugo --path-warnings --templateMetrics --baseURL https://cosmodoc.org
+    - cwd: /opt/website/cosmodoc.org/src
+    - runas: deploy
+    - onchanges:
+      - git: cosmodoc-repo
 
 /etc/awstats/awstats.cosmodoc.org.conf:
   file.managed:
