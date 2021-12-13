@@ -24,6 +24,7 @@ cosmodoc-hugo:
     - source: https://github.com/gohugoio/hugo/releases/download/v{{ version }}/hugo_extended_{{ version }}_Linux-64bit.tar.gz
     - source_hash: {{ hash | yaml_encode }}
     - clean: True
+    - enforce_toplevel: False
     - user: deploy
     - group: deploy
     - require:
