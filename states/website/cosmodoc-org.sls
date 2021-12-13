@@ -32,11 +32,14 @@ cosmodoc-hugo:
 
 cosmodoc-build:
   cmd.run:
-    - name: hugo --path-warnings --templateMetrics --baseURL https://cosmodoc.org
+    - name: >
+        git clean -fdx ../public;
+        /opt/website/cosmodoc.org/bin/hugo --path-warnings --templateMetrics --baseURL https://cosmodoc.org
     - cwd: /opt/website/cosmodoc.org/src
     - runas: deploy
     - onchanges:
       - git: cosmodoc-repo
+      - archive: cosmodoc-hugo
 
 /etc/awstats/awstats.cosmodoc.org.conf:
   file.managed:
