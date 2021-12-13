@@ -59,7 +59,7 @@ cosmodoc-build:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
 {% endif %}
-      - file: /opt/website/cosmodoc.org
+      - git: cosmodoc-repo
       - pkg: nginx
 
 /etc/nginx/sites-enabled/cosmodoc.org:

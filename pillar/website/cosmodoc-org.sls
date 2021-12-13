@@ -3,4 +3,4 @@ website:
     enable_ssl: True
     hugo:
       version: 0.90.1
-      hash: 45b1e4320b079b193acfda7bdc60421f1e920077
+      hash: 7368bda795172447795e5b0da58a4e731d3f8289
