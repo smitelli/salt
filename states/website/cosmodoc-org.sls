@@ -59,6 +59,7 @@ cosmodoc-build:
     - mode: 644
     - context:
       enable_ssl: {{ enable_ssl | yaml_encode }}
+      cache_max_age: 3d
     - require:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
