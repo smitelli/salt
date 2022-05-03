@@ -5,7 +5,7 @@ rsync:
 {% for f in ('/bin/rrsync', '/usr/bin/rrsync') %}
 {{ f | yaml_encode }}:
   file.managed:
-    - source: /usr/share/doc/rsync/scripts/rrsync
+    - source: /usr/share/rsync/scripts/rrsync
     - user: root
     - group: root
     - mode: 755

@@ -30,14 +30,15 @@ mariadb-tzinfo:
     - require:
       - service: mariadb
 
-root-db-user:
-  mysql_user.present:
-    - name: root
-    - host: localhost
-    - allow_passwordless: True
-    - unix_socket: True
-    - require:
-      - service: mariadb
+# TODO This is quite broken as of Salt 3004
+#root-db-user:
+#  mysql_user.present:
+#    - name: root
+#    - host: localhost
+#    - allow_passwordless: True
+#    - unix_socket: True
+#    - require:
+#      - service: mariadb
 
 /etc/mysql/mariadb.conf.d/99-local.cnf:
   file.managed:
