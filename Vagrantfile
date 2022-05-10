@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 1
-    vb.memory = 1024
+    vb.memory = 1536
   end
 
   config.vm.hostname = "dev-salt"
