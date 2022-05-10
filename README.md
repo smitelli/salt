@@ -20,7 +20,7 @@ sha256sum bootstrap-salt.sh
 # verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
 chmod +x bootstrap-salt.sh
 ./bootstrap-salt.sh -X -x python3 -F -c /tmp
-    
+
 mkdir -p /etc/salt/gpgkeys /srv/salt
 # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
 # install ./ into /srv/salt/
