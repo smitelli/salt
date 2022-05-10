@@ -10,36 +10,42 @@ Ye Olde Quicke Starte
 
 All the below commands assume the user is already root.
 
-    hostnamectl set-hostname hostname.fqdn.com
-    reboot
+```bash
+hostnamectl set-hostname hostname.fqdn.com
+reboot
 
-    cd $(mktemp -d)
-    wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.11.04/bootstrap-salt.sh
-    sha256sum bootstrap-salt.sh
-    # verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
-    chmod +x bootstrap-salt.sh
-    ./bootstrap-salt.sh -X -x python3 -F -c /tmp
-
-    mkdir -p /etc/salt/gpgkeys /srv/salt
-    # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
-    # install ./ into /srv/salt/
-    cp /srv/salt/states/salt/files/minion.conf /etc/salt/minion.d/00-minion.conf
-    salt-call --log-level=info --local state.apply
+cd $(mktemp -d)
+wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.11.04/bootstrap-salt.sh
+sha256sum bootstrap-salt.sh
+# verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
+chmod +x bootstrap-salt.sh
+./bootstrap-salt.sh -X -x python3 -F -c /tmp
+    
+mkdir -p /etc/salt/gpgkeys /srv/salt
+# install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
+# install ./ into /srv/salt/
+cp /srv/salt/states/salt/files/minion.conf /etc/salt/minion.d/00-minion.conf
+salt-call --log-level=info --local state.apply
+```
 
 ### Using the Vagrant environment:
 
-    vagrant up
+```bash
+vagrant up
+```
 
 That's really all there is to it. By default no interesting states/pillars are
 loaded, the GPG keys are missing, and the guest VM doesn't do anything useful.
 Presumably you know what you want to do and how to accomplish it.
 
-The `Vagrantfile` uses port 80 on the host for the guest's web server, which
-some OSes may not like.
+The Vagrantfile uses port 80 on the host for the guest's web server, which some
+host OSes may not like.
 
 ### Run states:
 
-    sudo salt-call --local state.apply
+```bash
+sudo salt-call --local state.apply
+```
 
 ### Meaningful data may be stored in any of the following locations:
 
@@ -52,7 +58,9 @@ some OSes may not like.
 
 ### Create a brand-new key pair (this requires redoing all the pillar encryption):
 
-    gpg --homedir /etc/salt/gpgkeys --gen-key
+```bash
+gpg --homedir /etc/salt/gpgkeys --gen-key
+```
 
 * Key type: RSA and RSA
 * Key size: 4096
@@ -64,19 +72,24 @@ some OSes may not like.
 
 ### Encode a secret (make *sure* you consider if you want or don't want `-n`):
 
-    echo -n 'SECRET' | sudo gpg --homedir /etc/salt/gpgkeys --armor --batch \
-        --trust-model always --encrypt -r salt@smitelli.com
+```bash
+echo -n 'SECRET' | sudo gpg --homedir /etc/salt/gpgkeys --armor --batch --trust-model always --encrypt -r salt@smitelli.com
+```
 
-### Create an `/etc/shadow` password hash:
+### Create an /etc/shadow password hash:
 
-    openssl passwd -1  # MD5
-    openssl passwd -6  # SHA-512
+```bash
+openssl passwd -1  # MD5
+openssl passwd -6  # SHA-512
+```
 
 ### Create SSH keypairs:
 
-    ssh-keygen -o -t ed25519 -f ...
-    ssh-keygen -o -t rsa -b 2048 -f ...
-    ssh-keygen -o -t ecdsa -b 521 -f ...
+```bash
+ssh-keygen -o -t ed25519 -f ...
+ssh-keygen -o -t rsa -b 2048 -f ...
+ssh-keygen -o -t ecdsa -b 521 -f ...
+```
 
 ### TODOs:
 
