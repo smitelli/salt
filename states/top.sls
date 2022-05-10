@@ -5,7 +5,6 @@ base:
     - salt.minion-conf
 
   alala.smitelli.com:
-    - exim4.zcot-net
     - fail2ban
     - linode-longview
     - logwatch

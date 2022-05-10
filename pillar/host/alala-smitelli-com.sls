@@ -25,7 +25,6 @@ nftables:
   allow_http: True
   allow_https: True
   allow_ping: True
-  allow_smtp: True
   allow_ssh: True
 
 nginx:
