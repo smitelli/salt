@@ -15,11 +15,8 @@ hostnamectl set-hostname hostname.fqdn.com
 reboot
 
 cd $(mktemp -d)
-wget -O bootstrap-salt.sh https://raw.githubusercontent.com/saltstack/salt-bootstrap/v2019.11.04/bootstrap-salt.sh
-sha256sum bootstrap-salt.sh
-# verify 905924fccd4ebf168d19ba598bf10af53efe02302b792aeb15433e73fd3ad1d2
-chmod +x bootstrap-salt.sh
-./bootstrap-salt.sh -X -x python3 -F -c /tmp
+curl -o bootstrap-salt.sh -L https://bootstrap.saltproject.io
+sh bootstrap-salt.sh -X -x python3 -F -c /tmp
 
 mkdir -p /etc/salt/gpgkeys /srv/salt
 # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/
