@@ -79,7 +79,7 @@ pics-scottsmitelli-com-repo:
       - pkg: libmariadb-dev-compat
       - pkg: python3-dev
       - pkg: python3-pip
-      - pkg: virtualenv  # python3 version
+      - pkg: python3-virtualenv
   pip.installed:
     - bin_env: /var/opt/website/pics.scottsmitelli.com/.virtualenv
     - editable: /opt/website/pics.scottsmitelli.com
