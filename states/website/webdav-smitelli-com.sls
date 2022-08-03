@@ -75,7 +75,7 @@ include:
     - group: root
     - mode: 644
     - require:
-      - cmd: fail2ban-install
+      - pkg: fail2ban
       - service: nginx
       - file: /etc/nginx/sites-enabled/webdav.smitelli.com
     - watch_in:
