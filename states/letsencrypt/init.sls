@@ -36,7 +36,7 @@ include:
     - require:
       - virtualenv: /opt/letsencrypt
 
-# This cron job takes the rather opinionated stance that the web server is
+# NOTE: This cron job takes the rather opinionated stance that the web server is
 # nginx, and that it is appropriate to completely stop/restart the service when
 # renewal time comes. This may need to change someday.
 /etc/cron.d/letsencrypt:

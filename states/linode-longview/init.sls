@@ -26,9 +26,9 @@ linode-longview:
       - service: linode-longview
 
 {% if longview_config.get('enable_mysql', False) %}
-# This is okay for the Debian socket-based auth; not sure about other distros
 /etc/linode/longview.d/MySQL.conf:
   file.managed:
+    # This is okay for the Debian socket-based auth; unsure about other distros
     - contents:
       - 'username root'
       - 'password ""'

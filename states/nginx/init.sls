@@ -64,7 +64,7 @@ nginx:
 {% if enable_ssl %}
 dhparam-pem:
   cmd.run:
-    # The longest this seems to take on a 4 GB Linode is about 15 minutes
+    # NOTE: The longest this seems to take on a 4 GB Linode is about 15 minutes
     - name: /usr/bin/openssl dhparam -out /etc/ssl/dhparam.pem 4096
     - creates: /etc/ssl/dhparam.pem
     - runas: root

@@ -4,6 +4,8 @@ website:
   gallery-scottsmitelli-com:
     enable_ssl: True
 
+    # NOTE:
+    #
     # Fresh Installation:
     #     `login_txt` must be any non-False value BEFORE starting the installer
     #     to avoid a white "Error" page. During the "Authenticate Me" step,

@@ -32,7 +32,7 @@ nginx:
 
 sshd:
   password_authentication: 'yes'
-  # Relaxed due to FreeNAS bug: https://redmine.ixsystems.com/issues/23872
+  # HACK: Relaxed due to FreeNAS bug: https://redmine.ixsystems.com/issues/23872
   # permit_root_login: forced-commands-only
   permit_root_login: prohibit-password
 
