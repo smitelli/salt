@@ -7,7 +7,7 @@ include:
   - website
   - acl
   - cron
-  - mariadb.dev-compat
+  - mariadb.dev
   - mariadb.server
   - perl.image-exiftool
   - python3.dev
@@ -76,7 +76,7 @@ pics-scottsmitelli-com-repo:
     - user: deploy
     - require:
       - file: /var/opt/website/pics.scottsmitelli.com/.virtualenv
-      - pkg: libmariadb-dev-compat
+      - pkg: libmariadb-dev
       - pkg: python3-dev
       - pkg: python3-pip
       - pkg: python3-virtualenv
