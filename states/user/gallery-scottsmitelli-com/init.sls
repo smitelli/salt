@@ -8,6 +8,6 @@ gallery-scottsmitelli-com:
     - fullname: gallery.scottsmitelli.com
     - home: /nonexistent
     - createhome: False
-    - shell: /bin/false
+    - shell: /usr/sbin/nologin
     - require:
       - group: gallery-scottsmitelli-com

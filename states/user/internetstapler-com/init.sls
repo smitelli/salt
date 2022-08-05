@@ -8,6 +8,6 @@ internetstapler-com:
     - fullname: internetstapler.com
     - home: /nonexistent
     - createhome: False
-    - shell: /bin/false
+    - shell: /usr/sbin/nologin
     - require:
       - group: internetstapler-com

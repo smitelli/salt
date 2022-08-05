@@ -27,39 +27,37 @@ nginx:
     - require:
       - pkg: nginx
 
-/etc/nginx/conf.d/charset.conf:
+{% for f in ('charset.conf', 'gzip.conf', 'open-file-cache.conf') %}
+/etc/nginx/conf.d/{{ f }}:
   file.managed:
-    - source: salt://nginx/files/charset.conf
+    - source: salt://nginx/files/{{ f }}
     - user: root
     - group: root
     - mode: 644
     - require:
       - pkg: nginx
+{% endfor %}
 
-/etc/nginx/conf.d/gzip.conf:
+{% for f in ('security-headers.conf', ) %}
+/etc/nginx/snippets/{{ f }}:
   file.managed:
-    - source: salt://nginx/files/gzip.conf
+    - source: salt://nginx/files/{{ f }}
     - user: root
     - group: root
     - mode: 644
     - require:
       - pkg: nginx
+{% endfor %}
 
-/etc/nginx/snippets/security-headers.conf:
-  file.managed:
-    - source: salt://nginx/files/security-headers.conf
-    - user: root
-    - group: root
-    - mode: 644
+nginx-logrotate-file-mode:
+  file.line:
+    - name: /etc/logrotate.d/nginx
+    - match: create 0640 www-data adm
+    - content: create 0644 www-data adm
+    - mode: replace
+    - indent: True
     - require:
       - pkg: nginx
-
-/etc/logrotate.d/nginx:
-  file.managed:
-    - source: salt://nginx/files/logrotate
-    - user: root
-    - group: root
-    - mode: 644
 
 {% if enable_ssl %}
 dhparam-pem:

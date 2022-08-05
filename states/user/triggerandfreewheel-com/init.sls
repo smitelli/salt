@@ -8,6 +8,6 @@ triggerandfreewheel-com:
     - fullname: triggerandfreewheel.com
     - home: /nonexistent
     - createhome: False
-    - shell: /bin/false
+    - shell: /usr/sbin/nologin
     - require:
       - group: triggerandfreewheel-com

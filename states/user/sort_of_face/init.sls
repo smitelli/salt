@@ -8,6 +8,6 @@ sort_of_face:
     - fullname: The sort of face
     - home: /nonexistent
     - createhome: False
-    - shell: /bin/false
+    - shell: /usr/sbin/nologin
     - require:
       - group: sort_of_face

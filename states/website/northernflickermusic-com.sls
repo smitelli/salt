@@ -8,8 +8,8 @@ include:
 
 /var/opt/website/northernflickermusic.com:
   file.directory:
-    - user: deploy
-    - group: deploy
+    - user: root
+    - group: root
     - mode: 755
     - require:
       - sls: website

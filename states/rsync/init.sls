@@ -1,7 +1,9 @@
 rsync:
   pkg.latest
 
-/bin/rrsync:
+# This should be installed by the package, but in Debian 10 (at least) it isn't!
+{% for f in ('/bin/rrsync', '/usr/bin/rrsync') %}
+{{ f | yaml_encode }}:
   file.managed:
     - source: /usr/share/doc/rsync/scripts/rrsync
     - user: root
@@ -9,12 +11,4 @@ rsync:
     - mode: 755
     - require:
       - pkg: rsync
-
-/usr/bin/rrsync:
-  file.managed:
-    - source: /usr/share/doc/rsync/scripts/rrsync
-    - user: root
-    - group: root
-    - mode: 755
-    - require:
-      - pkg: rsync
+{% endfor %}

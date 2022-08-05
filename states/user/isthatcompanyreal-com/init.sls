@@ -8,6 +8,6 @@ isthatcompanyreal-com:
     - fullname: isthatcompanyreal.com
     - home: /nonexistent
     - createhome: False
-    - shell: /bin/false
+    - shell: /usr/sbin/nologin
     - require:
       - group: isthatcompanyreal-com
