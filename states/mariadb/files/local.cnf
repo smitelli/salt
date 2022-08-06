@@ -2,7 +2,7 @@
 {%- set bpool_gb = bpool_mb / 1024 -%}
 {%- set bpool_instances = bpool_gb | round(0, 'ceil') -%}
 {%- set logfile_mb = bpool_mb / 8 -%}
-{%- set keybuf_mb = [grains['mem_total'] / 150, 8] | max -%}
+{%- set keybuf_mb = [grains['mem_total'] / 750, 5] | max -%}
 {%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
 
 [mysqld]
@@ -21,6 +21,7 @@ max_connections = {{ maxconn | round | int }}
 # General tuning
 #
 innodb_file_per_table = ON
+innodb_stats_on_metadata = OFF
 join_buffer_size = 1M
 performance_schema = ON
 query_cache_size = 0
