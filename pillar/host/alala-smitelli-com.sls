@@ -48,4 +48,4 @@ user:
   root:
     enable_ssh_auth_canyonero: True
   ssmitelli:
-    stow_packages: aliases bash colors editor git prompt tmux
+    stow_packages: aliases bash colors editor git htop prompt tmux
