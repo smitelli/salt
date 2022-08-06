@@ -11,7 +11,16 @@ mysqltuner-source:
     - group: root
 
 /usr/sbin/mysqltuner:
-  file.symlink:
-    - target: /usr/local/src/MySQLTuner-perl-{{ version }}/mysqltuner.pl
+  file.managed:
+    - contents: >
+      #!/usr/bin/sh
+      BASEDIR=/usr/local/src/MySQLTuner-perl-{{ version }}
+      $BASEDIR/mysqltuner.pl \
+      --passwordfile $BASEDIR/basic_passwords.txt \
+      --cvefile $BASEDIR/vulnerabilities.csv \
+      "$@"
+    - user: root
+    - group: root
+    - mode: 755
     - require:
       - archive: mysqltuner-source
