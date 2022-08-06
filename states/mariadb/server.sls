@@ -1,7 +1,9 @@
 include:
-  - myautodump2
   - python3.mysqldb
   - tzdata
+  # Opinionated defaults follow:
+  - myautodump2
+  - mysqltuner
 
 # Installs the maintainer-determined "best" version: 10.3 as of this writing
 mariadb-server:
