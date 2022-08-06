@@ -16,7 +16,6 @@ innodb_log_file_size = {{ logfile_mb | round | int }}M
 key_buffer_size = {{ keybuf_mb | round | int }}M
 max_connections = {{ maxconn | round | int }}
 
-
 #
 # General tuning
 #
