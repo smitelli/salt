@@ -12,13 +12,13 @@ mysqltuner-source:
 
 /usr/sbin/mysqltuner:
   file.managed:
-    - contents: >
-      #!/usr/bin/sh
-      BASEDIR=/usr/local/src/MySQLTuner-perl-{{ version }}
-      $BASEDIR/mysqltuner.pl \
-      --passwordfile $BASEDIR/basic_passwords.txt \
-      --cvefile $BASEDIR/vulnerabilities.csv \
-      "$@"
+    - contents: |
+        #!/usr/bin/sh
+        BASEDIR=/usr/local/src/MySQLTuner-perl-{{ version }}
+        $BASEDIR/mysqltuner.pl \
+          --passwordfile $BASEDIR/basic_passwords.txt \
+          --cvefile $BASEDIR/vulnerabilities.csv \
+          "$@"
     - user: root
     - group: root
     - mode: 755
