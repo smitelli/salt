@@ -20,6 +20,10 @@ imagemagick-6:
 logwatch:
   mail_to: logwatch@zcot.net
 
+mysqltuner:
+  version: 1.9.9
+  hash: 2a15b3256dd2f999430309b4d8d10814ced425d5
+
 nftables:
   # NOTE: There is also a Linode firewall running here -- keep them in sync!
   allow_http: True
