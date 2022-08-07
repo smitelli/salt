@@ -18,6 +18,8 @@ sshd_config-PasswordAuthentication:
     - repl: PasswordAuthentication {{ password_authentication }}
     - append_if_not_found: True
     - backup: False
+    # HACK https://github.com/saltstack/salt/issues/57584#issuecomment-984846776
+    - bufsize: file
     - require:
       - pkg: openssh-server
     - watch_in:
@@ -32,6 +34,8 @@ sshd_config-PermitRootLogin:
     - repl: PermitRootLogin {{ permit_root_login }}
     - append_if_not_found: True
     - backup: False
+    # HACK https://github.com/saltstack/salt/issues/57584#issuecomment-984846776
+    - bufsize: file
     - require:
       - pkg: openssh-server
     - watch_in:

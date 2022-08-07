@@ -105,7 +105,7 @@ triggerandfreewheel-com-repo:
     - group: root
     - mode: 644
     - require:
-      - cmd: fail2ban-install
+      - pkg: fail2ban
     - watch_in:
       - service: fail2ban
 

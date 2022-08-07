@@ -1,89 +1,23 @@
-{% set version = salt['pillar.get']('fail2ban:version') %}
-{% set hash = salt['pillar.get']('fail2ban:hash') %}
 {% set enable_exim_jail = salt['pillar.get']('fail2ban:enable_exim_jail', False) %}
 {% set enable_sshd_jail = salt['pillar.get']('fail2ban:enable_sshd_jail', False) %}
 
 include:
   - nftables
-  - python3.dev
-  - python3.pyinotify
-  - python3.systemd
 
 fail2ban:
+  pkg:
+    - latest
   service.running:
     - enable: True
     - watch:
-      - cmd: fail2ban-install
-      - file: /usr/lib/systemd/system/fail2ban.service
-      - file: /usr/lib/systemd/system/fail2ban.service.d/*
+      - pkg: fail2ban
     - require:
       - pkg: nftables
 
-fail2ban-source:
-  archive.extracted:
-    - name: /usr/local/src
-    - source: https://github.com/fail2ban/fail2ban/archive/{{ version }}.tar.gz
-    - source_hash: {{ hash | yaml_encode }}
-    - clean: True
-    - user: root
-    - group: root
-
-fail2ban-install:
-  cmd.run:
-    - name: /usr/bin/python3 setup.py install --force
-    - cwd: /usr/local/src/fail2ban-{{ version }}
-    - runas: root
-    - onchanges:
-      - archive: fail2ban-source
+/etc/fail2ban/jail.d/defaults-debian.conf:
+  file.absent:
     - require:
-      - pkg: python3-dev
-      - pkg: python3-pyinotify
-      - pkg: python3-systemd
-
-/etc/bash_completion.d/fail2ban:
-  file.managed:
-    - source: /usr/local/src/fail2ban-{{ version }}/files/bash-completion
-    - user: root
-    - group: root
-    - mode: 644
-    - require:
-      - cmd: fail2ban-install
-
-/usr/lib/tmpfiles.d/fail2ban.conf:
-  file.managed:
-    - source: /usr/local/src/fail2ban-{{ version }}/files/fail2ban-tmpfiles.conf
-    - user: root
-    - group: root
-    - mode: 644
-    - require:
-      - cmd: fail2ban-install
-
-/usr/lib/systemd/system/fail2ban.service:
-  file.managed:
-    - source: /usr/local/src/fail2ban-{{ version }}/build/fail2ban.service
-    - user: root
-    - group: root
-    - mode: 644
-    - require:
-      - cmd: fail2ban-install
-
-/usr/lib/systemd/system/fail2ban.service.d/stacksize.conf:
-  file.managed:
-    - source: salt://fail2ban/files/stacksize.conf
-    - user: root
-    - group: root
-    - mode: 644
-    - makedirs: True
-    - dir_mode: 755
-    - require:
-      - file: /usr/lib/systemd/system/fail2ban.service
-
-/etc/logrotate.d/fail2ban:
-  file.managed:
-    - source: salt://fail2ban/files/logrotate
-    - user: root
-    - group: root
-    - mode: 644
+      - pkg: fail2ban
 
 /etc/fail2ban/jail.d/default.conf:
   file.managed:
@@ -92,7 +26,7 @@ fail2ban-install:
     - group: root
     - mode: 644
     - require:
-      - cmd: fail2ban-install
+      - pkg: fail2ban
     - watch_in:
       - service: fail2ban
 
@@ -107,7 +41,7 @@ fail2ban-install:
   file.absent:
 {% endif %}
     - require:
-      - cmd: fail2ban-install
+      - pkg: fail2ban
     - watch_in:
       - service: fail2ban
 
@@ -122,6 +56,6 @@ fail2ban-install:
   file.absent:
 {% endif %}
     - require:
-      - cmd: fail2ban-install
+      - pkg: fail2ban
     - watch_in:
       - service: fail2ban

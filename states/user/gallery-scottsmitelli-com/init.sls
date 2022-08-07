@@ -1,9 +1,9 @@
 gallery-scottsmitelli-com:
   group.present:
-    - gid: 1110
+    - gid: 1108
 
   user.present:
-    - uid: 1110
+    - uid: 1108
     - gid: gallery-scottsmitelli-com
     - fullname: gallery.scottsmitelli.com
     - home: /nonexistent

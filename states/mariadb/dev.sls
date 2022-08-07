@@ -1,0 +1,2 @@
+libmariadb-dev:
+  pkg.latest

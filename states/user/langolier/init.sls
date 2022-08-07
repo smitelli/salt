@@ -1,9 +1,9 @@
 langolier:
   group.present:
-    - gid: 1111
+    - gid: 1109
 
   user.present:
-    - uid: 1111
+    - uid: 1109
     - gid: langolier
     - fullname: Langolier
     - home: /nonexistent

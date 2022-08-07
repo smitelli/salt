@@ -5,9 +5,9 @@ include:
   - myautodump2
   - mysqltuner
 
-# Installs the maintainer-determined "best" version: 10.3 as of this writing
 mariadb-server:
   pkg:
+    # Installs the maintainer-determined "best" version: 10.5 as of Aug 2022
     - latest
   service.running:
     - name: mariadb
@@ -30,14 +30,16 @@ mariadb-tzinfo:
     - require:
       - service: mariadb
 
-root-db-user:
-  mysql_user.present:
-    - name: root
-    - host: localhost
-    - allow_passwordless: True
-    - unix_socket: True
-    - require:
-      - service: mariadb
+# TODO This is quite broken as of Salt 3004
+# https://github.com/saltstack/salt/pull/62169
+#root-db-user:
+#  mysql_user.present:
+#    - name: root
+#    - host: localhost
+#    - allow_passwordless: True
+#    - unix_socket: True
+#    - require:
+#      - service: mariadb
 
 /etc/mysql/mariadb.conf.d/99-local.cnf:
   file.managed:

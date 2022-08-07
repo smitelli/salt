@@ -62,7 +62,7 @@ langolier-repo:
     - require:
       - file: /var/opt/project/langolier/.virtualenv
       - pkg: python3-pip
-      - pkg: virtualenv  # python3 version
+      - pkg: python3-virtualenv
   pip.installed:
     - bin_env: /var/opt/project/langolier/.virtualenv
     - editable: /opt/project/langolier

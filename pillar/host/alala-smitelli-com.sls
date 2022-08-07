@@ -8,8 +8,6 @@ etc:
     root: scott+root@smitelli.com
 
 fail2ban:
-  version: 0.11.2
-  hash: d22dacb74509c45ad77e0aafb123936b012e0825
   enable_exim_jail: True
   enable_sshd_jail: True
 
