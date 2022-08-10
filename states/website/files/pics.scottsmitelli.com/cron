@@ -1,10 +1,9 @@
+{%- set script_dir = '/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin' -%}
+{%- set log_file = '/var/log/website/pics.scottsmitelli.com/cron.log' -%}
+
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
 WINDOWBOX_CONFIG=/opt/website/pics.scottsmitelli.com/windowbox/configs/prod.py
 
-FETCH_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-fetch
-BARK_SCRIPT_FILE=/var/opt/website/pics.scottsmitelli.com/.virtualenv/bin/windowbox-bark
-LOG_FILE=/var/log/website/pics.scottsmitelli.com/cron.log
-
-* * * * * windowbox $FETCH_SCRIPT_FILE >> $LOG_FILE 2>&1; $BARK_SCRIPT_FILE >> $LOG_FILE 2>&1
+* * * * * windowbox ( {{ script_dir }}/windowbox-fetch; {{ script_dir }}/windowbox-bark ) >> {{ log_file }} 2>&1

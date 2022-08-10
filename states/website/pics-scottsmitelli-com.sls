@@ -143,6 +143,7 @@ pics-scottsmitelli-com-assets:
 /etc/cron.d/pics-scottsmitelli-com:
   file.managed:
     - source: salt://website/files/pics.scottsmitelli.com/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

@@ -30,6 +30,7 @@ awstats:
 /etc/cron.d/awstats:
   file.managed:
     - source: salt://awstats/files/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

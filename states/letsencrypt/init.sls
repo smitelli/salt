@@ -42,6 +42,7 @@ include:
 /etc/cron.d/letsencrypt:
   file.managed:
     - source: salt://letsencrypt/files/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

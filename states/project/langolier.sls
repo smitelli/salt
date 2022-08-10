@@ -84,9 +84,12 @@ langolier-repo:
 /etc/cron.d/langolier:
   file.managed:
     - source: salt://project/files/langolier/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644
+    - context:
+      enabled_configs: [smitelli, engrishsmitelli]
     - require:
       - pkg: cron
       - user: langolier
