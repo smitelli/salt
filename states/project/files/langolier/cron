@@ -7,4 +7,4 @@ LC_ALL=en_US.UTF-8
 
 {% for c in enabled_configs -%}
 0 * * * * langolier {{ script_file }} --config {{ config_dir }}/{{ c }}.yml >> {{ log_dir }}/{{ c }}.log 2>&1
-{% endfor -%}
+{% endfor %}
