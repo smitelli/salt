@@ -89,6 +89,7 @@ triggerandfreewheel-com-repo:
 /etc/cron.d/triggerandfreewheel-com:
   file.managed:
     - source: salt://website/files/triggerandfreewheel.com/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

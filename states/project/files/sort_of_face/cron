@@ -1,7 +1,7 @@
+{%- set script_file = '/opt/project/sort_of_face/cron.sh' -%}
+{%- set log_file = '/var/log/project/sort_of_face/cron.log' -%}
+
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-SCRIPT_FILE=/opt/project/sort_of_face/cron.sh
-LOG_FILE=/var/log/project/sort_of_face/cron.log
-
-*/30 * * * * sort_of_face $SCRIPT_FILE >> $LOG_FILE 2>&1
+*/30 * * * * sort_of_face {{ script_file }} >> {{ log_file }} 2>&1

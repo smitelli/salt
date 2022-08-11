@@ -1,9 +1,9 @@
+{%- set stash_script_file = '/opt/project/twitstash-smitelli/cron.sh' -%}
+{%- set stash_log_file = '/var/log/project/twitstash-smitelli/cron.log' -%}
+{%- set translate_script_file = '/opt/project/twanslationparty-engrishsmitelli/cron.sh' -%}
+{%- set translate_log_file = '/var/log/project/twanslationparty-engrishsmitelli/cron.log' -%}
+
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-STASH_SCRIPT_FILE=/opt/project/twitstash-smitelli/cron.sh
-STASH_LOG_FILE=/var/log/project/twitstash-smitelli/cron.log
-XLATE_SCRIPT_FILE=/opt/project/twanslationparty-engrishsmitelli/cron.sh
-XLATE_LOG_FILE=/var/log/project/twanslationparty-engrishsmitelli/cron.log
-
-* * * * * twitstash $STASH_SCRIPT_FILE >> $STASH_LOG_FILE 2>&1; $XLATE_SCRIPT_FILE >> $XLATE_LOG_FILE 2>&1
+* * * * * twitstash {{ stash_script_file }} >> {{ stash_log_file }} 2>&1; {{ translate_script_file }} >> {{ translate_log_file }} 2>&1

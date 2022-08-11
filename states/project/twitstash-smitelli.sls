@@ -44,6 +44,7 @@ twitstash-smitelli-repo:
 /etc/cron.d/twitstash-smitelli:
   file.managed:
     - source: salt://project/files/twitstash-smitelli/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

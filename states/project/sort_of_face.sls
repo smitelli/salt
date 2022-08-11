@@ -40,6 +40,7 @@ sort_of_face-repo:
 /etc/cron.d/sort_of_face:
   file.managed:
     - source: salt://project/files/sort_of_face/cron
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

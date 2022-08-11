@@ -3,6 +3,5 @@ LC_ALL=en_US.UTF-8
 
 GIT_DIR=/var/opt/website/webdav.smitelli.com/git-dir
 GIT_WORK_TREE=/var/opt/website/webdav.smitelli.com/private
-LOG_FILE=/dev/null
 
-*/5 * * * * root (git init; git add .; git commit -m "Autocommit $(date -Iseconds)") >> $LOG_FILE 2>&1
+*/5 * * * * root (git init; git add .; git commit -m "Autocommit $(date -Iseconds)") >> /dev/null 2>&1

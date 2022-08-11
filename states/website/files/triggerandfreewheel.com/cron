@@ -1,7 +1,7 @@
+{%- set script_file = '/opt/website/triggerandfreewheel.com/src/cron.php' -%}
+{%- set log_file = '/var/log/website/triggerandfreewheel.com/cron.log' -%}
+
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-SCRIPT_FILE=/opt/website/triggerandfreewheel.com/src/cron.php
-LOG_FILE=/var/log/website/triggerandfreewheel.com/cron.log
-
-*/5 * * * * triggerandfreewheel-com php $SCRIPT_FILE >> $LOG_FILE 2>&1
+*/5 * * * * triggerandfreewheel-com php {{ script_file }} >> {{ log_file }} 2>&1
