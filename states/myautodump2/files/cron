@@ -1,4 +1,1 @@
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
 0 8 * * * root /usr/local/bin/myautodump2 /var/lib/myautodump2

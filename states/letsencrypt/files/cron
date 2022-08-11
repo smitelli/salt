@@ -1,9 +1,6 @@
 {%- set pre_hook = '/usr/sbin/service nginx stop' -%}
 {%- set post_hook = '/usr/sbin/service nginx start' -%}
 
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
 # NOTE: Each certificate takes about 5 seconds to renew. Bear in mind that nginx
 # will be stopped for the entirety of the process.
  0 13  * * * root /usr/local/bin/certbot renew --quiet --pre-hook '{{ pre_hook }}' --post-hook '{{ post_hook }}'

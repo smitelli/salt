@@ -3,7 +3,4 @@
 {%- set translate_script_file = '/opt/project/twanslationparty-engrishsmitelli/cron.sh' -%}
 {%- set translate_log_file = '/var/log/project/twanslationparty-engrishsmitelli/cron.log' -%}
 
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
 * * * * * twitstash {{ stash_script_file }} >> {{ stash_log_file }} 2>&1; {{ translate_script_file }} >> {{ translate_log_file }} 2>&1
