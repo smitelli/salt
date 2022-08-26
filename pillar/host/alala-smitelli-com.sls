@@ -39,6 +39,7 @@ sshd:
   permit_root_login: prohibit-password
 
 sysctl:
+  fs.aio-max-nr: {{ 1 * 1024 * 1024 }}
   net.ipv4.conf.all.rp_filter: 1
   vm.swappiness: 0
 
