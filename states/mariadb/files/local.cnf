@@ -3,6 +3,7 @@
 {%- set joinbuf_mb = [grains['mem_total'] / 1000, 1] | max -%}
 {%- set keybuf_mb = [grains['mem_total'] / 750, 5] | max -%}
 {%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
+{%- set tmpsize_mb = [grains['mem_total'] / 192, 16] | max -%}
 
 [mysqld]
 
@@ -19,6 +20,8 @@ innodb_log_file_size = {{ logfile_mb | round | int }}M
 join_buffer_size = {{ joinbuf_mb | round | int }}M
 key_buffer_size = {{ keybuf_mb | round | int }}M
 max_connections = {{ maxconn | round | int }}
+max_heap_table_size = {{ tmpsize_mb | round | int }}M
+tmp_table_size = {{ tmpsize_mb | round | int }}M
 
 #
 # General tuning
