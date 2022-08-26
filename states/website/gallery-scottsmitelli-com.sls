@@ -160,7 +160,7 @@ gallery-scottsmitelli-com-db:
   mysql_database.present:
     - name: gallery-scottsmitelli
     - character_set: utf8mb4
-    - collate: utf8mb4_unicode_ci
+    - collate: utf8mb4_unicode_520_ci
     - require:
       - service: mariadb
 

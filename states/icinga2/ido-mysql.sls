@@ -29,7 +29,7 @@ icinga2-db:
   mysql_database.present:
     - name: icinga2
     - character_set: utf8mb4
-    - collate: utf8mb4_unicode_ci
+    - collate: utf8mb4_unicode_520_ci
     - require:
       - pkg: icinga2-ido-mysql
 
