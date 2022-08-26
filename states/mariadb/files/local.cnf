@@ -1,5 +1,6 @@
 {%- set bpool_mb = [grains['mem_total'] / 10, 512] | max -%}
 {%- set logfile_mb = bpool_mb / 4 -%}
+{%- set joinbuf_mb = [grains['mem_total'] / 200, 1] | max -%}
 {%- set keybuf_mb = [grains['mem_total'] / 750, 5] | max -%}
 {%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
 
@@ -13,6 +14,7 @@ slow_query_log_file = /var/log/mysql/mariadb-slow.log
 #
 innodb_buffer_pool_size = {{ bpool_mb | round | int }}M
 innodb_log_file_size = {{ logfile_mb | round | int }}M
+join_buffer_size = {{ joinbuf_mb | round | int }}M
 key_buffer_size = {{ keybuf_mb | round | int }}M
 max_connections = {{ maxconn | round | int }}
 
@@ -21,7 +23,6 @@ max_connections = {{ maxconn | round | int }}
 #
 innodb_file_per_table = ON
 innodb_stats_on_metadata = OFF
-join_buffer_size = 1M
 performance_schema = ON
 query_cache_size = 0
 query_cache_type = OFF
