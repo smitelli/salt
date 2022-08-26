@@ -13,7 +13,7 @@ UseFramesWhenCGI=0
 ShowDomainsStats=UVPHB
 ShowWormsStats=HBL
 
-# HACK: Prevent the default "awstats.conf" profile from erroring out
+# Prevent the default "awstats.conf" profile from erroring out
 SiteDomain="null"
 LogFile="/dev/null"
 

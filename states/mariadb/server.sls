@@ -30,7 +30,7 @@ mariadb-tzinfo:
     - require:
       - service: mariadb
 
-# TODO This is quite broken as of Salt 3004
+# HACK: This is quite broken as of Salt 3004
 # https://github.com/saltstack/salt/pull/62169
 #root-db-user:
 #  mysql_user.present:
