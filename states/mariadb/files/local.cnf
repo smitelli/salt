@@ -1,6 +1,6 @@
 {%- set bpool_mb = [grains['mem_total'] / 10, 512] | max -%}
 {%- set logfile_mb = bpool_mb / 4 -%}
-{%- set joinbuf_mb = [grains['mem_total'] / 200, 1] | max -%}
+{%- set joinbuf_mb = [grains['mem_total'] / 1000, 1] | max -%}
 {%- set keybuf_mb = [grains['mem_total'] / 750, 5] | max -%}
 {%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
 
