@@ -18,13 +18,13 @@ slow_query_log_file = /var/log/mysql/mariadb-slow.log
 #
 # Machine-specific tuning
 #
-innodb_buffer_pool_size = {{ bpool_mb | ceil }}M
-innodb_log_file_size = {{ logfile_mb | ceil }}M
-join_buffer_size = {{ joinbuf_kb | ceil }}K
-key_buffer_size = {{ keybuf_mb | ceil }}M
-max_connections = {{ maxconn | ceil }}
-max_heap_table_size = {{ tablesize_mb | ceil }}M
-tmp_table_size = {{ tablesize_mb | ceil }}M
+innodb_buffer_pool_size = {{ bpool_mb | round(method='ceil') | int }}M
+innodb_log_file_size = {{ logfile_mb | round(method='ceil') | int }}M
+join_buffer_size = {{ joinbuf_kb | round(method='ceil') | int }}K
+key_buffer_size = {{ keybuf_mb | round(method='ceil') | int }}M
+max_connections = {{ maxconn | round(method='ceil') | int }}
+max_heap_table_size = {{ tablesize_mb | round(method='ceil') | int }}M
+tmp_table_size = {{ tablesize_mb | round(method='ceil') | int }}M
 
 #
 # General tuning
