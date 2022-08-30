@@ -1,12 +1,15 @@
-{%- set bpool_mb = [grains['mem_total'] / 10, 512] | max -%}
+{%- set bpool_mb = grains['mem_total'] / 8 -%}
 {%- set logfile_mb = bpool_mb / 4 -%}
-{%- set joinbuf_mb = [grains['mem_total'] / 1000, 1] | max -%}
-{%- set keybuf_mb = [grains['mem_total'] / 750, 5] | max -%}
-{%- set maxconn = [grains['mem_total'] / 100, 5] | max -%}
-{%- set tmpsize_mb = [grains['mem_total'] / 192, 16] | max -%}
+{%- set joinbuf_kb = grains['mem_total'] / 16 -%}
+{%- set keybuf_mb = grains['mem_total'] / 64 -%}
+{%- set maxconn = grains['mem_total'] / 100 -%}
+{%- set tablesize_mb = grains['mem_total'] / 128 -%}
 
 [mysqld]
 
+#
+# Logging
+#
 log_error = /var/log/mysql/error.log
 long_query_time = 1
 slow_query_log = ON
@@ -15,13 +18,13 @@ slow_query_log_file = /var/log/mysql/mariadb-slow.log
 #
 # Machine-specific tuning
 #
-innodb_buffer_pool_size = {{ bpool_mb | round | int }}M
-innodb_log_file_size = {{ logfile_mb | round | int }}M
-join_buffer_size = {{ joinbuf_mb | round | int }}M
-key_buffer_size = {{ keybuf_mb | round | int }}M
-max_connections = {{ maxconn | round | int }}
-max_heap_table_size = {{ tmpsize_mb | round | int }}M
-tmp_table_size = {{ tmpsize_mb | round | int }}M
+innodb_buffer_pool_size = {{ bpool_mb | ceil }}M
+innodb_log_file_size = {{ logfile_mb | ceil }}M
+join_buffer_size = {{ joinbuf_kb | ceil }}K
+key_buffer_size = {{ keybuf_mb | ceil }}M
+max_connections = {{ maxconn | ceil }}
+max_heap_table_size = {{ tablesize_mb | ceil }}M
+tmp_table_size = {{ tablesize_mb | ceil }}M
 
 #
 # General tuning
