@@ -5,7 +5,7 @@ include:
 
 etc:
   aliases:
-    root: scott+root@smitelli.com
+    root: alala.root@zcot.net
 
 fail2ban:
   enable_exim_jail: True
@@ -14,6 +14,9 @@ fail2ban:
 imagemagick-6:
   policy_width: 25KP
   policy_height: 25KP
+
+letsencrypt:
+  email: letsencrypt@zcot.net
 
 logwatch:
   mail_to: logwatch@zcot.net

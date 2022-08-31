@@ -12,6 +12,7 @@ include:
 /etc/letsencrypt/cli.ini:
   file.managed:
     - source: salt://letsencrypt/files/cli.ini
+    - template: jinja
     - user: root
     - group: root
     - mode: 644
