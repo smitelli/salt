@@ -34,7 +34,7 @@ cosmodoc-build:
   cmd.run:
     - name: >
         git clean -fdx ../public;
-        /opt/website/cosmodoc.org/bin/hugo --path-warnings --templateMetrics --baseURL https://cosmodoc.org
+        /opt/website/cosmodoc.org/bin/hugo --printPathWarnings --printUnusedTemplates --templateMetrics --baseURL https://cosmodoc.org
     - cwd: /opt/website/cosmodoc.org/src
     - runas: deploy
     - onchanges:
