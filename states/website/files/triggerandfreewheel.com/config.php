@@ -41,11 +41,14 @@
     // List of users who are allowed into the admin panel
 {{ salt['pillar.get']('website:triggerandfreewheel-com:user_list') }}
 
+    // Enable all Twitter posting functionality globally
+    public $enable_twitter = FALSE;
+
     // Read/write credentials for a Twitter account
-    public $consumer_key        = "{{ salt['pillar.get']('twitterapi:smitelli:consumer_key') }}";
-    public $consumer_secret     = "{{ salt['pillar.get']('twitterapi:smitelli:consumer_secret') }}";
-    public $access_token        = "{{ salt['pillar.get']('twitterapi:smitelli:access_token') }}";
-    public $access_token_secret = "{{ salt['pillar.get']('twitterapi:smitelli:access_token_secret') }}";
+    public $consumer_key        = '__FILL ME IN__';
+    public $consumer_secret     = '__FILL ME IN__';
+    public $access_token        = '__FILL ME IN__';
+    public $access_token_secret = '__FILL ME IN__';
 
     public function __construct($base_dir) {
       // Determine the app's real root during instantiation

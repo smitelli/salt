@@ -1,8 +1,0 @@
-/var/log/project/twanslationparty-engrishsmitelli/*.log {
-    weekly
-    rotate 52
-    copytruncate
-    compress
-    notifempty
-    missingok
-}

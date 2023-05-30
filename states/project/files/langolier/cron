@@ -1,7 +1,0 @@
-{%- set script_file = '/var/opt/project/langolier/.virtualenv/bin/langolier' -%}
-{%- set config_dir = '/opt/project/langolier' -%}
-{%- set log_dir = '/var/log/project/langolier' -%}
-
-{% for c in enabled_configs -%}
-0 * * * * langolier {{ script_file }} --config {{ config_dir }}/{{ c }}.yml >> {{ log_dir }}/{{ c }}.log 2>&1
-{% endfor %}

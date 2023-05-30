@@ -8,8 +8,6 @@ base:
     - user.ssmitelli.private
     - user.ssmitelli.public
     - project.sort_of_face
-    - project.twanslationparty-engrishsmitelli
-    - project.twitstash-smitelli
     - website.alala-smitelli-com
     - website.cosmodoc-org
     - website.dotclockproductions-com

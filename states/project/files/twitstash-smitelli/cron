@@ -1,6 +1,0 @@
-{%- set stash_script_file = '/opt/project/twitstash-smitelli/cron.sh' -%}
-{%- set stash_log_file = '/var/log/project/twitstash-smitelli/cron.log' -%}
-{%- set translate_script_file = '/opt/project/twanslationparty-engrishsmitelli/cron.sh' -%}
-{%- set translate_log_file = '/var/log/project/twanslationparty-engrishsmitelli/cron.log' -%}
-
-* * * * * twitstash {{ stash_script_file }} >> {{ stash_log_file }} 2>&1; {{ translate_script_file }} >> {{ translate_log_file }} 2>&1

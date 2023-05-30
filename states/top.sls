@@ -22,9 +22,7 @@ base:
     - user.ledman
     - user.root
     - user.ssmitelli
-    - project.langolier
     - project.sort_of_face
-    - project.twitstash-smitelli  # Installs project.twanslationparty-engrishsmitelli
     - website.alala-smitelli-com
     - website.cosmodoc-org
     - website.dotclockproductions-com

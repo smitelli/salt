@@ -2,7 +2,6 @@
 
 include:
   - googleapi.maps_windowbox
-  - twitterapi.smitelli
 
 website:
   pics-scottsmitelli-com:

@@ -1,8 +1,5 @@
 #!yaml|gpg
 
-include:
-  - twitterapi.smitelli
-
 website:
   triggerandfreewheel-com:
     enable_ssl: True
