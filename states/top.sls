@@ -22,7 +22,6 @@ base:
     - user.ledman
     - user.root
     - user.ssmitelli
-    - project.sort_of_face
     - website.alala-smitelli-com
     - website.cosmodoc-org
     - website.dotclockproductions-com

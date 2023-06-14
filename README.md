@@ -54,7 +54,6 @@ sudo salt-call --local state.apply
 * /var/lib/awstats
 * /var/lib/myautodump2
 * /var/lib/mysql
-* /var/opt/project
 * /var/opt/website
 
 ### Create a brand-new key pair (this requires redoing all the pillar encryption):
@@ -96,7 +95,7 @@ ssh-keygen -o -t ecdsa -b 521 -f ...
 
 * Content-Security-Policy and Feature-Policy for each website
 * Go through EVERY SINGLE include and requisite to make sure states are atomic
-* Check that each project/website works in isolation
+* Check that each website works in isolation
 * icinga2: https://blog.sleeplessbeastie.eu/2018/01/15/how-to-install-icinga2-and-icingaweb2/
 * ...or NetData: https://www.netdata.cloud/
 * gallery throws deprecation warnings on install

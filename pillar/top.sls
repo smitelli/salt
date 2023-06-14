@@ -7,7 +7,6 @@ base:
     - user.ledman.private
     - user.ssmitelli.private
     - user.ssmitelli.public
-    - project.sort_of_face
     - website.alala-smitelli-com
     - website.cosmodoc-org
     - website.dotclockproductions-com
