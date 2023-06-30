@@ -100,3 +100,9 @@ ssh-keygen -o -t ecdsa -b 521 -f ...
 * ...or NetData: https://www.netdata.cloud/
 * gallery throws deprecation warnings on install
 * TnF smarty version has a deprecation warning
+
+**For Debian 12 "Bookworm"**
+
+* longview repo, mysqltuner raises SSL dep warning
+* longview doesn't start with a garbage API key
+* verify rrsync still works

@@ -1,7 +1,7 @@
 # NOTE: The php-fpm service will not start unless some other state writes
 # a pool configuration into pool.d. In isolation, this SLS will fail to start.
 
-{% set php_version = '7.4' %}
+{% set php_version = '8.2' %}
 
 php-fpm:
   pkg:
