@@ -4,7 +4,6 @@ SQLALCHEMY_DATABASE_URI = 'mysql:///windowbox-scottsmitelli?unix_socket=/run/mys
 
 ATTACHMENTS_PATH = '/var/opt/website/pics.scottsmitelli.com/attachments'
 DERIVATIVES_PATH = '/var/opt/website/pics.scottsmitelli.com/derivatives'
-BARK_SERVER_NAME = 'pics.scottsmitelli.com'
 USE_X_ACCEL_REDIRECT = True
 
 GOOGLE_MAPS_API_KEY = "{{ salt['pillar.get']('googleapi:maps_windowbox:api_key') }}"
