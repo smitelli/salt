@@ -8,7 +8,7 @@ ledman:
     - password: {{ salt['pillar.get']('user:ledman:private:password', '!') | yaml_encode }}
     - fullname: Lauren Edman
     - home: /home/ledman
-    - shell: /usr/sbin/nologin
+    - shell: /bin/bash
     - require:
       - group: ledman
 
