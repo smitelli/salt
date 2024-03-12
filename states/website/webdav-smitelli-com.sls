@@ -14,8 +14,8 @@ include:
     - user: deploy
     - group: deploy
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website
 
 /opt/website/webdav.smitelli.com/.htpasswd:
   file.managed:
@@ -31,8 +31,8 @@ include:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website
 
 /var/opt/website/webdav.smitelli.com/git-dir:
   file.directory:
