@@ -16,6 +16,6 @@ website-require-dummy:
       - sls: letsencrypt
       # Be careful; requiring the nginx service invokes recursion (due to the
       # watches on sites-available and sites-enabled) and it's not clear why.
-      - pkg: nginx
+      #- pkg: nginx
       - sls: opt.website
       - sls: user.deploy
