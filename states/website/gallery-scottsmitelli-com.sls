@@ -27,8 +27,8 @@ include:
     - user: deploy
     - group: deploy
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 gallery-scottsmitelli-com-repo:
   git.latest:
@@ -99,8 +99,8 @@ gallery-scottsmitelli-com-repo:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /var/opt/website/gallery.scottsmitelli.com/g2data:
   file.directory:

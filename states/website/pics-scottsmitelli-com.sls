@@ -25,8 +25,8 @@ pics-scottsmitelli-com-repo:
     - rev: HEAD
     - target: /opt/website/pics.scottsmitelli.com
     - user: deploy
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 # Ensure app has the ability to build its own static files
 /opt/website/pics.scottsmitelli.com/windowbox/static:
@@ -58,8 +58,8 @@ pics-scottsmitelli-com-repo:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /var/opt/website/pics.scottsmitelli.com/.virtualenv:
   file.directory:

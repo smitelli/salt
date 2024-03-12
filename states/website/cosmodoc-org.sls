@@ -15,8 +15,8 @@ cosmodoc-repo:
     - rev: HEAD
     - target: /opt/website/cosmodoc.org
     - user: deploy
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 cosmodoc-hugo:
   archive.extracted:

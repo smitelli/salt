@@ -15,7 +15,7 @@ include:
     - group: deploy
     - mode: 755
     #- require:
-    #  - sls: website
+    #  - sls: website TODO huh?
 
 /opt/website/webdav.smitelli.com/.htpasswd:
   file.managed:
@@ -32,7 +32,7 @@ include:
     - group: root
     - mode: 755
     #- require:
-    #  - sls: website
+    #  - sls: website TODO huh?
 
 /var/opt/website/webdav.smitelli.com/git-dir:
   file.directory:

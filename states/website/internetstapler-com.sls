@@ -15,8 +15,8 @@ internetstapler-com-repo:
     - rev: HEAD
     - target: /opt/website/internetstapler.com
     - user: deploy
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /etc/awstats/awstats.internetstapler.com.conf:
   file.managed:

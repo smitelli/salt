@@ -22,8 +22,8 @@ triggerandfreewheel-com-repo:
     - rev: HEAD
     - target: /opt/website/triggerandfreewheel.com
     - user: deploy
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /opt/website/triggerandfreewheel.com/src/classes/class.Config.php:
   file.managed:
@@ -42,8 +42,8 @@ triggerandfreewheel-com-repo:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /var/opt/website/triggerandfreewheel.com/compile:
   file.directory:

@@ -17,16 +17,16 @@ scottsmitelli-com-repo:
     - submodules: True
     - target: /opt/website/scottsmitelli.com
     - user: deploy
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /var/opt/website/scottsmitelli.com:
   file.directory:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: website
+    #- require:
+    #  - sls: website TODO huh?
 
 /var/opt/website/scottsmitelli.com/compile:
   file.directory:
