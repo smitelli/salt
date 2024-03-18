@@ -39,7 +39,7 @@ scottfiles-repo:
     - target: /home/ssmitelli/.scottfiles
     - user: ssmitelli
     - require:
-      - sls: git
+      - pkg: git
       - user: ssmitelli
 
 {% if stow_packages %}

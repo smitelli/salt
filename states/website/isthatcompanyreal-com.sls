@@ -16,8 +16,9 @@ isthatcompanyreal-com-repo:
     - rev: HEAD
     - target: /opt/website/isthatcompanyreal.com
     - user: deploy
-    #- require:
-    #  - sls: website TODO huh?
+    - require:
+      - file: /opt/website
+      - acl: /opt/website
 
 /opt/website/isthatcompanyreal.com/build.sh:
   cmd.run:

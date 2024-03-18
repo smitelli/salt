@@ -14,8 +14,9 @@ include:
     - group: deploy
     - dir_mode: 755
     - file_mode: 644
-    #- require:
-    #  - sls: website TODO huh?
+    - require:
+      - file: /opt/website
+      - acl: /opt/website
 
 /etc/awstats/awstats.alala.smitelli.com.conf:
   file.managed:

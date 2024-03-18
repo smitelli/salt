@@ -11,8 +11,8 @@ include:
     - user: root
     - group: root
     - mode: 755
-    #- require:
-    #  - sls: website TODO huh?
+    - require:
+      - file: /var/opt/website
 
 /var/opt/website/northernflickermusic.com/public:
   file.directory:
