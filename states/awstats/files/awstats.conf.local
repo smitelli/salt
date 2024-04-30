@@ -21,4 +21,5 @@ LoadPlugin="tooltips"
 LoadPlugin="decodeutfkeys"
 LoadPlugin="ipv6"
 LoadPlugin="hostinfo"
-LoadPlugin="graphgooglechartapi"
+# As of April 2024, the Google URLs used by this plugin return 404
+#LoadPlugin="graphgooglechartapi"
