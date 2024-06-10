@@ -1,4 +1,5 @@
 {% set enable_exim_jail = salt['pillar.get']('fail2ban:enable_exim_jail', False) %}
+{% set enable_http_nuke_jail = salt['pillar.get']('fail2ban:enable_http_nuke_jail', False) %}
 {% set enable_sshd_jail = salt['pillar.get']('fail2ban:enable_sshd_jail', False) %}
 
 include:
@@ -34,6 +35,21 @@ fail2ban:
 {% if enable_exim_jail %}
   file.managed:
     - source: salt://fail2ban/files/exim.conf
+    - user: root
+    - group: root
+    - mode: 644
+{% else %}
+  file.absent:
+{% endif %}
+    - require:
+      - pkg: fail2ban
+    - watch_in:
+      - service: fail2ban
+
+/etc/fail2ban/jail.d/http-nuke.conf:
+{% if enable_http_nuke_jail %}
+  file.managed:
+    - source: salt://fail2ban/files/http-nuke.conf
     - user: root
     - group: root
     - mode: 644

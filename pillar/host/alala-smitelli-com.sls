@@ -9,6 +9,7 @@ etc:
 
 fail2ban:
   enable_exim_jail: True
+  enable_http_nuke_jail: True
   enable_sshd_jail: True
 
 imagemagick-6:
