@@ -2,41 +2,46 @@
   salt['pillar.get']('nginx:enable_ssl', False) and
   salt['pillar.get']('website:scottsmitelli-com:enable_ssl', False)
 ) %}
+{% set version = salt['pillar.get']('website:scottsmitelli-com:hugo:version') %}
+{% set hash = salt['pillar.get']('website:scottsmitelli-com:hugo:hash') %}
 
 include:
   - website
-  - php.fpm
-  - php.tidy
-  - user.scottsmitelli-com
 
 scottsmitelli-com-repo:
   git.latest:
     - name: https://github.com/smitelli/scottsmitelli.com.git
     - branch: master
     - rev: HEAD
-    - submodules: True
     - target: /opt/website/scottsmitelli.com
     - user: deploy
     - require:
       - file: /opt/website
       - acl: /opt/website
 
-/var/opt/website/scottsmitelli.com:
-  file.directory:
-    - user: root
-    - group: root
-    - mode: 755
+scottsmitelli-com-hugo:
+  archive.extracted:
+    - name: /opt/website/scottsmitelli.com/bin
+    - source: https://github.com/gohugoio/hugo/releases/download/v{{ version }}/hugo_extended_{{ version }}_Linux-64bit.tar.gz
+    - source_hash: {{ hash | yaml_encode }}
+    - clean: True
+    - enforce_toplevel: False
+    - user: deploy
+    - group: deploy
     - require:
-      - file: /var/opt/website
+      - git: scottsmitelli-com-repo
 
-/var/opt/website/scottsmitelli.com/compile:
-  file.directory:
-    - user: scottsmitelli-com
-    - group: scottsmitelli-com
-    - mode: 755
-    - require:
-      - file: /var/opt/website/scottsmitelli.com
-      - user: scottsmitelli-com
+scottsmitelli-com-build:
+  cmd.run:
+    - name: >
+        git clean -fdx ../public;
+        rm -rf /home/deploy/.cache/hugo_cache;
+        /opt/website/scottsmitelli.com/bin/hugo --printPathWarnings --printUnusedTemplates --templateMetrics --baseURL https://www.scottsmitelli.com
+    - cwd: /opt/website/scottsmitelli.com/src
+    - runas: deploy
+    - onchanges:
+      - git: scottsmitelli-com-repo
+      - archive: scottsmitelli-com-hugo
 
 /etc/awstats/awstats.scottsmitelli.com.conf:
   file.managed:
@@ -56,6 +61,7 @@ scottsmitelli-com-repo:
     - mode: 644
     - context:
       enable_ssl: {{ enable_ssl | yaml_encode }}
+      cache_max_age: 4M
     - require:
 {% if enable_ssl %}
       - file: /etc/nginx/conf.d/ssl.conf
@@ -68,20 +74,6 @@ scottsmitelli-com-repo:
     - target: /etc/nginx/sites-available/scottsmitelli.com
     - require:
       - file: /etc/nginx/sites-available/scottsmitelli.com
-
-/etc/php/current/fpm/pool.d/scottsmitelli.com.conf:
-  file.managed:
-    - source: salt://website/files/scottsmitelli.com/fpm.conf
-    - user: root
-    - group: root
-    - mode: 644
-    - require:
-      - pkg: php-fpm
-      - file: /etc/php/current
-      - git: scottsmitelli-com-repo
-      - user: scottsmitelli-com
-    - require_in:
-      - service: php-fpm
 
 {% if enable_ssl %}
 scottsmitelli-com-letsencrypt:
