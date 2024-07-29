@@ -88,7 +88,7 @@ gallery-scottsmitelli-com-repo:
   file.managed:
     - contents:
       - 'User-agent: *'
-      - 'Disallow:'
+      - 'Disallow: /'
     - user: deploy
     - group: deploy
     - mode: 644
