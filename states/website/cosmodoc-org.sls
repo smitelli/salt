@@ -11,7 +11,7 @@ include:
 cosmodoc-repo:
   git.latest:
     - name: https://github.com/smitelli/cosmodoc.git
-    - branch: main
+    - branch: master
     - rev: HEAD
     - target: /opt/website/cosmodoc.org
     - user: deploy
