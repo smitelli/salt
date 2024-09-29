@@ -49,6 +49,7 @@ scottfiles-stow:
         {% if 'bash' in stow_packages -%}
         rm ../{.bash_logout,.bashrc};
         {%- endif %}
+        mkdir -p ../.config
         stow -R {{ stow_packages }}
     - cwd: /home/ssmitelli/.scottfiles
     - runas: ssmitelli
