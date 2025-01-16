@@ -14,6 +14,7 @@ isthatcompanyreal-com-repo:
     - name: https://github.com/smitelli/isthatcompanyreal.com.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/isthatcompanyreal.com
     - user: deploy
     - require:

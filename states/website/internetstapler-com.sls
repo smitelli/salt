@@ -13,6 +13,7 @@ internetstapler-com-repo:
     - name: https://github.com/smitelli/internetstapler.com.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/internetstapler.com
     - user: deploy
     - require:

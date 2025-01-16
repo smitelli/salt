@@ -23,6 +23,7 @@ pics-scottsmitelli-com-repo:
     - name: https://github.com/smitelli/windowbox.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/pics.scottsmitelli.com
     - user: deploy
     - require:

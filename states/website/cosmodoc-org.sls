@@ -13,6 +13,7 @@ cosmodoc-repo:
     - name: https://github.com/smitelli/cosmodoc.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/cosmodoc.org
     - user: deploy
     - require:

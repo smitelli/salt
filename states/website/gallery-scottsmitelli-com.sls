@@ -36,6 +36,7 @@ gallery-scottsmitelli-com-repo:
     - name: https://github.com/smitelli/gallery2.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/gallery.scottsmitelli.com/public
     - user: deploy
     - require:

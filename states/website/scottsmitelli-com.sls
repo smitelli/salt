@@ -13,6 +13,7 @@ scottsmitelli-com-repo:
     - name: https://github.com/smitelli/scottsmitelli.com.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/scottsmitelli.com
     - user: deploy
     - require:

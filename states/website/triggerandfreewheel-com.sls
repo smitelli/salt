@@ -20,6 +20,7 @@ triggerandfreewheel-com-repo:
     - name: https://github.com/smitelli/triggerandfreewheel.com.git
     - branch: master
     - rev: HEAD
+    - force_fetch: True
     - target: /opt/website/triggerandfreewheel.com
     - user: deploy
     - require:
