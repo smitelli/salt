@@ -1,4 +1,4 @@
 {%- set script_file = '/usr/share/awstats/tools/update.sh' -%}
 {%- set log_file = '/var/log/awstats/update.log' -%}
 
-*/15 * * * * www-data {{ script_file }} >> {{ log_file }} 2>&1
+*/30 * * * * www-data {{ script_file }} >> {{ log_file }} 2>&1
