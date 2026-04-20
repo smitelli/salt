@@ -90,6 +90,9 @@ gallery-scottsmitelli-com-repo:
     - contents:
       - 'User-agent: *'
       - 'Disallow: /'
+      - ''
+      - 'User-agent: meta-externalagent'
+      - 'Disallow: /'
     - user: deploy
     - group: deploy
     - mode: 644
