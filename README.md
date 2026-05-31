@@ -20,7 +20,7 @@ sh bootstrap-salt.sh -X -F -c /tmp
 
 # https://github.com/saltstack/salt-bootstrap/issues/1933
 apt-get install build-essential libmariadb-dev
-salt-pip install mysqlclient
+salt-pip install mysqlclient saltext-mysql
 
 mkdir -p /etc/salt/gpgkeys /srv/salt
 # install {pub,sec}ring.gpg into /etc/salt/gpgkeys/

@@ -5,7 +5,6 @@
 
 include:
   - website
-  - apache2.utils
   - cron
   - fail2ban
 
@@ -20,10 +19,11 @@ include:
 
 /opt/website/webdav.smitelli.com/.htpasswd:
   file.managed:
-    - replace: False
+    - contents_pillar: website:webdav-smitelli-com:htpasswd_content
     - user: www-data
     - group: www-data
     - mode: 400
+    - show_changes: False
     - require:
       - file: /opt/website/webdav.smitelli.com
 
@@ -103,17 +103,6 @@ include:
     - target: /etc/nginx/sites-available/webdav.smitelli.com
     - require:
       - file: /etc/nginx/sites-available/webdav.smitelli.com
-
-webdav-smitelli-com-htpasswd:
-  webutil.user_exists:
-    - htpasswd_file: /opt/website/webdav.smitelli.com/.htpasswd
-    - name: {{ salt['pillar.get']('website:webdav-smitelli-com:htaccess_user') | yaml_encode }}
-    - password: {{ salt['pillar.get']('website:webdav-smitelli-com:htaccess_password') | yaml_encode }}
-    - options: m
-    - update: True
-    - require:
-      - pkg: apache2-utils
-      - file: /opt/website/webdav.smitelli.com/.htpasswd
 
 {% if enable_ssl %}
 webdav-smitelli-com-letsencrypt:
