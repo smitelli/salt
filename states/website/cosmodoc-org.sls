@@ -2,8 +2,6 @@
   salt['pillar.get']('nginx:enable_ssl', False) and
   salt['pillar.get']('website:cosmodoc-org:enable_ssl', False)
 ) %}
-{% set version = salt['pillar.get']('website:cosmodoc-org:hugo:version') %}
-{% set hash = salt['pillar.get']('website:cosmodoc-org:hugo:hash') %}
 
 include:
   - website
@@ -20,10 +18,26 @@ cosmodoc-repo:
       - file: /opt/website
       - acl: /opt/website
 
+{% set version = salt['pillar.get']('website:cosmodoc-org:hugo:version') %}
+{% set hash = salt['pillar.get']('website:cosmodoc-org:hugo:hash') %}
 cosmodoc-hugo:
   archive.extracted:
     - name: /opt/website/cosmodoc.org/bin
     - source: https://github.com/gohugoio/hugo/releases/download/v{{ version }}/hugo_extended_{{ version }}_Linux-64bit.tar.gz
+    - source_hash: {{ hash | yaml_encode }}
+    - clean: True
+    - enforce_toplevel: False
+    - user: deploy
+    - group: deploy
+    - require:
+      - git: cosmodoc-repo
+
+{% set version = salt['pillar.get']('website:cosmodoc-org:pagefind:version') %}
+{% set hash = salt['pillar.get']('website:cosmodoc-org:pagefind:hash') %}
+cosmodoc-pagefind:
+  archive.extracted:
+    - name: /opt/website/cosmodoc.org/bin
+    - source: https://github.com/Pagefind/pagefind/releases/download/v{{ version }}/pagefind-v{{ version }}-x86_64-unknown-linux-musl.tar.gz
     - source_hash: {{ hash | yaml_encode }}
     - clean: True
     - enforce_toplevel: False
@@ -37,12 +51,13 @@ cosmodoc-build:
     - name: >
         git clean -fdx ../public;
         rm -rf /home/deploy/.cache/hugo_cache;
-        /opt/website/cosmodoc.org/bin/hugo --printPathWarnings --printUnusedTemplates --templateMetrics --baseURL https://cosmodoc.org
+        /opt/website/cosmodoc.org/bin/hugo --printPathWarnings --printUnusedTemplates --templateMetrics --baseURL https://cosmodoc.org;
     - cwd: /opt/website/cosmodoc.org/src
     - runas: deploy
     - onchanges:
       - git: cosmodoc-repo
       - archive: cosmodoc-hugo
+      - archive: cosmodoc-pagefind
 
 /etc/awstats/awstats.cosmodoc.org.conf:
   file.managed:
