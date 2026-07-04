@@ -52,6 +52,7 @@ cosmodoc-build:
         git clean -fdx ../public;
         rm -rf /home/deploy/.cache/hugo_cache;
         /opt/website/cosmodoc.org/bin/hugo --printPathWarnings --printUnusedTemplates --templateMetrics --baseURL https://cosmodoc.org;
+        /opt/website/cosmodoc.org/bin/pagefind --site ../public --verbose;
     - cwd: /opt/website/cosmodoc.org/src
     - runas: deploy
     - onchanges:
